@@ -1,0 +1,42 @@
+<p>This document describes how to get the Annotation Laboratory up and running on your own machine. Begin by downloading the latest source zip from <a href="http://spraakbanken.gu.se/pub/annotationlab.dist/">here</a>. The source code is made available under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+<h2>Installing the Backend and Catapult</h2>
+
+<p>Here follow instructions for installation on a UNIX-like environment.
+For more information on the different configuration variables check the <a href="http://spraakbanken.gu.se/eng/research/infrastructure/korp/annotationlab/developersguide">developer's guide</a>.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>The Korp corpus pipeline (see <a href="http://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline">here</a> for installation instructions)</li>
+<li><a href="http://python.org/">Python 2.6</a> or newer (but not 3.x)</li>
+<li>A WSGI server (optional but recommended)</li>
+<li><a href="http://gcc.gnu.org/install">GCC</a> for compiling the <code>catapult</code> C extension</li>
+</ul>
+
+<h3>Installation</h3>
+
+<ul>
+<li>Set the backend configuration variables in <code>backend/config.py</code>.</li>
+<li>Set the catapult configuration variables in <code>catapult/config.sh</code>.</li>
+<li>From within the <code>catapult</code> directory run <code>./setup-server.sh</code> to fetch the
+makefiles needed to run the pipeline and to build <code>catalaunch</code>.</li>
+<li>Start the catapult by running <code>./start-server.sh</code> (from within the <code>catapult</code> directory).</li>
+<li>Run the script <code>backend.wsgi</code> in the <code>backend</code> directory.
+This can be done by running is directly from the python interpreter or by setting up a
+<code>.htaccess</code> file such that the WSGI script will automatically loaded by your WSGI server.</li>
+<li>Set up the cron jobs listed in <code>catapult/cronjobs</code> for the automatic
+maintenance of the Annotation Laboratory.</li>
+</ul>
+
+<h2>Installing the Frontend</h2>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>A web server, such as <a href="http://httpd.apache.org/download.cgi">Apache</a> or equivalent.</li>
+</ul>
+
+<h3>Installation</h3>
+
+<p>The frontend comes pre-compiled in the zip and can be installed by simply dropping the <code>dist</code> folder into your web server root. Consult your web server documentation for more details. You will also need to set some configuration variables in <code>dist/config.js</code> in order to point your frontend to the correct backend address and to the address of the default JSON schema file.</p>

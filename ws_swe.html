@@ -1,0 +1,224 @@
+<p>Annoteringslabbet har ett API som ligger på adressen:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate</code></p>
+</blockquote>
+
+<h2>Anrop för att annotera text</h2>
+
+<p>Frågor till nättjänsten kan göras med ett enkelt GET-anrop:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten</code></p>
+</blockquote>
+
+<p>Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:</p>
+
+<pre><code>&lt;result&gt;
+&lt;build hash='4a09b377f4590c81af7e19a9afe1d7f0a6149873'/&gt;
+&lt;corpus&gt;
+&lt;paragraph&gt;
+&lt;sentence id="8f7-84d"&gt;
+&lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" saldo="|den..1|en..2|" prefix="|" suffix="|" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|" lex="|" saldo="|" prefix="|exempel..nn.1|" suffix="|mening..nn.1|" ref="2" dephead="" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
+&lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" saldo="|till..1|" prefix="|" suffix="|" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|" lex="|" saldo="|" prefix="|nät..nn.1|nätt..av.1|" suffix="|tjänst..nn.2|tjänst..nn.1|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
+&lt;/sentence&gt;
+&lt;/paragraph&gt;
+&lt;/corpus&gt;
+&lt;/result&gt;
+</code></pre>
+
+<p>För större texter stöds också POST-anrop som skickas till samma address. Ett exempel med curl:</p>
+
+<blockquote>
+  <p><code>curl -X POST --data-binary text="En exempelmening till nättjänsten" http://spraakbanken.gu.se/ws/korp/annotate</code></p>
+</blockquote>
+
+<p>Svaret blir samma som för ovanstående GET-anropet.</p>
+
+<h2>Inställningar</h2>
+
+<p>Nättjänsten har stöd för bland annat att byta ord-, mening- och
+styckessegmenterare och vilka attribut som ska genereras. Dessa
+ges som ett JSON-objekt till <code>settings</code>-variabeln. Detta objekt
+måste uppfylla JSON-schemat som fås av detta anrop:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/schema</code></p>
+</blockquote>
+
+<p>Eftersom schemat innehåller <code>default</code>-värden för alla inställningar
+är detta argument valfritt, och alla inställningar behövs inte anges.</p>
+
+<p>Ett anrop där bara dependensinformationen genereras ser ut så här:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&amp;settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+</blockquote>
+
+<p>På <a href="http://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a> så finns en
+knapp <code>Visa Formulärets JSON</code> under <code>Visa avancerade inställningar</code>
+som visar formulärets JSON-objekt som skickas med i <code>settings</code>-variabeln.</p>
+
+<p>Makefilen som genereras för ett visst inställningsobjekt kan också fås. Ett
+anrop ser ut så här:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+</blockquote>
+
+<h2>Återuppta byggen</h2>
+
+<p>Längst upp i svarets XML finns ett hash-nummer i <code>build</code>-taggens
+<code>hash</code>-attribut. Detta kan användas för att återuppta byggen. För att visa
+första exemplet ovan används detta anrop:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873</code></p>
+</blockquote>
+
+<p>Svaret innehåller förutom det annoterade resultatet också orginaltexten och
+vilka inställningar som användes (grundinställningarna). Hela svaret ser ut så
+här:</p>
+
+<pre><code>&lt;result&gt;
+&lt;settings&gt;{
+  "lang": "sv",
+  "extra_tags": [],
+  "paragraph_segmenter": "blanklines",
+  "sentence_segmenter": "punkt_sentence",
+  "positional_attributes": {
+    "dependency_attributes": [
+      "ref",
+      "dephead",
+      "deprel"
+      ],
+    "lexical_attributes": [
+      "pos",
+      "msd",
+      "lemma",
+      "lex",
+      "saldo"
+      ],
+    "compound_attributes": [
+      "prefix",
+      "suffix"
+      ]
+  },
+  "corpus": "untitled",
+  "root": {
+      "attributes": [],
+      "tag": "text"
+  },
+  "word_segmenter": "better_word"
+}&lt;/settings&gt;
+&lt;original&gt;En exempelmening till nättjänsten&lt;/original&gt;
+&lt;build hash="4a09b377f4590c81af7e19a9afe1d7f0a6149873"/&gt;
+&lt;corpus&gt;
+&lt;paragraph&gt;
+&lt;sentence id="8f7-84d"&gt;
+&lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" saldo="|den..1|en..2|" prefix="|" suffix="|" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|" lex="|" saldo="|" prefix="|exempel..nn.1|" suffix="|mening..nn.1|" ref="2" dephead="" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
+&lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" saldo="|till..1|" prefix="|" suffix="|" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|" lex="|" saldo="|" prefix="|nät..nn.1|nätt..av.1|" suffix="|tjänst..nn.2|tjänst..nn.1|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
+&lt;/sentence&gt;
+&lt;/paragraph&gt;
+&lt;/corpus&gt;
+&lt;/result&gt;
+</code></pre>
+
+<h2>Analys av andra språk än svenska</h2>
+
+<p>Som standard sker analysen på svenska, men det finns även stöd för
+andra språk. Språkval görs genom <code>settings</code>-variabeln <code>lang</code>.
+För närvarande finns det stöd för följande språk:</p>
+
+<ul>
+<li>bulgariska (bg)</li>
+<li>engelska (en)</li>
+<li>estniska (et)</li>
+<li>finska (fi)</li>
+<li>franska (fr)</li>
+<li>italienska (it)</li>
+<li>latin (la)</li>
+<li>nederländska (nl)</li>
+<li>polska (pl)</li>
+<li>portugisiska (pt)</li>
+<li>ryska (ru)</li>
+<li>slovakiska (sk)</li>
+<li>spanska (es)</li>
+<li>tyska (de)</li>
+</ul>
+
+<p>Ett exempel på analys av tyska kan se ut så här:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={"lang":"de"}</code></p>
+</blockquote>
+
+<p>Beroende på vilket språk man väljer, finns det stöd för
+olika annotationer och verktyg. Använd <a href="http://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a>
+för att enklast se vilka valmöjligheter som finns för ett visst språk.</p>
+
+<h2>Inkrementell framstegsinformation</h2>
+
+<p>Med flaggan till anropen ovan <code>incremental=true</code> fås information om hur
+byggprocessen förlöper. Ett exempelanrop ser ut så här:</p>
+
+<blockquote>
+  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
+</blockquote>
+
+<p>Resultat-XML:en innehåller då dessa extra taggar:</p>
+
+<pre><code>&lt;increment command="" step="0" steps="23"/&gt;
+&lt;increment command="sb.fileid" step="1" steps="23"/&gt;
+&lt;increment command="sb.xmlparser" step="2" steps="23"/&gt;
+&lt;increment command="sb.segment" step="3" steps="23"/&gt;
+&lt;increment command="sb.segment" step="4" steps="23"/&gt;
+&lt;increment command="sb.number --position" step="5" steps="23"/&gt;
+&lt;increment command="sb.segment" step="6" steps="23"/&gt;
+&lt;increment command="sb.annotate --span_as_value" step="7" steps="23"/&gt;
+&lt;increment command="sb.parent --parents" step="8" steps="23"/&gt;
+&lt;increment command="sb.parent --parents" step="9" steps="23"/&gt;
+&lt;increment command="sb.annotate --text_spans" step="10" steps="23"/&gt;
+&lt;increment command="sb.parent --children" step="11" steps="23"/&gt;
+&lt;increment command="sb.number --position" step="12" steps="23"/&gt;
+&lt;increment command="sb.hunpos" step="13" steps="23"/&gt;
+&lt;increment command="sb.number --relative" step="14" steps="23"/&gt;
+&lt;increment command="sb.annotate --translate_tag" step="15" steps="23"/&gt;
+&lt;increment command="sb.saldo" step="16" steps="23"/&gt;
+&lt;increment command="sb.compound" step="17" steps="23"/&gt;
+&lt;increment command="sb.malt" step="18" steps="23"/&gt;
+&lt;increment command="sb.annotate --select" step="19" steps="23"/&gt;
+&lt;increment command="sb.annotate --select" step="20" steps="23"/&gt;
+&lt;increment command="sb.annotate --chain" step="21" steps="23"/&gt;
+&lt;increment command="sb.cwb --export" step="22" steps="23"/&gt;
+&lt;increment command="" step="23" steps="23"/&gt;
+</code></pre>
+
+<p>Denna variabel kan kombineras med <code>settings</code>, samt med <code>/join</code>, och med POST-anrop.</p>
+
+<!--
+## Övriga anrop
+Visar om nättjänstens python-bakända svarar på ping:
+
+> `http://spraakbanken.gu.se/ws/korp/annotate/ping`
+
+Statusarna för alla byggen:
+
+> `http://spraakbanken.gu.se/ws/korp/annotate/status`
+
+Ta bort byggen som inte hämtats på över 24 timmar:
+
+> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup`
+
+Ta bort felaktiga byggen:
+
+> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
+
+Visa nättjänstens api i ett swagger-ui JSON-schema:
+
+> `http://spraakbanken.gu.se/ws/korp/annotate/api`
+-->
