@@ -1,0 +1,100 @@
+<p>This document describes the internal structure of the Sparv backend
+and its usage of the catapult and can be used as a developer's guide.</p>
+
+<h2><a name="backend"></a>Backend</h2>
+
+<p>The backend is run through the WSGI script <code>backend.wsgi</code>.
+It is available at <a href="https://spraakbanken.gu.se/ws/sparv/v1/">https://spraakbanken.gu.se/ws/sparv/v1/</a>.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>the Korp corpus pipeline (see <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">here</a> for installation instructions)</li>
+<li><a href="https://www.python.org/">Python 2.6</a> or newer (but not 3.x)</li>
+<li>A WSGI server</li>
+</ul>
+
+<h3>Backend Configuration</h3>
+
+<p>The configuration variables are stored in <code>config.py</code>:</p>
+
+<ul>
+<li><code>backend</code>: the address where the backend is hosted</li>
+<li><code>sb_python</code>: the python path to the <code>sb</code> pipeline python directory</li>
+<li><code>al_backend</code>: the path to the backend directory</li>
+<li><code>builds_dir</code>: the directory that hosts running and completed builds</li>
+<li><code>log_file</code>: location of the log. It can be set to <code>None</code> to log to stdout.</li>
+<li><code>sb_models</code>: location of the <code>sb</code> pipeline models</li>
+<li><code>processes</code>: number of processes that <code>make</code> will run while annotating</li>
+</ul>
+
+<h3>Running the Backend</h3>
+
+<p>The backend can either be started manually by running <code>index.wsgi</code> with the python interpreter
+or if the backend directory is loaded via the Apache Web Server the WSGI script will be loaded
+automatically by Apache (due to the existence of the <code>.htaccess</code> file).</p>
+
+<p>If the backend is run with the python interpreter directly, it will try to use
+the eventlet WSGI implementation if it exists. Otherwise it falls back on the
+reference implementation. Eventlet is preferred because it handles concurrent
+requests.</p>
+
+<p>When making changes in the backend the WSGI script must be restarted (e.g.
+by running <code>touch index.wsgi</code>) in order for the changes to take effect.</p>
+
+<h3>Makefile and Settings JSON Schema</h3>
+
+<p>The makefile for each corpus is created from a JSON object that must satisfy one of the
+JSON schemas stored in the backend (the default schema being <code>backend/settings_schema_sv.json</code>).
+The frontend builds its form based on the requested schema. New entries can be added
+and the frontend should render them automatically. The file that creates the makefile is
+<code>backend/make_makefile.py</code>.</p>
+
+<h2><a name="catapult"></a>Catapult</h2>
+
+<p>The catapult runs a python instance that shares the loaded lexicons, keeps
+malt processes running and lowers the python interpreter startup time.
+Scripts are run on the catapult with the tiny c program <code>catalaunch</code>.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li><a href="http://gcc.gnu.org/install">GCC</a> for compiling the <code>catapult</code> C extension</li>
+<li><a href="https://www.python.org/">Python 2.6</a> or newer (but not 3.x)</li>
+</ul>
+
+<h3>Catapult Configuration</h3>
+
+<p>The configuration variables are stored in <code>config.sh</code>:</p>
+
+<ul>
+<li><code>SB_PYTHON</code>: the path to the <code>sb</code> pipeline python directory</li>
+<li><code>SB_MODELS</code>: location of the <code>sb</code> pipeline models</li>
+<li><code>SB_BIN</code>: location of the <code>sb</code> pipeline binaries</li>
+<li><code>SB_MAKEFILES</code>: location of the pipeline makefiles</li>
+<li><code>CATAPULT_DIR</code>: location of the catapult directory</li>
+<li><code>BUILDS_DIR</code>: the directory that hosts running and completed builds</li>
+</ul>
+
+<h3>Running the Catapult</h3>
+
+<ul>
+<li>Run <code>make</code> to build <code>catalaunch</code>.</li>
+<li>Run <code>./start-server.sh</code> to start the catapult.</li>
+<li>Set up the <a href="#cronjobs">cron jobs</a> listed in <code>catapult/cronjobs</code> for the automatic
+maintenance of Sparv.</li>
+</ul>
+
+<h3><a name="cronjobs"></a>Cron jobs</h3>
+
+<p>The following cron jobs are used in Sparv:</p>
+
+<ul>
+<li><em>Cleanup</em>: Builds that have not been accessed for 24 hours are removed every midnight by
+issuing <code>https://ws/spraakbanken.gu.se/ws/sparv/v1/cleanup</code>.</li>
+<li><em>Keep-alive</em>: The script <code>catapult/keep-alive.sh</code> is run every five minutes and restarts
+the catapult with <code>catapult/start-server.sh</code> if it does not respond to ping.</li>
+<li><em>Update-saldo</em>: The Saldo lexicon is updated daily with the script <code>catapult/update-saldo.sh</code>.
+This takes some time, and is therefore run during the night. The catapult is restarted
+afterwards by the <code>keep-alive.sh</code> script.</li>
+</ul>

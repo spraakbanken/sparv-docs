@@ -1,0 +1,31 @@
+<p>This document describes the internal structure of the Sparv frontend
+and can be used as a developer's guide.</p>
+
+<p>The frontend is available at
+<a href="https://spraakbanken.gu.se/sparv/">https://spraakbanken.gu.se/sparv/</a>.</p>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>Node v0.10.x, which should be installed through you package manager. This should by default include NPM, the node package manager.</li>
+<li><a href="http://gruntjs.com/">Grunt</a>, install using <code>npm install -g grunt-cli</code>.</li>
+<li>CoffeeScript, install using <code>npm install -g coffeescript</code>.</li>
+<li>Sass, install using <code>npm install sass</code>.</li>
+</ul>
+
+<h3>Frontend Configuration</h3>
+
+<p>The <code>app/config.js</code> file contains the configuration of the backend address, the
+ address to the default settings JSON schema and also the address to <a href="https://spraakbanken.gu.se/karp/">Karp</a>.</p>
+
+<h3>Running the Frontend</h3>
+
+<p>For running the frontend locally (while developing) run <code>grunt serve</code>.
+ In you browser, open <code>http://localhost:9010</code> to launch Sparv.
+ While running <code>grunt serve</code> so the CoffeeScript and Sass files will automatically
+ be compiled upon edit, additionally causing the browser window to be reloaded to
+ reflect the new changes.</p>
+
+<p>Before releasing a new version, the scripts are compiled by running <code>grunt</code> in the frontend directory.
+ This will create a directory called <code>dist</code> which contains all the files necessary
+ to run the frontend.</p>

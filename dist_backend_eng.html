@@ -1,0 +1,31 @@
+<p>This document describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from <a href="https://spraakbanken.gu.se/pub/sparv.dist/backend">here</a>. The source code is made available under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+<h2>Info</h2>
+
+<p>Here follow instructions for installation on a UNIX-like environment.
+For more information on the different configuration variables check the <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/developersguide">developer's guide</a>.</p>
+
+<p>The Sparv backend is configured to be run in combination with the catapult. The catapult source files are distributed together with the corpus pipeline (see below).</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>The Sparv corpus pipeline (see <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">here</a> for installation instructions)</li>
+<li><a href="http://python.org/">Python 2.6</a> or newer (but not 3.x)</li>
+<li>A WSGI server (optional but recommended)</li>
+<li><a href="http://gcc.gnu.org/install">GCC</a> for compiling the <code>catapult</code> C extension</li>
+</ul>
+
+<h2>Installation</h2>
+
+<ul>
+<li>Set the backend configuration variables in <code>backend/config.py</code>.</li>
+<li>Set the catapult configuration variables in <code>catapult/config.sh</code>.</li>
+<li>From within the <code>catapult</code> directory run <code>make</code> to build <code>catalaunch</code>.</li>
+<li>Start the catapult by running <code>./start-server.sh</code> (from within the <code>catapult</code> directory).</li>
+<li>Run the script <code>backend.wsgi</code> in the <code>backend</code> directory.
+This can be done by running it directly from the python interpreter or by setting up a
+<code>.htaccess</code> file such that the WSGI script will automatically loaded by your WSGI server.</li>
+<li>Set up the cron jobs listed in <code>catapult/cronjobs</code> for the automatic
+maintenance of Sparv.</li>
+</ul>
