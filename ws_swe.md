@@ -1,12 +1,12 @@
 Annoteringslabbet har ett API som ligger på adressen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate`
+> `https://spraakbanken.gu.se/ws/korp/annotate`
 
 
 ## Anrop för att annotera text
 Frågor till nättjänsten kan göras med ett enkelt GET-anrop:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten`
 
 Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:
 
@@ -26,7 +26,7 @@ Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:
 
 För större texter stöds också POST-anrop som skickas till samma address. Ett exempel med curl:
 
-> `curl -X POST --data-binary text="En exempelmening till nättjänsten" http://spraakbanken.gu.se/ws/korp/annotate`
+> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://spraakbanken.gu.se/ws/korp/annotate`
 
 Svaret blir samma som för ovanstående GET-anropet.
 
@@ -37,30 +37,30 @@ styckessegmenterare och vilka attribut som ska genereras. Dessa
 ges som ett JSON-objekt till `settings`-variabeln. Detta objekt
 måste uppfylla JSON-schemat som fås av detta anrop:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/schema`
+> `https://spraakbanken.gu.se/ws/korp/annotate/schema`
 
 Eftersom schemat innehåller `default`-värden för alla inställningar
 är detta argument valfritt, och alla inställningar behövs inte anges.
 
 Ett anrop där bara dependensinformationen genereras ser ut så här:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
-På [framändan](http://spraakbanken.gu.se/korp/annoteringslabbet) så finns en
+På [framändan](https://spraakbanken.gu.se/korp/annoteringslabbet) så finns en
 knapp `Visa Formulärets JSON` under `Visa avancerade inställningar`
 som visar formulärets JSON-objekt som skickas med i `settings`-variabeln.
 
 Makefilen som genereras för ett visst inställningsobjekt kan också fås. Ett
 anrop ser ut så här:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 ## Återuppta byggen
 Längst upp i svarets XML finns ett hash-nummer i `build`-taggens
 `hash`-attribut. Detta kan användas för att återuppta byggen. För att visa
 första exemplet ovan används detta anrop:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873`
+> `https://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873`
 
 Svaret innehåller förutom det annoterade resultatet också orginaltexten och
 vilka inställningar som användes (grundinställningarna). Hela svaret ser ut så
@@ -134,10 +134,10 @@ För närvarande finns det stöd för följande språk:
 
 Ett exempel på analys av tyska kan se ut så här:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
 
 Beroende på vilket språk man väljer, finns det stöd för
-olika annotationer och verktyg. Använd [framändan](http://spraakbanken.gu.se/korp/annoteringslabbet)
+olika annotationer och verktyg. Använd [framändan](https://spraakbanken.gu.se/korp/annoteringslabbet)
 för att enklast se vilka valmöjligheter som finns för ett visst språk.
 
 ## Inkrementell framstegsinformation
@@ -145,7 +145,7 @@ för att enklast se vilka valmöjligheter som finns för ett visst språk.
 Med flaggan till anropen ovan `incremental=true` fås information om hur
 byggprocessen förlöper. Ett exempelanrop ser ut så här:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&incremental=true`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&incremental=true`
 
 Resultat-XML:en innehåller då dessa extra taggar:
 
@@ -180,21 +180,21 @@ Denna variabel kan kombineras med `settings`, samt med `/join`, och med POST-anr
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/ping`
+> `https://spraakbanken.gu.se/ws/korp/annotate/ping`
 
 Statusarna för alla byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/status`
+> `https://spraakbanken.gu.se/ws/korp/annotate/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/api`
+> `https://spraakbanken.gu.se/ws/korp/annotate/api`
 -->

@@ -7,11 +7,11 @@ the [web frontend](#frontend), and the [catapult](#catapult).
 ## <a name="backend"></a>Backend
 
 The backend is run through the WSGI script `backend.wsgi`.
-It is available at [http://spraakbanken.gu.se/ws/korp/annotate](http://spraakbanken.gu.se/ws/korp/annotate).
+It is available at [https://spraakbanken.gu.se/ws/korp/annotate](https://spraakbanken.gu.se/ws/korp/annotate).
 
 ### Requirements
 
-* the Korp corpus pipeline (see [here](http://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline) for installation instructions)
+* the Korp corpus pipeline (see [here](https://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline) for installation instructions)
 * [Python 2.6](https://www.python.org/) or newer (but not 3.x)
 * A WSGI server
 
@@ -52,7 +52,7 @@ and the frontend should render them automatically. The file that creates the mak
 ## <a name="frontend"></a>Frontend
 
  The frontend is available at
- [http://spraakbanken.gu.se/korp/annoteringslabbet](http://spraakbanken.gu.se/korp/annoteringslabb).
+ [http://spraakbanken.gu.se/korp/annoteringslabbet](https://spraakbanken.gu.se/korp/annoteringslabb).
 
 ### Requirements
 
@@ -64,7 +64,7 @@ and the frontend should render them automatically. The file that creates the mak
 ### Frontend Configuration
 
  The `app/config.js` file contains the configuration of the backend address, the
- address to the default settings JSON schema and also the address to [Karp](http://spraakbanken.gu.se/karp/).
+ address to the default settings JSON schema and also the address to [Karp](https://spraakbanken.gu.se/karp/).
 
 ### Running the Frontend
 
@@ -112,7 +112,7 @@ The configuration variables are stored in `config.sh`:
 The following cron jobs are used in the Annotation Laboratory:
 
   * *Cleanup*: Builds that have not been accessed for 24 hours are removed every midnight by
-  issuing `http://spraakbanken.gu.se/ws/korp/annotate/cleanup`.
+  issuing `https://spraakbanken.gu.se/ws/korp/annotate/cleanup`.
   * *Keep-alive*: The script `catapult/keep-alive.sh` is run every five minutes and restarts
  the catapult with `catapult/start-server.sh` if it does not respond to ping.
   * *Update-saldo*: The Saldo lexicon is updated daily with the script `catapult/update-saldo.sh`.

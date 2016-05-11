@@ -1,12 +1,12 @@
-This document describes how to get the Annotation Laboratory up and running on your own machine. Begin by downloading the latest source zip from [here](http://spraakbanken.gu.se/pub/annotationlab.dist/). The source code is made available under the [MIT license](https://opensource.org/licenses/MIT).
+This document describes how to get the Annotation Laboratory up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/pub/annotationlab.dist/). The source code is made available under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Installing the Backend and Catapult
 Here follow instructions for installation on a UNIX-like environment.
-For more information on the different configuration variables check the [developer's guide](http://spraakbanken.gu.se/eng/research/infrastructure/korp/annotationlab/developersguide).
+For more information on the different configuration variables check the [developer's guide](https://spraakbanken.gu.se/eng/research/infrastructure/korp/annotationlab/developersguide).
 
 ### Requirements
 
-* The Korp corpus pipeline (see [here](http://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline) for installation instructions)
+* The Korp corpus pipeline (see [here](https://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline) for installation instructions)
 * [Python 2.6](http://python.org/) or newer (but not 3.x)
 * A WSGI server (optional but recommended)
 * [GCC](http://gcc.gnu.org/install) for compiling the `catapult` C extension

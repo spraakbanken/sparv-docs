@@ -1,7 +1,7 @@
 <p>Annoteringslabbet har ett API som ligger på adressen:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate</code></p>
 </blockquote>
 
 <h2>Anrop för att annotera text</h2>
@@ -9,7 +9,7 @@
 <p>Frågor till nättjänsten kan göras med ett enkelt GET-anrop:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten</code></p>
 </blockquote>
 
 <p>Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:</p>
@@ -32,7 +32,7 @@
 <p>För större texter stöds också POST-anrop som skickas till samma address. Ett exempel med curl:</p>
 
 <blockquote>
-  <p><code>curl -X POST --data-binary text="En exempelmening till nättjänsten" http://spraakbanken.gu.se/ws/korp/annotate</code></p>
+  <p><code>curl -X POST --data-binary text="En exempelmening till nättjänsten" https://spraakbanken.gu.se/ws/korp/annotate</code></p>
 </blockquote>
 
 <p>Svaret blir samma som för ovanstående GET-anropet.</p>
@@ -45,7 +45,7 @@ ges som ett JSON-objekt till <code>settings</code>-variabeln. Detta objekt
 måste uppfylla JSON-schemat som fås av detta anrop:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/schema</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate/schema</code></p>
 </blockquote>
 
 <p>Eftersom schemat innehåller <code>default</code>-värden för alla inställningar
@@ -54,10 +54,10 @@ måste uppfylla JSON-schemat som fås av detta anrop:</p>
 <p>Ett anrop där bara dependensinformationen genereras ser ut så här:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&amp;settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&amp;settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
 </blockquote>
 
-<p>På <a href="http://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a> så finns en
+<p>På <a href="https://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a> så finns en
 knapp <code>Visa Formulärets JSON</code> under <code>Visa avancerade inställningar</code>
 som visar formulärets JSON-objekt som skickas med i <code>settings</code>-variabeln.</p>
 
@@ -65,7 +65,7 @@ som visar formulärets JSON-objekt som skickas med i <code>settings</code>-varia
 anrop ser ut så här:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
 </blockquote>
 
 <h2>Återuppta byggen</h2>
@@ -75,7 +75,7 @@ anrop ser ut så här:</p>
 första exemplet ovan används detta anrop:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873</code></p>
 </blockquote>
 
 <p>Svaret innehåller förutom det annoterade resultatet också orginaltexten och
@@ -154,11 +154,11 @@ För närvarande finns det stöd för följande språk:</p>
 <p>Ett exempel på analys av tyska kan se ut så här:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={"lang":"de"}</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={"lang":"de"}</code></p>
 </blockquote>
 
 <p>Beroende på vilket språk man väljer, finns det stöd för
-olika annotationer och verktyg. Använd <a href="http://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a>
+olika annotationer och verktyg. Använd <a href="https://spraakbanken.gu.se/korp/annoteringslabbet">framändan</a>
 för att enklast se vilka valmöjligheter som finns för ett visst språk.</p>
 
 <h2>Inkrementell framstegsinformation</h2>
@@ -167,7 +167,7 @@ för att enklast se vilka valmöjligheter som finns för ett visst språk.</p>
 byggprocessen förlöper. Ett exempelanrop ser ut så här:</p>
 
 <blockquote>
-  <p><code>http://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
+  <p><code>https://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
 </blockquote>
 
 <p>Resultat-XML:en innehåller då dessa extra taggar:</p>
@@ -204,21 +204,21 @@ byggprocessen förlöper. Ett exempelanrop ser ut så här:</p>
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/ping`
+> `https://spraakbanken.gu.se/ws/korp/annotate/ping`
 
 Statusarna för alla byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/status`
+> `https://spraakbanken.gu.se/ws/korp/annotate/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/api`
+> `https://spraakbanken.gu.se/ws/korp/annotate/api`
 -->

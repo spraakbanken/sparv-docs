@@ -1,12 +1,12 @@
 The Annotation Laboratory has an API which is available at the following address:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate`
+> `https://spraakbanken.gu.se/ws/korp/annotate`
 
 
 ## Queries for Annotating Texts
 Queries to the web service can be sent as a simple GET request:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=En+exempelmening+till+nättjänsten`
 
 The response is an XML-objekt which for the above request looks like this:
 
@@ -27,7 +27,7 @@ The response is an XML-objekt which for the above request looks like this:
 POST requests are also supported using the same address. This can be useful for longer texts.
 Here is an example using curl:
 
-> `curl -X POST --data-binary text="En exempelmening till nättjänsten" http://spraakbanken.gu.se/ws/korp/annotate`
+> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://spraakbanken.gu.se/ws/korp/annotate`
 
 The response is the same as for the above GET request.
 
@@ -40,24 +40,24 @@ and you can define which annotations should be generated.
 These settings can be provided as a JSON object to the `settings` variable.
 This object must satisfy the JSON schema available at the following adress:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/schema`
+> `https://spraakbanken.gu.se/ws/korp/annotate/schema`
 
 The schema holds default values for all the attributes. The use of the settings
 variable is therefore optional.
 
 A request which only generates a dependency analysis could look like this:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 If you are not sure how to define the settings variable you can get help from the
-[frontend](http://spraakbanken.gu.se/korp/annoteringslabbet) by clicking
+[frontend](https://spraakbanken.gu.se/korp/annoteringslabbet) by clicking
 `Visa Formulärets JSON` under `Show advanced settings`. This will generate
 the JSON-objekt for the chosen settings which is sent in the `settings` variable.
 
 The makefile which is generated for a certain set of settings can be viewed by
 sending a `makefile` query:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://spraakbanken.gu.se/ws/korp/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 ## Joining a Build
 At the top of the XML response you can find a hash number inside the `build`-tag.
@@ -65,7 +65,7 @@ This hash can be used to join a build of an earlier build.
 
 The following request is used for joining the build from the first example of this documentation:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873`
+> `https://spraakbanken.gu.se/ws/korp/annotate/join?hash=4a09b377f4590c81af7e19a9afe1d7f0a6149873`
 
 The response contains the chosen settings, the original text and of course the
 result of the annotation. The entire response looks like this:
@@ -140,10 +140,10 @@ The following languages are currently supported:
 
 This is an example of an analysis of a German sentence:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
 
 Different kinds of settings are supported for different languages.
-Please use the [frontend](http://spraakbanken.gu.se/korp/annoteringslabbet)
+Please use the [frontend](https://spraakbanken.gu.se/korp/annoteringslabbet)
 if you want to check which options there are for a certain language.
 
 
@@ -153,7 +153,7 @@ By adding the flag `incremental=true` to your usual query you can
 receive more information on how your analysis is being processed.
 An example query could look like this:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&incremental=true`
+> `https://spraakbanken.gu.se/ws/korp/annotate?text=Nu+med+inkrementell+information&incremental=true`
 
 The resulting XML will contain the following extra tags:
 
@@ -188,21 +188,21 @@ This variable can of course be combined with `settings`, `/join`, and with POST 
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/ping`
+> `https://spraakbanken.gu.se/ws/korp/annotate/ping`
 
 Statusarna för alla byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/status`
+> `https://spraakbanken.gu.se/ws/korp/annotate/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
+> `https://spraakbanken.gu.se/ws/korp/annotate/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `http://spraakbanken.gu.se/ws/korp/annotate/api`
+> `https://spraakbanken.gu.se/ws/korp/annotate/api`
 -->
