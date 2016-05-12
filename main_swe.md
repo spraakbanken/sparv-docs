@@ -9,9 +9,9 @@ görs med korpusarna i Korp.
 [Här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/nättjänst)
 hittar du en dokumentation till Sparvs nättjänst (API).
 
-[här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/distribution).
-För att komma till nedladdningslänken och till installationsinstruktionerna klicka
 Sparvs källkod distribueras under [MIT licensen](https://opensource.org/licenses/MIT).
+För att komma till nedladdningslänken och till installationsinstruktionerna klicka
+[här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/distribution).
 
 En dokumentation av koden hittar du i
 [utvecklingsguiden](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/utvecklingsguides).
