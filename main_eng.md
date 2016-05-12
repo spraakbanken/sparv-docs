@@ -15,3 +15,5 @@ To get to the download link and the installation instructions click
 
 For code documentation check the
 [developer's guides](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/developersguides).
+
+Please contact sb-sparv[at]svenska.gu.se if you have any questions, problems or suggestions.

@@ -15,3 +15,5 @@ Sparvs källkod distribueras under [MIT licensen](https://opensource.org/license
 
 En dokumentation av koden hittar du i
 [utvecklingsguiden](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/utvecklingsguides).
+
+Hör av dig till sb-sparv[at]svenska.gu.se om du har frågor, problem eller förbättringsförslag.
