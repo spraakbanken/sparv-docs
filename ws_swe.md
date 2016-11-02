@@ -26,7 +26,7 @@ Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:
 
 För större texter stöds också POST-anrop som skickas till samma address. Ett exempel med curl:
 
-> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate`
+> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v1/`
 
 Svaret blir samma som för ovanstående GET-anropet.
 
@@ -43,14 +43,14 @@ styckessegmenterare och vilka attribut som ska genereras. Dessa
 ges som ett JSON-objekt till `settings`-variabeln. Detta objekt
 måste uppfylla JSON-schemat som fås av detta anrop:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/schema`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/schema`
 
 Eftersom schemat innehåller `default`-värden för alla inställningar
 är detta argument valfritt, och alla inställningar behövs inte anges.
 
 Ett anrop där bara dependensinformationen genereras ser ut så här:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 På [framändan](http://spraakbanken.gu.se/sparv) så finns en
 knapp `Visa Formulärets JSON` under `Visa avancerade inställningar`
@@ -59,14 +59,14 @@ som visar formulärets JSON-objekt som skickas med i `settings`-variabeln.
 Makefilen som genereras för ett visst inställningsobjekt kan också fås. Ett
 anrop ser ut så här:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 ## Återuppta byggen
 Längst upp i svarets XML finns ett hash-nummer i `build`-taggens
 `hash`-attribut. Detta kan användas för att återuppta byggen. För att visa
 första exemplet ovan används detta anrop:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/join?hash=cf97c7d78bfca58ab6ab575b365e3c74a6174852`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/join?hash=cf97c7d78bfca58ab6ab575b365e3c74a6174852`
 
 Svaret innehåller förutom det annoterade resultatet också orginaltexten och
 vilka inställningar som användes (grundinställningarna). Hela svaret ser ut så
@@ -148,7 +148,7 @@ För närvarande finns det stöd för följande språk:
 
 Ett exempel på analys av tyska kan se ut så här:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
 
 Beroende på vilket språk man väljer, finns det stöd för
 olika annotationer och verktyg. Använd [framändan](http://spraakbanken.gu.se/sparv)
@@ -159,7 +159,7 @@ för att enklast se vilka valmöjligheter som finns för ett visst språk.
 Med flaggan till anropen ovan `incremental=true` fås information om hur
 byggprocessen förlöper. Ett exempelanrop ser ut så här:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate?text=Nu+med+inkrementell+information&incremental=true`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/?text=Nu+med+inkrementell+information&incremental=true`
 
 Resultat-XML:en innehåller då dessa extra taggar:
 
@@ -192,21 +192,21 @@ Denna variabel kan kombineras med `settings`, samt med `/join`, och med POST-anr
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/ping`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/ping`
 
 Statusarna för alla byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/status`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/cleanup`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/cleanup/errors`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/annotate/api`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v1/api`
 -->
