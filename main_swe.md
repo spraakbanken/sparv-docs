@@ -9,7 +9,9 @@ görs med korpusarna i Korp.
 [Här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/nättjänst)
 hittar du en dokumentation till Sparvs nättjänst (API).
 
-Sparvs källkod distribueras under [MIT-licensen](https://opensource.org/licenses/MIT).
+Sparvs källkod distribueras i två olika versioner:
+* under [MIT-licensen](https://opensource.org/licenses/MIT) (utan användning av FreeLing)
+* under [AGPL-licensen](http://www.gnu.org/licenses/agpl.html) (innehåller anrop till FreeLing)
 För att komma till nedladdningslänken och till installationsinstruktionerna klicka
 [här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/distribution).
 

@@ -1,4 +1,9 @@
-This document describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/pub/sparv.dist/sparv_backend). The source code is made available under the [MIT license](https://opensource.org/licenses/MIT).
+This document describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/pub/sparv.dist/sparv_backend).
+
+Note that the source code is made available in two different versions:
+* under the [MIT license](https://opensource.org/licenses/MIT) without usage of FreeLing
+* under the [AGPL license](http://www.gnu.org/licenses/agpl.html) including calls to FreeLing
+
 
 ## Info
 Here follow instructions for installation on a UNIX-like environment.

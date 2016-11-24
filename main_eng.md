@@ -9,7 +9,9 @@ the same tools as are applied in the annotation of the corpora in Korp.
 The documentation to the Sparv web service (API) can be found
 [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/webservice).
 
-Sparv's source code is distributed under the [MIT license](https://opensource.org/licenses/MIT).
+Sparv's source code is distributed in two different versions:
+* under the [MIT license](https://opensource.org/licenses/MIT) without usage of FreeLing
+* under the [AGPL license](http://www.gnu.org/licenses/agpl.html) including calls to FreeLing
 To get to the download link and the installation instructions click
 [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution).
 
