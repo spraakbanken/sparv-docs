@@ -8,8 +8,8 @@ For texts written in contemporary Swedish Sparv can generate the following types
 * lex: lemgram, identifies the inflectional table
 * saldo: identifies a sense in Saldo
 * sense: identifies a sense in Saldo and its probability
-* prefix: for compounds
-* suffix: for compounds
+* prefix: initial part of a compound
+* suffix: final part of a compound
 * complemgram: compound lemgram
 * compwf: compound word form
 * ref: the position of the word in the sentence
