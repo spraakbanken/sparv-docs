@@ -18,3 +18,7 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 * ne.ex: namnentitet (namnuttryck, numerisk uttryck eller tidsuttryck)
 * ne.type: namnentitets typ
 * ne.subtype: namnentitets subtyp
+
+
+Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
+märkas upp med en delmängd av ovanstående annotationstyper.

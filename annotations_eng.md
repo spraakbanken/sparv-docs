@@ -17,4 +17,8 @@ For texts written in contemporary Swedish Sparv can generate the following types
 * deprel: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html
 * ne.ex: named entity (name expression, numerical expression or time expression)
 * ne.type: named entity type
-* ne.subtype: named entity subtype
+* ne.subtype: named entity sub type
+
+
+Older Swedish texts or texts written in other languages can often be annotated
+with a sub set of the above annotation types.
