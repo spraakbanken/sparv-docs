@@ -18,6 +18,9 @@ For texts written in contemporary Swedish Sparv can generate the following types
 * ne.ex: named entity (name expression, numerical expression or time expression)
 * ne.type: named entity type
 * ne.subtype: named entity sub type
+* text.lix: the Swedish readability metric LIX, läsbarhetsindex
+* text.ovix: the Swedish readability metric OVIX, ordvariationsindex
+* text.nk: the Swedish readability metric nominalkvot
 
 
 Older Swedish texts or texts written in other languages can often be annotated

@@ -18,6 +18,9 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 * ne.ex: namnentitet (namnuttryck, numerisk uttryck eller tidsuttryck)
 * ne.type: namnentitetstyp
 * ne.subtype: namnentitetsundertyp
+* text.lix: LIX, läsbarhetsindex
+* text.ovix: OVIX, ordvariationsindex
+* text.nk: Nominalkvot
 
 
 Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
