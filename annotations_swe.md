@@ -4,8 +4,8 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 
 * pos: ordklasstagg (av engelskans 'part of speech'), se http://spraakbanken.gu.se/korp/markup/msdtags.html
 * msd: morfosyntaktisk tagg, se http://spraakbanken.gu.se/korp/markup/msdtags.html
-* lemma: grundform
-* lex: lemgram, en formenhet som identifierar böjningstabellen
+* baseform: grundform
+* lemgram: lemgram, en formenhet som identifierar böjningstabellen
 * saldo: identifierar en betydelse i Saldo
 * sense: identifierar en betydelse i Saldo samt dess sannolikhet
 * prefix: förled vid sammansättningar
@@ -16,8 +16,8 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 * dephead: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
 * deprel: dependensrelation, den relation detta ord har till sitt dependenshuvud, se http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html
 * ne.ex: namnentitet (namnuttryck, numerisk uttryck eller tidsuttryck)
-* ne.type: namnentitets typ
-* ne.subtype: namnentitets subtyp
+* ne.type: namnentitetstyp
+* ne.subtype: namnentitetsundertyp
 
 
 Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
