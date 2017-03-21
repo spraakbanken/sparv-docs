@@ -11,7 +11,7 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
   * sense: identifierar en betydelse i SALDO samt dess sannolikhet
   * (saldo: identifierar en betydelse i SALDO - *kommer att tas bort snart*)
 
-* Sammansättningsanalys (also based on SALDO):
+* Sammansättningsanalys (också baserad på SALDO):
   * complemgram: sammansatt lemgram
   * compwf: sammansatt ordform
   * (prefix: förled vid sammansättningar - *kommer att tas bort snart*)
