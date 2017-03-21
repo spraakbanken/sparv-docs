@@ -5,13 +5,13 @@ For texts written in contemporary Swedish Sparv can generate the following types
   * pos: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html
   * msd: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html
 
-* Saldo-related analysis:
+* SALDO-based analysis:
   * lemma: citation form
   * lex: lemgram, identifies the inflectional table
-  * sense: identifies a sense in Saldo and its probability
-  * (saldo: identifies a sense in Saldo - *will be removed soon*)
+  * sense: identifies a sense in SALDO and its probability
+  * (saldo: identifies a sense in SALDO - *will be removed soon*)
 
-* Compound analysis:
+* Compound analysis (also based on SALDO):
   * complemgram: compound lemgram
   * compwf: compound word form
   * (prefix: initial part of a compound - *will be removed soon*)

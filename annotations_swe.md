@@ -5,13 +5,13 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
   * pos: ordklasstagg (av engelskans 'part of speech'), se http://spraakbanken.gu.se/korp/markup/msdtags.html
   * msd: morfosyntaktisk tagg, se http://spraakbanken.gu.se/korp/markup/msdtags.html
 
-* Saldo-relaterade analyser:
+* SALDO-baserade analyser:
   * baseform: grundform
   * lemgram: lemgram, en formenhet som identifierar böjningstabellen
-  * sense: identifierar en betydelse i Saldo samt dess sannolikhet
-  * (saldo: identifierar en betydelse i Saldo - *kommer att tas bort snart*)
+  * sense: identifierar en betydelse i SALDO samt dess sannolikhet
+  * (saldo: identifierar en betydelse i SALDO - *kommer att tas bort snart*)
 
-* Sammansättningsanalys:
+* Sammansättningsanalys (also based on SALDO):
   * complemgram: sammansatt lemgram
   * compwf: sammansatt ordform
   * (prefix: förled vid sammansättningar - *kommer att tas bort snart*)
