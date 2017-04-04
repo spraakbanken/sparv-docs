@@ -7,7 +7,7 @@ Note that the source code is made available in two different versions:
 
 ## Info
 Here follow instructions for installation on a UNIX-like environment.
-For more information on the different configuration variables check the [developer's guide](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/developersguide).
+For more information on the different configuration variables check the [developer's guide](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/developersguides).
 
 The Sparv backend is configured to be run in combination with the catapult. The catapult source files are distributed together with the corpus pipeline (see below).
 
