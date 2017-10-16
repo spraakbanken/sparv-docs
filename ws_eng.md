@@ -1,12 +1,12 @@
 Sparv has an API which is available at the following address:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2`
 
 
 ## Queries for Annotating Texts
 Queries to the web service can be sent as a simple GET request:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1?text=En+exempelmening+till+nättjänsten`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=En+exempelmening+till+nättjänsten`
 
 The response is an XML-objekt which for the above request looks like this:
 
@@ -27,13 +27,13 @@ The response is an XML-objekt which for the above request looks like this:
 POST requests are also supported using the same address. This can be useful for longer texts.
 Here is an example using curl:
 
-> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v1`
+> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v2`
 
 The response is the same as for the above GET request.
 
 It is also possible to upload text or XML files using curl:
 
-> `curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/v1/upload?`
+> `curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/v2/upload?`
 
 The response will be a download link to a zip file containing the annotation.
 
@@ -46,14 +46,14 @@ and you can define which annotations should be generated.
 These settings can be provided as a JSON object to the `settings` variable.
 This object must satisfy the JSON schema available at the following adress:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/schema`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/schema`
 
 The schema holds default values for all the attributes. The use of the settings
 variable is therefore optional.
 
 A request which only generates a dependency analysis could look like this:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 If you are not sure how to define the settings variable you can get help from the
 [frontend](https://spraakbanken.gu.se/sparv) by clicking
@@ -63,7 +63,7 @@ the JSON-objekt for the chosen settings which is sent in the `settings` variable
 The makefile which is generated for a certain set of settings can be viewed by
 sending a `makefile` query:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
 ## Joining a Build
 At the top of the XML response you can find a hash number inside the `build`-tag.
@@ -71,7 +71,7 @@ This hash can be used to join a build of an earlier build.
 
 The following request is used for joining the build from the first example of this documentation:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/join?hash=cf97c7d78bfca58ab6ab575b365e3c74a6174852`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/join?hash=cf97c7d78bfca58ab6ab575b365e3c74a6174852`
 
 The response contains the chosen settings, the original text and of course the
 result of the annotation. The entire response looks like this:
@@ -153,7 +153,7 @@ The following languages are currently supported:
 
 This is an example of an analysis of a German sentence:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
 
 Different kinds of settings are supported for different languages.
 Please use the [frontend](https://spraakbanken.gu.se/sparv)
@@ -166,7 +166,7 @@ By adding the flag `incremental=true` to your usual query you can
 receive more information on how your analysis is being processed.
 An example query could look like this:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1?text=Nu+med+inkrementell+information&incremental=true`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Nu+med+inkrementell+information&incremental=true`
 
 The resulting XML will contain the following extra tags:
 
@@ -199,21 +199,21 @@ This variable can of course be combined with `settings`, `/join`, and with POST 
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/ping`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/ping`
 
 Statusarna för alla byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/status`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/cleanup`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/cleanup/errors`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v1/api`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/api`
 -->
