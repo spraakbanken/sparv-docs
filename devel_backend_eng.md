@@ -7,7 +7,7 @@ and its usage of the catapult and can be used as a developer's guide.
 The backend is run through the WSGI script `index.py`.
 It is available at [https://spraakbanken.gu.se/ws/sparv/v2/](https://spraakbanken.gu.se/ws/sparv/v2/).
 
-### <a name="be-requirements">Requirements
+### <a name="be-requirements"></a>Requirements
 
 * the Korp corpus pipeline, see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions
 * [Python 3.4](https://www.python.org/) or newer
