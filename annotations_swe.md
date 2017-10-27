@@ -10,6 +10,7 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
   * lemgram: lemgram, en formenhet som identifierar böjningstabellen
   * sense: identifierar en betydelse i SALDO samt dess sannolikhet
   * (saldo: identifierar en betydelse i SALDO - *kommer att tas bort snart*)
+  * sentiment: attitydvärde
 
 * Sammansättningsanalys (också baserad på SALDO):
   * complemgram: sammansatt lemgram
@@ -32,6 +33,11 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
   * text.ovix: OVIX, ordvariationsindex
   * text.nk: Nominalkvot
 
+* Lexikala klasser:
+  * blingbring: lexikala klasser från Blingbring-resursen (på ordnivå)
+  * swefn: ramar fråm swedish FrameNet (på ordnivå)
+  * text.blingbring: lexikala klasser från Blingbring-resursen (på dokumentnivå)
+  * text.swefn: ramar fråm swedish FrameNet (på dokumentnivå)
 
 Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
 märkas upp med en delmängd av ovanstående annotationstyper.

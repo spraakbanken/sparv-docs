@@ -15,16 +15,18 @@
 <p>The response is an XML-objekt which for the above request looks like this:</p>
 
 <pre><code>&lt;result&gt;
-&lt;build hash="cf97c7d78bfca58ab6ab575b365e3c74a6174852"/&gt;
-&lt;corpus&gt;
+&lt;build hash="edb2a4717701a65b721d97834a56b129dc3bf6aa"/&gt;
+&lt;corpus link="https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa"&gt;
+&lt;text lix="54.00" ovix="inf" nk="inf"&gt;
 &lt;paragraph&gt;
 &lt;sentence id="8f7-84d"&gt;
-&lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" saldo="|den..1|en..2|" prefix="|" suffix="|" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
-&lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|" lex="|" saldo="|" prefix="|exempel..nn.1|" suffix="|mening..nn.1|" ref="2" dephead="" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
-&lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" saldo="|till..1|" prefix="|" suffix="|" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
-&lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|" lex="|" saldo="|" prefix="|nät..nn.1|nätt..av.1|" suffix="|tjänst..nn.2|tjänst..nn.1|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
+&lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
+&lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
+&lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
 &lt;/sentence&gt;
 &lt;/paragraph&gt;
+&lt;/text&gt;
 &lt;/corpus&gt;
 &lt;/result&gt;
 </code></pre>
@@ -88,63 +90,75 @@ This hash can be used to join a build of an earlier build.</p>
 <p>The following request is used for joining the build from the first example of this documentation:</p>
 
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/join?hash=cf97c7d78bfca58ab6ab575b365e3c74a6174852</code></p>
+  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
 </blockquote>
 
 <p>The response contains the chosen settings, the original text and of course the
 result of the annotation. The entire response looks like this:</p>
 
-<p><result>
-  <settings>{
-      "lang": "sv",
-      "extra<em>tags": [],
-      "textmode": "plain",
-      "sentence</em>segmentation": {
-          "sentence<em>segmenter": "default</em>tokenizer",
-          "sentence<em>chunk": "paragraph"
-      },
-      "positional</em>attributes": {
-          "dependency<em>attributes": [
-              "ref",
-              "dephead",
-              "deprel"
-          ],
-          "lexical</em>attributes": [
-              "pos",
-              "msd",
-              "lemma",
-              "lex",
-              "saldo"
-          ],
-          "compound<em>attributes": [
-              "prefix",
-              "suffix"
-          ]
-      },
-      "paragraph</em>segmentation": {
-          "paragraph<em>segmenter": "blanklines",
-          "paragraph</em>chunk": "root"
-      },
-      "corpus": "untitled",
+<pre><code>&lt;result&gt;
+    &lt;settings&gt;{
       "root": {
-          "attributes": [],
-          "tag": "text"
+        "attributes": [],
+        "tag": "text"
       },
-      "word<em>segmenter": "default</em>tokenizer"
-  }</settings>
-  <original>En exempelmening till nättjänsten</original>
-  <build hash="cf97c7d78bfca58ab6ab575b365e3c74a6174852"/>
-  <corpus>
-    <paragraph>
-      <sentence id="8f7-84d">
-        <w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" saldo="|den..1|en..2|" prefix="|" suffix="|" ref="1" dephead="2" deprel="DT">En</w>
-        <w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|" lex="|" saldo="|" prefix="|exempel..nn.1|" suffix="|mening..nn.1|" ref="2" dephead="" deprel="ROOT">exempelmening</w>
-        <w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" saldo="|till..1|" prefix="|" suffix="|" ref="3" dephead="2" deprel="ET">till</w>
-        <w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|" lex="|" saldo="|" prefix="|nät..nn.1|nätt..av.1|" suffix="|tjänst..nn.2|tjänst..nn.1|" ref="4" dephead="3" deprel="PA">nättjänsten</w>
-      </sentence>
-    </paragraph>
-  </corpus>
-</result></p>
+      "text_attributes": {
+        "readability_metrics": [
+          "lix",
+          "ovix",
+          "nk"
+        ]
+      },
+      "word_segmenter": "default_tokenizer",
+      "positional_attributes": {
+        "lexical_attributes": [
+          "pos",
+          "msd",
+          "lemma",
+          "lex",
+          "sense"
+        ],
+        "compound_attributes": [
+          "complemgram",
+          "compwf"
+        ],
+        "dependency_attributes": [
+          "ref",
+          "dephead",
+          "deprel"
+        ],
+        "sentiment": [
+          "sentiment"
+        ]
+      },
+      "sentence_segmentation": {
+        "sentence_chunk": "paragraph",
+        "sentence_segmenter": "default_tokenizer"
+      },
+      "paragraph_segmentation": {
+        "paragraph_segmenter": "blanklines"
+      },
+      "lang": "sv",
+      "textmode": "plain",
+      "named_entity_recognition": [],
+      "corpus": "untitled"
+}&lt;/settings&gt;
+&lt;original&gt;&amp;lt;text&amp;gt;En exempelmening till nättjänsten&amp;lt;/text&amp;gt;&lt;/original&gt;
+&lt;build hash='edb2a4717701a65b721d97834a56b129dc3bf6aa'/&gt;
+&lt;corpus link='https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa'&gt;
+    &lt;text lix="54.00" ovix="inf" nk="inf"&gt;
+        &lt;paragraph&gt;
+            &lt;sentence id="8f7-84d"&gt;
+                &lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
+                &lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
+                &lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
+                &lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
+            &lt;/sentence&gt;
+        &lt;/paragraph&gt;
+    &lt;/text&gt;
+&lt;/corpus&gt;
+&lt;/result&gt;
+</code></pre>
 
 <h2>Analysing Texts in Other Languages</h2>
 
@@ -193,31 +207,45 @@ An example query could look like this:</p>
 
 <p>The resulting XML will contain the following extra tags:</p>
 
-<pre><code>&lt;increment command="" step="0" steps="21"/&gt;
-&lt;increment command="sb.segment" step="1" steps="21"/&gt;
-&lt;increment command="sb.segment" step="2" steps="21"/&gt;
-&lt;increment command="sb.number --position" step="3" steps="21"/&gt;
-&lt;increment command="sb.segment" step="4" steps="21"/&gt;
-&lt;increment command="sb.annotate --span_as_value" step="5" steps="21"/&gt;
-&lt;increment command="sb.parent --parents" step="6" steps="21"/&gt;
-&lt;increment command="sb.parent --parents" step="7" steps="21"/&gt;
-&lt;increment command="sb.annotate --text_spans" step="8" steps="21"/&gt;
-&lt;increment command="sb.parent --children" step="9" steps="21"/&gt;
-&lt;increment command="sb.number --position" step="10" steps="21"/&gt;
-&lt;increment command="sb.hunpos" step="11" steps="21"/&gt;
-&lt;increment command="sb.number --relative" step="12" steps="21"/&gt;
-&lt;increment command="sb.annotate --select" step="13" steps="21"/&gt;
-&lt;increment command="sb.compound_simple" step="14" steps="21"/&gt;
-&lt;increment command="sb.saldo" step="15" steps="21"/&gt;
-&lt;increment command="sb.malt" step="16" steps="21"/&gt;
-&lt;increment command="sb.annotate --select" step="17" steps="21"/&gt;
-&lt;increment command="sb.annotate --select" step="18" steps="21"/&gt;
-&lt;increment command="sb.annotate --chain" step="19" steps="21"/&gt;
-&lt;increment command="sb.cwb --export" step="20" steps="21"/&gt;
-&lt;increment command="" step="21" steps="21"/&gt;
+<pre><code>&lt;increment command="" step="0" steps="27"/&gt;
+&lt;increment command="sb.segment" step="1" steps="27"/&gt;
+&lt;increment command="sb.segment" step="2" steps="27"/&gt;
+&lt;increment command="sb.number --position" step="3" steps="27"/&gt;
+&lt;increment command="sb.segment" step="4" steps="27"/&gt;
+&lt;increment command="sb.annotate --span_as_value" step="5" steps="27"/&gt;
+&lt;increment command="sb.annotate --text_spans" step="6" steps="27"/&gt;
+&lt;increment command="sb.parent --children" step="7" steps="27"/&gt;
+&lt;increment command="sb.parent --parents" step="8" steps="27"/&gt;
+&lt;increment command="sb.parent --parents" step="9" steps="27"/&gt;
+&lt;increment command="sb.parent --parents" step="10" steps="27"/&gt;
+&lt;increment command="sb.number --position" step="11" steps="27"/&gt;
+&lt;increment command="sb.hunpos" step="12" steps="27"/&gt;
+&lt;increment command="sb.number --relative" step="13" steps="27"/&gt;
+&lt;increment command="sb.annotate --select" step="14" steps="27"/&gt;
+&lt;increment command="sb.saldo" step="15" steps="27"/&gt;
+&lt;increment command="sb.readability --lix" step="16" steps="27"/&gt;
+&lt;increment command="sb.readability --ovix" step="17" steps="27"/&gt;
+&lt;increment command="sb.readability --nominal_ratio" step="18" steps="27"/&gt;
+&lt;increment command="sb.compound" step="19" steps="27"/&gt;
+&lt;increment command="sb.wsd" step="20" steps="27"/&gt;
+&lt;increment command="sb.malt" step="21" steps="27"/&gt;
+&lt;increment command="sb.sentiment" step="22" steps="27"/&gt;
+&lt;increment command="sb.annotate --select" step="23" steps="27"/&gt;
+&lt;increment command="sb.annotate --select" step="24" steps="27"/&gt;
+&lt;increment command="sb.annotate --chain" step="25" steps="27"/&gt;
+&lt;increment command="sb.cwb --export" step="26" steps="27"/&gt;
+&lt;increment command="" step="27" steps="27"/&gt;
 </code></pre>
 
 <p>This variable can of course be combined with <code>settings</code>, <code>/join</code>, and with POST requests.</p>
+
+<h2>Other calls</h2>
+
+<p>You can get a short description of all existing API calls here:</p>
+
+<blockquote>
+  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/api</code></p>
+</blockquote>
 
 <!--
 ## Övriga anrop

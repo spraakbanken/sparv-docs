@@ -10,6 +10,7 @@ For texts written in contemporary Swedish Sparv can generate the following types
   * lex: lemgram, identifies the inflectional table
   * sense: identifies a sense in SALDO and its probability
   * (saldo: identifies a sense in SALDO - *will be removed soon*)
+  * sentiment: sentiment score
 
 * Compound analysis (also based on SALDO):
   * complemgram: compound lemgram
@@ -31,6 +32,12 @@ For texts written in contemporary Swedish Sparv can generate the following types
   * text.lix: the Swedish readability metric LIX, läsbarhetsindex
   * text.ovix: the Swedish readability metric OVIX, ordvariationsindex
   * text.nk: the Swedish readability metric nominalkvot
+
+* Lexical classes:
+  * blingbring: lexical class from the Blingbring resource (on word level)
+  * swefn: frames from swedish FrameNet (on word level)
+  * text.blingbring: lexical class from the Blingbring resource (on document level)
+  * text.swefn: frames from swedish FrameNet (on document level)
 
 
 Older Swedish texts or texts written in other languages can often be annotated

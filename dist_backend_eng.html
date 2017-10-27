@@ -1,4 +1,4 @@
-<p>This document describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from <a href="https://spraakbanken.gu.se/pub/sparv.dist/sparv_backend">here</a>.</p>
+<p>This document describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from <a href="https://spraakbanken.gu.se/lb/pub/sparv.dist/sparv_backend/?C=M;O=D">here</a>.</p>
 
 <p>Note that the source code is made available in two different versions:</p>
 
@@ -18,7 +18,7 @@ For more information on the different configuration variables check the <a href=
 
 <ul>
 <li>The Sparv corpus pipeline (see <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">here</a> for installation instructions)</li>
-<li><a href="http://python.org/">Python 2.6</a> or newer (but not 3.x)</li>
+<li><a href="http://python.org/">Python 3.4</a> or newer</li>
 <li>A WSGI server (optional but recommended)</li>
 <li><a href="http://gcc.gnu.org/install">GCC</a> for compiling the <code>catapult</code> C extension</li>
 </ul>
@@ -26,13 +26,21 @@ For more information on the different configuration variables check the <a href=
 <h2>Installation</h2>
 
 <ul>
-<li>Set the backend configuration variables in <code>backend/config.py</code>.</li>
+<li>Set up a Python virtual environment for the backend and install the requirements from <code>backend/html/app/requirements.txt</code>.</li>
+<li>Set the backend configuration variables in <code>backend/html/app/config.py</code>.</li>
+<li>When running the backend with gunicorn (recommended) set the gunicorn
+configuration in <code>backend/html/app/gunicorn_config.py</code>.</li>
+<li>Set up the catapult, for instance in <code>backend/data/catapult</code>.</li>
+<li>Set up a Python virtual environment for the catapult and install the requirements from <code>catapult/requirements.txt</code>.</li>
 <li>Set the catapult configuration variables in <code>catapult/config.sh</code>.</li>
 <li>From within the <code>catapult</code> directory run <code>make</code> to build <code>catalaunch</code>.</li>
+<li>Set up the Sparv pipeline, for instance in <code>backend/data/pipeline</code> and build the pipeline models.
+You will not need to setup a virtual environment for the pipeline. Set the <code>VENV_PATH</code> to the
+catapult virtual environment.</li>
 <li>Start the catapult by running <code>./start-server.sh</code> (from within the <code>catapult</code> directory).</li>
-<li>Run the script <code>backend.wsgi</code> in the <code>backend</code> directory.
-This can be done by running it directly from the python interpreter or by setting up a
-<code>.htaccess</code> file such that the WSGI script will automatically loaded by your WSGI server.</li>
+<li>Run the script <code>index.py</code> in the <code>backend</code> directory.
+This can be done by running it directly from the python interpreter or by starting a
+WSGI server using gunicorn (recommended): <code>html/app/venv/bin/gunicorn -c html/app/gunicorn_config.py index</code>.</li>
 <li>Set up the cron jobs listed in <code>catapult/cronjobs</code> for the automatic
 maintenance of Sparv.</li>
 </ul>
