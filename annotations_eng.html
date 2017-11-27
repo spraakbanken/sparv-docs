@@ -1,57 +1,59 @@
+<h2>Available Sparv Annotations</h2>
+
 <p>For texts written in contemporary Swedish Sparv can generate the following types of annotations:</p>
 
 <ul>
 <li><p>Part of speech tagging:</p>
 
 <ul>
-<li>pos: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
-<li>msd: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
+<li><code>pos</code>: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
+<li><code>msd</code>: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
 </ul></li>
 <li><p>SALDO-based analysis:</p>
 
 <ul>
-<li>lemma: citation form</li>
-<li>lex: lemgram, identifies the inflectional table</li>
-<li>sense: identifies a sense in SALDO and its probability</li>
-<li>(saldo: identifies a sense in SALDO - <em>will be removed soon</em>)</li>
-<li>sentiment: sentiment score</li>
+<li><code>baseform</code>: citation form</li>
+<li><code>lemgram</code>: lemgram, identifies the inflectional table</li>
+<li><code>sense</code>: identifies a sense in SALDO and its probability</li>
+<li>(<code>saldo</code>: identifies a sense in SALDO - <em>will be removed soon</em>)</li>
+<li><code>sentiment</code>: sentiment score</li>
 </ul></li>
 <li><p>Compound analysis (also based on SALDO):</p>
 
 <ul>
-<li>complemgram: compound lemgram</li>
-<li>compwf: compound word form</li>
-<li>(prefix: initial part of a compound - <em>will be removed soon</em>)</li>
-<li>(suffix: final part of a compound - <em>will be removed soon</em>)</li>
+<li><code>complemgram</code>: compound lemgram</li>
+<li><code>compwf</code>: compound word form</li>
+<li>(<code>prefix</code>: initial part of a compound - <em>will be removed soon</em>)</li>
+<li>(<code>suffix</code>: final part of a compound - <em>will be removed soon</em>)</li>
 </ul></li>
 <li><p>Dependency analysis:</p>
 
 <ul>
-<li>ref: the position of the word in the sentence</li>
-<li>dephead: dependency head, the ref of the word which the current word modifies or is dependent of</li>
-<li>deprel: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html</li>
+<li><code>ref</code>: the position of the word in the sentence</li>
+<li><code>dephead</code>: dependency head, the ref of the word which the current word modifies or is dependent of</li>
+<li><code>deprel</code>: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html</li>
 </ul></li>
 <li><p>Named entity recognition:</p>
 
 <ul>
-<li>ne.ex: named entity (name expression, numerical expression or time expression)</li>
-<li>ne.type: named entity type</li>
-<li>ne.subtype: named entity sub type</li>
+<li><code>ne.ex</code>: named entity (name expression, numerical expression or time expression)</li>
+<li><code>ne.type</code>: named entity type</li>
+<li><code>ne.subtype</code>: named entity sub type</li>
 </ul></li>
 <li><p>Readability metrics:</p>
 
 <ul>
-<li>text.lix: the Swedish readability metric LIX, läsbarhetsindex</li>
-<li>text.ovix: the Swedish readability metric OVIX, ordvariationsindex</li>
-<li>text.nk: the Swedish readability metric nominalkvot</li>
+<li><code>text.lix</code>: the Swedish readability metric LIX, läsbarhetsindex</li>
+<li><code>text.ovix</code>: the Swedish readability metric OVIX, ordvariationsindex</li>
+<li><code>text.nk</code>: the Swedish readability metric nominalkvot</li>
 </ul></li>
 <li><p>Lexical classes:</p>
 
 <ul>
-<li>blingbring: lexical class from the Blingbring resource (on word level)</li>
-<li>swefn: frames from swedish FrameNet (on word level)</li>
-<li>text.blingbring: lexical class from the Blingbring resource (on document level)</li>
-<li>text.swefn: frames from swedish FrameNet (on document level)</li>
+<li><code>blingbring</code>: lexical class from the Blingbring resource (on word level)</li>
+<li><code>swefn</code>: frames from swedish FrameNet (on word level)</li>
+<li><code>text.blingbring</code>: lexical class from the Blingbring resource (on document level)</li>
+<li><code>text.swefn</code>: frames from swedish FrameNet (on document level)</li>
 </ul></li>
 </ul>
 

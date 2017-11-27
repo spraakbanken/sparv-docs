@@ -1,0 +1,10 @@
+
+<#define ref|#1 #2>
+<#ifdef HTML>
+     <#define ref|<a href="\##1">#2</a>> 
+<#endif>
+<#ifdef TEX> 
+     <#define ref|#2 in section \\ref{#1}>
+<#endif> 
+
+

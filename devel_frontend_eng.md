@@ -1,5 +1,7 @@
 
-This document describes the internal structure of the Sparv frontend
+## Developing the Sparv Frontend
+
+This section describes the internal structure of the Sparv frontend
 and can be used as a developer's guide.
 
 The frontend is available at
@@ -21,8 +23,8 @@ The frontend is available at
 
  For running the frontend locally (while developing) run `grunt serve`.
  In you browser, open `http://localhost:9010` to launch Sparv.
- While running `grunt serve` so the CoffeeScript and Sass files will automatically
- be compiled upon edit, additionally causing the browser window to be reloaded to
+ While running `grunt serve` the CoffeeScript and Sass files are automatically
+ compiled upon edit, additionally causing the browser window to be reloaded to
  reflect the new changes.
 
  Before releasing a new version, the scripts are compiled by running `grunt` in the frontend directory.

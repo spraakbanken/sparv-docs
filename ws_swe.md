@@ -1,12 +1,12 @@
 Sparv har ett API som ligger på adressen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/`
 
 
 ## Anrop för att annotera text
 Frågor till nättjänsten kan göras med ett enkelt GET-anrop:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=En+exempelmening+till+nättjänsten`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=En+exempelmening+till+nättjänsten`
 
 Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:
 

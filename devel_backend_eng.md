@@ -1,20 +1,21 @@
 
-This document describes the internal structure of the Sparv backend
+## Developing the Sparv Backend
+
+This section describes the internal structure of the Sparv backend
 and its usage of the catapult and can be used as a developer's guide.
 
-## <a name="backend"></a>Backend
+### <a name="backend"></a>Backend
 
 The backend is run through the WSGI script `index.py`.
 It is available at [https://spraakbanken.gu.se/ws/sparv/v2/](https://spraakbanken.gu.se/ws/sparv/v2/).
 
-### <a name="be-requirements"></a>Requirements
+#### <a name="be-requirements"></a>Requirements
 
 * the Korp corpus pipeline, see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions
 * [Python 3.4](https://www.python.org/) or newer
-* A WSGI server
 
 
-### Python virtual environment
+#### Python virtual environment
 
 Though it is not required, we recommend that you use a Python virtual
 environment to run the Sparv backend. This is the easiest way
@@ -33,7 +34,7 @@ You can then deactivate the virtual environment:
 
     deactivate
 
-### Backend Configuration
+#### Backend Configuration
 
 The configuration variables are stored in `html/app/config.py`:
 
@@ -55,9 +56,9 @@ The configuration variables are stored in `html/app/config.py`:
 When running the backend with gunicorn (recommended) you may also want to modify
 the configuration in `html/app/gunicorn_config.py`.
 
-The recommended place for the Sparv pipeline is the directory `data/pipeline`.
+The suggested location for the Sparv pipeline is the directory `data/pipeline`.
 
-### Running the Backend
+#### Running the Backend
 
 The backend is set up to be run with gunicorn which is installed automatically inside the Python
 virtual environment. From the backend directory you can run the following command:
@@ -68,41 +69,41 @@ This will start a WSGI server and bind it to the socket defined in `gunicorn_con
 Log messages are written to the file specified in the same file (or to the terminal
 if nothing is specified).
 
-The backend also be started by running `index.py` with the Python interpreter but this is
+The backend can also be started by running `index.py` with the Python interpreter but this is
 mostly used for development or debugging.
 
-### Makefile and Settings JSON Schema
+#### Makefile and Settings JSON Schema
 
-The makefile for each corpus is created from a JSON object that must satisfy one of the
-JSON schemas stored in the backend (the default schema being `backend/settings_schema_sv.json`).
+The makefile for each corpus is created from a JSON object that is created by the
+script `html/app/schema_generator.py`.
 The frontend builds its form based on the requested schema. New entries can be added
 and the frontend should render them automatically. The file that creates the makefile is
-`backend/make_makefile.py`.
+`html/app/make_makefile.py`.
 
-## <a name="catapult"></a>Catapult
+### <a name="catapult"></a>Catapult
 
 The catapult runs a Python instance that shares the loaded lexicons, keeps
 malt processes running and lowers the Python interpreter startup time.
 Scripts are run on the catapult with the tiny c program `catalaunch`.
 
-### Requirements
+#### Requirements
 
 * [GCC](http://gcc.gnu.org/install) for compiling the `catapult` C extension
 * [Python 3.4](https://www.python.org/) or newer
 
-### Catapult setup
+#### Catapult setup
 
-The catapult can for example be placed inside the `backend/data` directory.
+The catapult can for example be placed inside the `data` directory.
 
 Just as for the Sparv backend we recomment that you use a Python virtual environment
 for running the catapult. Check the [backend requirements](#be-requirements) for instructions.
 The standard location for installing the virtual environment for the catapult is inside the
 `catapult` directory.
 
-After setting up the Python virtual environment you will to adapt the variable `VENV_PATH`
+After setting up the Python virtual environment you need to adapt the variable `VENV_PATH`
 in the Sparv pipeline in `/makefiles/Makefile.config` so it points to the catapult virtual environment.
 
-### Catapult Configuration
+#### Catapult Configuration
 
 The configuration variables are stored in `config.sh`:
 
@@ -115,14 +116,14 @@ The configuration variables are stored in `config.sh`:
  * `LOGDIR`: the path to the log file directory
  * `CATAPULT_VENV`: the path to the Python virtual environment used by the catapult
 
-### Running the Catapult
+#### Running the Catapult
 
   * Run `make` to build `catalaunch`.
   * Run `./start-server.sh` to start the catapult.
   * Set up the [cron jobs](#cronjobs) listed in `catapult/cronjobs`
   for the automatic maintenance of Sparv.
 
-### <a name="cronjobs"></a>Cron jobs
+#### <a name="cronjobs"></a>Cron jobs
 
 The following cron jobs are used in Sparv:
 

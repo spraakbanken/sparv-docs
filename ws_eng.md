@@ -1,12 +1,13 @@
+
 Sparv has an API which is available at the following address:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/`
 
 
 ## Queries for Annotating Texts
 Queries to the web service can be sent as a simple GET request:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=En+exempelmening+till+nättjänsten`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=En+exempelmening+till+nättjänsten`
 
 The response is an XML-objekt which for the above request looks like this:
 
@@ -29,7 +30,7 @@ The response is an XML-objekt which for the above request looks like this:
 POST requests are also supported using the same address. This can be useful for longer texts.
 Here is an example using curl:
 
-> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v2`
+> `curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v2/`
 
 The response is the same as for the above GET request.
 
@@ -55,11 +56,15 @@ variable is therefore optional.
 
 A request which only generates a dependency analysis could look like this:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
+
+Or as a POST request using curl:
+
+> `curl -X POST -g --data-binary text="Det trodde jag aldrig." 'https://ws.spraakbanken.gu.se/ws/sparv/v2/?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}'`
 
 If you are not sure how to define the settings variable you can get help from the
 [frontend](https://spraakbanken.gu.se/sparv) by clicking
-`Visa Formulärets JSON` under `Show advanced settings`. This will generate
+`Show JSON Settings` under `Show advanced settings`. This will generate
 the JSON-objekt for the chosen settings which is sent in the `settings` variable.
 
 The makefile which is generated for a certain set of settings can be viewed by
@@ -78,68 +83,73 @@ The following request is used for joining the build from the first example of th
 The response contains the chosen settings, the original text and of course the
 result of the annotation. The entire response looks like this:
 
-    <result>
-        <settings>{
-          "root": {
-            "attributes": [],
-            "tag": "text"
-          },
-          "text_attributes": {
-            "readability_metrics": [
-              "lix",
-              "ovix",
-              "nk"
-            ]
-          },
-          "word_segmenter": "default_tokenizer",
-          "positional_attributes": {
-            "lexical_attributes": [
-              "pos",
-              "msd",
-              "lemma",
-              "lex",
-              "sense"
-            ],
-            "compound_attributes": [
-              "complemgram",
-              "compwf"
-            ],
-            "dependency_attributes": [
-              "ref",
-              "dephead",
-              "deprel"
-            ],
-            "sentiment": [
-              "sentiment"
-            ]
-          },
-          "sentence_segmentation": {
-            "sentence_chunk": "paragraph",
-            "sentence_segmenter": "default_tokenizer"
-          },
-          "paragraph_segmentation": {
-            "paragraph_segmenter": "blanklines"
-          },
-          "lang": "sv",
-          "textmode": "plain",
-          "named_entity_recognition": [],
-          "corpus": "untitled"
-    }</settings>
-    <original>&lt;text&gt;En exempelmening till nättjänsten&lt;/text&gt;</original>
-    <build hash='edb2a4717701a65b721d97834a56b129dc3bf6aa'/>
-    <corpus link='https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa'>
-        <text lix="54.00" ovix="inf" nk="inf">
-            <paragraph>
-                <sentence id="8f7-84d">
-                    <w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT">En</w>
-                    <w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT">exempelmening</w>
-                    <w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET">till</w>
-                    <w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA">nättjänsten</w>
-                </sentence>
-            </paragraph>
-        </text>
-    </corpus>
-    </result>
+~~~
+<result>
+    <settings>{
+      "root": {
+        "attributes": [],
+        "tag": "text"
+      },
+      "text_attributes": {
+        "readability_metrics": [
+          "lix",
+          "ovix",
+          "nk"
+        ]
+      },
+      "word_segmenter": "default_tokenizer",
+      "positional_attributes": {
+        "lexical_attributes": [
+          "pos",
+          "msd",
+          "lemma",
+          "lex",
+          "sense"
+        ],
+        "compound_attributes": [
+          "complemgram",
+          "compwf"
+        ],
+        "dependency_attributes": [
+          "ref",
+          "dephead",
+          "deprel"
+        ],
+        "sentiment": [
+          "sentiment"
+        ]
+      },
+      "sentence_segmentation": {
+        "sentence_chunk": "paragraph",
+        "sentence_segmenter": "default_tokenizer"
+      },
+      "paragraph_segmentation": {
+        "paragraph_segmenter": "blanklines"
+      },
+      "lang": "sv",
+      "textmode": "plain",
+      "named_entity_recognition": [],
+      "corpus": "untitled"
+}</settings>
+~~~
+
+~~~
+<original>&lt;text&gt;En exempelmening till nättjänsten&lt;/text&gt;</original>
+<build hash='edb2a4717701a65b721d97834a56b129dc3bf6aa'/>
+<corpus link='https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa'>
+    <text lix="54.00" ovix="inf" nk="inf">
+        <paragraph>
+            <sentence id="8f7-84d">
+                <w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT">En</w>
+                <w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT">exempelmening</w>
+                <w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET">till</w>
+                <w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA">nättjänsten</w>
+            </sentence>
+        </paragraph>
+    </text>
+</corpus>
+</result>
+~~~
 
 ## Analysing Texts in Other Languages
 
@@ -166,7 +176,7 @@ The following languages are currently supported:
 
 This is an example of an analysis of a German sentence:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nun+folgt+ein+deutscher+Beispielsatz.&settings={"lang":"de"}`
 
 Different kinds of settings are supported for different languages.
 Please use the [frontend](https://spraakbanken.gu.se/sparv)
@@ -179,7 +189,7 @@ By adding the flag `incremental=true` to your usual query you can
 receive more information on how your analysis is being processed.
 An example query could look like this:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/v2?text=Nu+med+inkrementell+information&incremental=true`
+> `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nu+med+inkrementell+information&incremental=true`
 
 The resulting XML will contain the following extra tags:
 
@@ -216,7 +226,7 @@ This variable can of course be combined with `settings`, `/join`, and with POST 
 
 ## Other calls
 
-You can get a short description of all existing API calls here:
+You can get a short description of all existing API calls from the following address:
 
 > `https://ws.spraakbanken.gu.se/ws/sparv/v2/api`
 
