@@ -120,10 +120,10 @@ The configuration variables are stored in `config.sh`:
 
   * Run `make` to build `catalaunch`.
   * Run `./start-server.sh` to start the catapult.
-  * Set up the [cron jobs](#cronjobs) listed in `catapult/cronjobs`
+  * Set up the cron jobs listed in `catapult/cronjobs`.
   for the automatic maintenance of Sparv.
 
-#### <a name="cronjobs"></a>Cron jobs
+#### Cron jobs
 
 The following cron jobs are used in Sparv:
 

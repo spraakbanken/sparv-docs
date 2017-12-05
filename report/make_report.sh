@@ -29,7 +29,7 @@ cat ../devel_backend_eng.md >> techincal_report.md
 echo -e "\n# The Sparv Web API\n" >> techincal_report.md
 cat ../ws_eng.md >> techincal_report.md
 
-# cat ../korp_manual_swe.md | sed 's/^##/#/' > användarmanual.md
+cat ../manual_swe.md | sed 's/^##/#/' > användarmanual.md
 
 cat settings_template.tex | sed 's/LANGUAGE/swedish/' > settings_swe.tex
 cat settings_template.tex | sed 's/LANGUAGE/english/' > settings_eng.tex
@@ -50,14 +50,14 @@ function make_document {
     -V links-as-notes=true `# print links as footnotes`
 }
 
-# make_document användarmanual.md swe
+make_document användarmanual.md swe
 make_document techincal_report.md eng
 
 # Clean-up
 rm settings_swe.tex
 rm settings_eng.tex
 rm techincal_report.md
-# rm användarmanual.md
+rm användarmanual.md
 # rm dist_pipeline.md
 # rm guide_pipeline_eng.md
 # rm import_format.md

@@ -54,6 +54,10 @@ Ett anrop där bara dependensinformationen genereras ser ut så här:
 
 > `https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Det+trodde+jag+aldrig.&settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}`
 
+POST-anropet med curl görs såhär:
+
+> `curl -X POST -g --data-binary text="Det trodde jag aldrig." 'https://ws.spraakbanken.gu.se/ws/sparv/v2/?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}'`
+
 På [frontenden](http://spraakbanken.gu.se/sparv) så finns en
 knapp `Visa Formulärets JSON` under `Visa avancerade inställningar`
 som visar formulärets JSON-objekt som skickas med i `settings`-variabeln.
