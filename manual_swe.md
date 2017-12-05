@@ -14,7 +14,7 @@ textfältet (alternativt trycka på en av exempelknapparna) och sedan trycka på
 den gröna **Kör**-knappen. När analysen är klar visas den som tabell under
 inmatningsfältet.
 
-![Sparvs webbgränssnitt](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.png){width=550px style="float: right; margin-left: 10px;"}
+![Sparvs webbgränssnitt](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.png){width=550px style="margin-left: 10px;"}
 
 ## Snabbinställningar
 
@@ -45,7 +45,7 @@ i tabellen.
 Man kan även ladda ner hela analysen som XML genom att trycka på **XML**-knappen
 ovanför tabellen.
 
-![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="float: right; margin-left: 10px;"}
+![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="margin-left: 10px;"}
 
 ## Analyslägen
 
@@ -58,13 +58,27 @@ Sparv har även ett analysläge för att annotera svenska texter från 1800-tale
 Här används information från två äldre ordböcker (Dalin och Swedberg) för att få
 fram bättre analyser av ord med gammal stavning.
 
-![Språkväljarmenyn](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare.png){width=550px style="float: right; margin-left: 10px;"}
+![Språkväljarmenyn](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare.png){width=200px style="float: right; margin-left: 10px;"}
 
 ## Avancerade inställningar
 
-- olika för rentext/xml
-- återställningsknapp
+När man vill analysera en text som inte har någon uppmärkning räcker det oftast
+att man skriver in texten i inmatningsfältet och sedan trycker på
+**Kör**-knappen. Om texten innehåller XML behöver man dock ändra på några
+inställningar för att berätta för Sparv vilka funktioner de olika taggarna i
+indatan fyller. Inställningarna öppnas genom att klicka på **Visa avancerade
+inställningar**. Här kan man ange om styckes-, menings- och ordsegmenteringen
+ska ske automatiskt eller om befintliga attribut ska användas, man kan
+specifiera vad dokumentelementet heter, samt ange ytterligare taggar och
+attribut som ska bevaras från indatan. Taggar och attribut som inte specifieras
+kommer att försvinna i resultatet. Man har även kontroll över exakt vilka
+analyser som ska göras genom att klicka på de olika analysattributen. Är man
+t.ex. bara intresserad av läsbarhetsvärdet **lix** kan man klicka ur **ovix**
+och **nk** i de avancerade inställningarna. Man kan få en kort förklaring för en
+inställning genom att klicka på frågetecknet bredvid den. Med hjälp av återställningsknappen kan man få fram standardinställningarna.
+
+![Sparvs avancerade inställningar i XML-läget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar.png){width=550px}
 
 ## Filuppladdning
 
-![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=550px style="float: right; margin-left: 10px;"}
+![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=550px style="margin-left: 10px;"}
