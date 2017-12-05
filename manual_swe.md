@@ -5,8 +5,8 @@ Sparv är Språkbankens annoteringsverktyg som används bland annat för att
 analysera korpusarna i Korp och texterna i Strix. Sparvs webbgränssnitt
 (https://spraakbanken.gu.se/sparv)  kan användas för att annotera egna texter.
 
-Denna manual beskriver de flesta funktionerna som finns i Sparv. Det finns även
-ett par övningsuppgifter för Sparv som du kan ladda hem
+Denna användarhandledningen beskriver de flesta funktionerna som finns i Sparv.
+Det finns även ett par övningsuppgifter för Sparv som du kan ladda hem
 [här](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
 
 För att göra en analys räcker det att skriva eller klistra in en text i
@@ -38,14 +38,27 @@ namntaggarna och de morfosyntaktiska beskrivningarna.
 Om man har valt att göra en dependensanalys så visas denna inte bara i tabellen
 utan även som ett dependensträd i tabellen i början av varje mening.
 
-Strukturella attribut, dvs. analyser som görs på högre nivå en ordnivå visas som XML-taggar i tabellen.
+Strukturella attribut, dvs. analyser som kan sträcka sig över flera ord eller
+över hela texten (t.ex. läsbarhetsvärden eller namntaggar) visas som XML-taggar
+i tabellen.
 
-- strukturella attribut (t.ex. lix, namn)
+Man kan även ladda ner hela analysen som XML genom att trycka på **XML**-knappen
+ovanför tabellen.
 
 ![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="float: right; margin-left: 10px;"}
 
 ## Analyslägen
 
+Under Sparvlogotypen finns det en analysspråksväljare. Med hjälp av denna kan
+man analysera texter som är skrivna på andra språk än svenska. I nuläget har
+Sparv stöd för 20 analysspråk, men för de flesta språken stöds enbart
+ordklasstaggning och lemmatisering.
+
+Sparv har även ett analysläge för att annotera svenska texter från 1800-talet.
+Här används information från två äldre ordböcker (Dalin och Swedberg) för att få
+fram bättre analyser av ord med gammal stavning.
+
+![Språkväljarmenyn](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare.png){width=550px style="float: right; margin-left: 10px;"}
 
 ## Avancerade inställningar
 
@@ -53,3 +66,5 @@ Strukturella attribut, dvs. analyser som görs på högre nivå en ordnivå visa
 - återställningsknapp
 
 ## Filuppladdning
+
+![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=550px style="float: right; margin-left: 10px;"}
