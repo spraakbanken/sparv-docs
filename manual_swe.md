@@ -11,20 +11,21 @@ inmatningsfältet. Varje kolumn i tabellen representerar en viss typ av analys.
 Man kan få en kort förklaring för en analystyp genom att hålla musen över namnet
 i tabellhuvudet.
 
+![Sparvs webbgränssnitt](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.jpg){width=550px style="float: right; margin-left: 10px;"}
 
 ## Snabbinställningar
 
 - kryssrutor
 - rentext/XML-objekt
 
-## Analyslägen
-
-
 ## Resultatvy
 
 - tabell, hover
 - dependensträd
 - strukturella attribut (t.ex. lix, namn)
+
+## Analyslägen
+
 
 ## Avancerade inställningar
 
