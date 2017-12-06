@@ -1,16 +1,12 @@
-<h2>Available Sparv Annotations</h2>
-
+<h2 id="available-sparv-annotations">Available Sparv Annotations</h2>
 <p>For texts written in contemporary Swedish Sparv can generate the following types of annotations:</p>
-
 <ul>
-<li><p>Part of speech tagging:</p>
-
+<li>Part of speech tagging:
 <ul>
 <li><code>pos</code>: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
 <li><code>msd</code>: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
 </ul></li>
-<li><p>SALDO-based analysis:</p>
-
+<li>SALDO-based analysis:
 <ul>
 <li><code>baseform</code>: citation form</li>
 <li><code>lemgram</code>: lemgram, identifies the inflectional table</li>
@@ -18,37 +14,32 @@
 <li>(<code>saldo</code>: identifies a sense in SALDO - <em>will be removed soon</em>)</li>
 <li><code>sentiment</code>: sentiment score</li>
 </ul></li>
-<li><p>Compound analysis (also based on SALDO):</p>
-
+<li>Compound analysis (also based on SALDO):
 <ul>
 <li><code>complemgram</code>: compound lemgram</li>
 <li><code>compwf</code>: compound word form</li>
 <li>(<code>prefix</code>: initial part of a compound - <em>will be removed soon</em>)</li>
 <li>(<code>suffix</code>: final part of a compound - <em>will be removed soon</em>)</li>
 </ul></li>
-<li><p>Dependency analysis:</p>
-
+<li>Dependency analysis:
 <ul>
 <li><code>ref</code>: the position of the word in the sentence</li>
 <li><code>dephead</code>: dependency head, the ref of the word which the current word modifies or is dependent of</li>
 <li><code>deprel</code>: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html</li>
 </ul></li>
-<li><p>Named entity recognition:</p>
-
+<li>Named entity recognition:
 <ul>
 <li><code>ne.ex</code>: named entity (name expression, numerical expression or time expression)</li>
 <li><code>ne.type</code>: named entity type</li>
 <li><code>ne.subtype</code>: named entity sub type</li>
 </ul></li>
-<li><p>Readability metrics:</p>
-
+<li>Readability metrics:
 <ul>
 <li><code>text.lix</code>: the Swedish readability metric LIX, läsbarhetsindex</li>
 <li><code>text.ovix</code>: the Swedish readability metric OVIX, ordvariationsindex</li>
 <li><code>text.nk</code>: the Swedish readability metric nominalkvot</li>
 </ul></li>
-<li><p>Lexical classes:</p>
-
+<li>Lexical classes:
 <ul>
 <li><code>blingbring</code>: lexical class from the Blingbring resource (on word level)</li>
 <li><code>swefn</code>: frames from swedish FrameNet (on word level)</li>
@@ -56,6 +47,4 @@
 <li><code>text.swefn</code>: frames from swedish FrameNet (on document level)</li>
 </ul></li>
 </ul>
-
-<p>Older Swedish texts or texts written in other languages can often be annotated
-with a sub set of the above annotation types.</p>
+<p>Older Swedish texts or texts written in other languages can often be annotated with a sub set of the above annotation types.</p>

@@ -1,183 +1,130 @@
 <p>Sparv has an API which is available at the following address:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/</code></p>
 </blockquote>
-
-<h2>Queries for Annotating Texts</h2>
-
+<h2 id="queries-for-annotating-texts">Queries for Annotating Texts</h2>
 <p>Queries to the web service can be sent as a simple GET request:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=En+exempelmening+till+nättjänsten</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=En+exempelmening+till+nättjänsten</code></p>
 </blockquote>
-
 <p>The response is an XML-objekt which for the above request looks like this:</p>
-
 <pre><code>&lt;result&gt;
-&lt;build hash="edb2a4717701a65b721d97834a56b129dc3bf6aa"/&gt;
-&lt;corpus link="https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa"&gt;
-&lt;text lix="54.00" ovix="inf" nk="inf"&gt;
+&lt;build hash=&quot;edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;/&gt;
+&lt;corpus link=&quot;https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;&gt;
+&lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
 &lt;paragraph&gt;
-&lt;sentence id="8f7-84d"&gt;
-&lt;w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT"&gt;En&lt;/w&gt;
-&lt;w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT"&gt;exempelmening&lt;/w&gt;
-&lt;w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET"&gt;till&lt;/w&gt;
-&lt;w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA"&gt;nättjänsten&lt;/w&gt;
+&lt;sentence id=&quot;8f7-84d&quot;&gt;
+&lt;w pos=&quot;DT&quot; msd=&quot;DT.UTR.SIN.IND&quot; lemma=&quot;|en|&quot; lex=&quot;|en..al.1|&quot; sense=&quot;|den..1:-1.000|en..2:-1.000|&quot; complemgram=&quot;|&quot; compwf=&quot;|&quot; sentiment=&quot;0.6799&quot; ref=&quot;1&quot; dephead=&quot;2&quot; deprel=&quot;DT&quot;&gt;En&lt;/w&gt;
+&lt;w pos=&quot;NN&quot; msd=&quot;NN.UTR.SIN.IND.NOM&quot; lemma=&quot;|exempelmening|&quot; lex=&quot;|&quot; sense=&quot;|&quot; complemgram=&quot;|exempel..nn.1+mening..nn.1:7.044e-09|&quot; compwf=&quot;|exempel+mening|&quot; ref=&quot;2&quot; deprel=&quot;ROOT&quot;&gt;exempelmening&lt;/w&gt;
+&lt;w pos=&quot;PP&quot; msd=&quot;PP&quot; lemma=&quot;|till|&quot; lex=&quot;|till..pp.1|&quot; sense=&quot;|till..1:-1.000|&quot; complemgram=&quot;|&quot; compwf=&quot;|&quot; sentiment=&quot;0.5086&quot; ref=&quot;3&quot; dephead=&quot;2&quot; deprel=&quot;ET&quot;&gt;till&lt;/w&gt;
+&lt;w pos=&quot;NN&quot; msd=&quot;NN.UTR.SIN.DEF.NOM&quot; lemma=&quot;|nättjänst|nättjänsten|&quot; lex=&quot;|&quot; sense=&quot;|&quot; complemgram=&quot;|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|&quot; compwf=&quot;|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|&quot; ref=&quot;4&quot; dephead=&quot;3&quot; deprel=&quot;PA&quot;&gt;nättjänsten&lt;/w&gt;
 &lt;/sentence&gt;
 &lt;/paragraph&gt;
 &lt;/text&gt;
 &lt;/corpus&gt;
-&lt;/result&gt;
-</code></pre>
-
-<p>POST requests are also supported using the same address. This can be useful for longer texts.
-Here is an example using curl:</p>
-
+&lt;/result&gt;</code></pre>
+<p>POST requests are also supported using the same address. This can be useful for longer texts. Here is an example using curl:</p>
 <blockquote>
-  <p><code>curl -X POST --data-binary text="En exempelmening till nättjänsten" https://ws.spraakbanken.gu.se/ws/sparv/v2/</code></p>
+<p><code>curl -X POST --data-binary text=&quot;En exempelmening till nättjänsten&quot; https://ws.spraakbanken.gu.se/ws/sparv/v2/</code></p>
 </blockquote>
-
 <p>The response is the same as for the above GET request.</p>
-
 <p>It is also possible to upload text or XML files using curl:</p>
-
 <blockquote>
-  <p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/v2/upload?</code></p>
+<p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/v2/upload?</code></p>
 </blockquote>
-
 <p>The response will be a download link to a zip file containing the annotation.</p>
-
-<h2>Settings</h2>
-
-<p>The web service supports some costum settings, e.g. it lets you chose
-between different tokenizers on word, sentence, and paragraph level
-and you can define which annotations should be generated.</p>
-
-<p>These settings can be provided as a JSON object to the <code>settings</code> variable.
-This object must satisfy the JSON schema available at the following adress:</p>
-
+<h2 id="settings">Settings</h2>
+<p>The web service supports some costum settings, e.g. it lets you chose between different tokenizers on word, sentence, and paragraph level and you can define which annotations should be generated.</p>
+<p>These settings can be provided as a JSON object to the <code>settings</code> variable. This object must satisfy the JSON schema available at the following adress:</p>
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/schema</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/schema</code></p>
 </blockquote>
-
-<p>The schema holds default values for all the attributes. The use of the settings
-variable is therefore optional.</p>
-
+<p>The schema holds default values for all the attributes. The use of the settings variable is therefore optional.</p>
 <p>A request which only generates a dependency analysis could look like this:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Det+trodde+jag+aldrig.&amp;settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Det+trodde+jag+aldrig.&amp;settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
-
 <p>Or as a POST request using curl:</p>
-
 <blockquote>
-  <p><code>curl -X POST -g --data-binary text="Det trodde jag aldrig." 'https://ws.spraakbanken.gu.se/ws/sparv/v2/?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}'</code></p>
+<p><code>curl -X POST -g --data-binary text=&quot;Det trodde jag aldrig.&quot; 'https://ws.spraakbanken.gu.se/ws/sparv/v2/?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}'</code></p>
 </blockquote>
-
-<p>If you are not sure how to define the settings variable you can get help from the
-<a href="https://spraakbanken.gu.se/sparv">frontend</a> by clicking
-<code>Show JSON Settings</code> under <code>Show advanced settings</code>. This will generate
-the JSON-objekt for the chosen settings which is sent in the <code>settings</code> variable.</p>
-
-<p>The makefile which is generated for a certain set of settings can be viewed by
-sending a <code>makefile</code> query:</p>
-
+<p>If you are not sure how to define the settings variable you can get help from the <a href="https://spraakbanken.gu.se/sparv">frontend</a> by clicking <code>Show JSON Settings</code> under <code>Show advanced settings</code>. This will generate the JSON-objekt for the chosen settings which is sent in the <code>settings</code> variable.</p>
+<p>The makefile which is generated for a certain set of settings can be viewed by sending a <code>makefile</code> query:</p>
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/makefile?settings={"positional_attributes":{"dependency_attributes":["ref","dephead","deprel"],"lexical_attributes":[],"compound_attributes":[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/makefile?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
-
-<h2>Joining a Build</h2>
-
-<p>At the top of the XML response you can find a hash number inside the <code>build</code>-tag.
-This hash can be used to join a build of an earlier build.</p>
-
+<h2 id="joining-a-build">Joining a Build</h2>
+<p>At the top of the XML response you can find a hash number inside the <code>build</code>-tag. This hash can be used to join a build of an earlier build.</p>
 <p>The following request is used for joining the build from the first example of this documentation:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
 </blockquote>
-
-<p>The response contains the chosen settings, the original text and of course the
-result of the annotation. The entire response looks like this:</p>
-
-<p>~~~
-<result>
-    <settings>{
-      "root": {
-        "attributes": [],
-        "tag": "text"
+<p>The response contains the chosen settings, the original text and of course the result of the annotation. The entire response looks like this:</p>
+<pre><code>&lt;result&gt;
+    &lt;settings&gt;{
+      &quot;root&quot;: {
+        &quot;attributes&quot;: [],
+        &quot;tag&quot;: &quot;text&quot;
       },
-      "text<em>attributes": {
-        "readability</em>metrics": [
-          "lix",
-          "ovix",
-          "nk"
+      &quot;text_attributes&quot;: {
+        &quot;readability_metrics&quot;: [
+          &quot;lix&quot;,
+          &quot;ovix&quot;,
+          &quot;nk&quot;
         ]
       },
-      "word<em>segmenter": "default</em>tokenizer",
-      "positional<em>attributes": {
-        "lexical</em>attributes": [
-          "pos",
-          "msd",
-          "lemma",
-          "lex",
-          "sense"
+      &quot;word_segmenter&quot;: &quot;default_tokenizer&quot;,
+      &quot;positional_attributes&quot;: {
+        &quot;lexical_attributes&quot;: [
+          &quot;pos&quot;,
+          &quot;msd&quot;,
+          &quot;lemma&quot;,
+          &quot;lex&quot;,
+          &quot;sense&quot;
         ],
-        "compound<em>attributes": [
-          "complemgram",
-          "compwf"
+        &quot;compound_attributes&quot;: [
+          &quot;complemgram&quot;,
+          &quot;compwf&quot;
         ],
-        "dependency</em>attributes": [
-          "ref",
-          "dephead",
-          "deprel"
+        &quot;dependency_attributes&quot;: [
+          &quot;ref&quot;,
+          &quot;dephead&quot;,
+          &quot;deprel&quot;
         ],
-        "sentiment": [
-          "sentiment"
+        &quot;sentiment&quot;: [
+          &quot;sentiment&quot;
         ]
       },
-      "sentence<em>segmentation": {
-        "sentence</em>chunk": "paragraph",
-        "sentence<em>segmenter": "default</em>tokenizer"
+      &quot;sentence_segmentation&quot;: {
+        &quot;sentence_chunk&quot;: &quot;paragraph&quot;,
+        &quot;sentence_segmenter&quot;: &quot;default_tokenizer&quot;
       },
-      "paragraph<em>segmentation": {
-        "paragraph</em>segmenter": "blanklines"
+      &quot;paragraph_segmentation&quot;: {
+        &quot;paragraph_segmenter&quot;: &quot;blanklines&quot;
       },
-      "lang": "sv",
-      "textmode": "plain",
-      "named<em>entity</em>recognition": [],
-      "corpus": "untitled"
-}</settings>
-~~~</p>
-
-<p>~~~
-<original>&lt;text&gt;En exempelmening till nättjänsten&lt;/text&gt;</original>
-<build hash='edb2a4717701a65b721d97834a56b129dc3bf6aa'/>
-<corpus link='https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa'>
-    <text lix="54.00" ovix="inf" nk="inf">
-        <paragraph>
-            <sentence id="8f7-84d">
-                <w pos="DT" msd="DT.UTR.SIN.IND" lemma="|en|" lex="|en..al.1|" sense="|den..1:-1.000|en..2:-1.000|" complemgram="|" compwf="|" sentiment="0.6799" ref="1" dephead="2" deprel="DT">En</w>
-                <w pos="NN" msd="NN.UTR.SIN.IND.NOM" lemma="|exempelmening|" lex="|" sense="|" complemgram="|exempel..nn.1+mening..nn.1:7.044e-09|" compwf="|exempel+mening|" ref="2" deprel="ROOT">exempelmening</w>
-                <w pos="PP" msd="PP" lemma="|till|" lex="|till..pp.1|" sense="|till..1:-1.000|" complemgram="|" compwf="|" sentiment="0.5086" ref="3" dephead="2" deprel="ET">till</w>
-                <w pos="NN" msd="NN.UTR.SIN.DEF.NOM" lemma="|nättjänst|nättjänsten|" lex="|" sense="|" complemgram="|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|" compwf="|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|" ref="4" dephead="3" deprel="PA">nättjänsten</w>
-            </sentence>
-        </paragraph>
-    </text>
-</corpus>
-</result>
-~~~</p>
-
-<h2>Analysing Texts in Other Languages</h2>
-
-<p>The default analysis language is Swedish but Sparv
-also supports other languages. The language is specified through
-the <code>lang</code> attribute in the <code>settings</code> variable.</p>
-
+      &quot;lang&quot;: &quot;sv&quot;,
+      &quot;textmode&quot;: &quot;plain&quot;,
+      &quot;named_entity_recognition&quot;: [],
+      &quot;corpus&quot;: &quot;untitled&quot;
+}&lt;/settings&gt;</code></pre>
+<pre><code>&lt;original&gt;&amp;lt;text&amp;gt;En exempelmening till nättjänsten&amp;lt;/text&amp;gt;&lt;/original&gt;
+&lt;build hash=&#39;edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;/&gt;
+&lt;corpus link=&#39;https://ws.spraakbanken.gu.se/ws/sparv/v2/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;&gt;
+    &lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
+        &lt;paragraph&gt;
+            &lt;sentence id=&quot;8f7-84d&quot;&gt;
+                &lt;w pos=&quot;DT&quot; msd=&quot;DT.UTR.SIN.IND&quot; lemma=&quot;|en|&quot; lex=&quot;|en..al.1|&quot; sense=&quot;|den..1:-1.000|en..2:-1.000|&quot; complemgram=&quot;|&quot; compwf=&quot;|&quot; sentiment=&quot;0.6799&quot; ref=&quot;1&quot; dephead=&quot;2&quot; deprel=&quot;DT&quot;&gt;En&lt;/w&gt;
+                &lt;w pos=&quot;NN&quot; msd=&quot;NN.UTR.SIN.IND.NOM&quot; lemma=&quot;|exempelmening|&quot; lex=&quot;|&quot; sense=&quot;|&quot; complemgram=&quot;|exempel..nn.1+mening..nn.1:7.044e-09|&quot; compwf=&quot;|exempel+mening|&quot; ref=&quot;2&quot; deprel=&quot;ROOT&quot;&gt;exempelmening&lt;/w&gt;
+                &lt;w pos=&quot;PP&quot; msd=&quot;PP&quot; lemma=&quot;|till|&quot; lex=&quot;|till..pp.1|&quot; sense=&quot;|till..1:-1.000|&quot; complemgram=&quot;|&quot; compwf=&quot;|&quot; sentiment=&quot;0.5086&quot; ref=&quot;3&quot; dephead=&quot;2&quot; deprel=&quot;ET&quot;&gt;till&lt;/w&gt;
+                &lt;w pos=&quot;NN&quot; msd=&quot;NN.UTR.SIN.DEF.NOM&quot; lemma=&quot;|nättjänst|nättjänsten|&quot; lex=&quot;|&quot; sense=&quot;|&quot; complemgram=&quot;|nät..nn.1+tjänst..nn.2:6.813e-11|nät..nn.1+tjänst..nn.1:6.813e-11|nätt..av.1+tjänst..nn.1:1.039e-12|nätt..av.1+tjänst..nn.2:1.039e-12|nät..nn.1+tjäna..vb.1+sten..nn.1:1.047e-26|nät..nn.1+tjäna..vb.1+sten..nn.2:1.047e-26|nätt..av.1+tjäna..vb.1+sten..nn.2:2.120e-27|nätt..av.1+tjäna..vb.1+sten..nn.1:2.120e-27|&quot; compwf=&quot;|nät+tjänsten|nätt+tjänsten|nät+tjän+sten|nätt+tjän+sten|&quot; ref=&quot;4&quot; dephead=&quot;3&quot; deprel=&quot;PA&quot;&gt;nättjänsten&lt;/w&gt;
+            &lt;/sentence&gt;
+        &lt;/paragraph&gt;
+    &lt;/text&gt;
+&lt;/corpus&gt;
+&lt;/result&gt;</code></pre>
+<h2 id="analysing-texts-in-other-languages">Analysing Texts in Other Languages</h2>
+<p>The default analysis language is Swedish but Sparv also supports other languages. The language is specified through the <code>lang</code> attribute in the <code>settings</code> variable.</p>
 <p>The following languages are currently supported:</p>
-
 <ul>
 <li>Bulgarian (bg)</li>
 <li>Dutch (nl)</li>
@@ -194,69 +141,51 @@ the <code>lang</code> attribute in the <code>settings</code> variable.</p>
 <li>Slovak (sk)</li>
 <li>Spanish (es)</li>
 </ul>
-
 <p>This is an example of an analysis of a German sentence:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={"lang":"de"}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={&quot;lang&quot;:&quot;de&quot;}</code></p>
 </blockquote>
-
-<p>Different kinds of settings are supported for different languages.
-Please use the <a href="https://spraakbanken.gu.se/sparv">frontend</a>
-if you want to check which options there are for a certain language.</p>
-
-<h2>Incremental Progress Information</h2>
-
-<p>By adding the flag <code>incremental=true</code> to your usual query you can
-receive more information on how your analysis is being processed.
-An example query could look like this:</p>
-
+<p>Different kinds of settings are supported for different languages. Please use the <a href="https://spraakbanken.gu.se/sparv">frontend</a> if you want to check which options there are for a certain language.</p>
+<h2 id="incremental-progress-information">Incremental Progress Information</h2>
+<p>By adding the flag <code>incremental=true</code> to your usual query you can receive more information on how your analysis is being processed. An example query could look like this:</p>
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
 </blockquote>
-
 <p>The resulting XML will contain the following extra tags:</p>
-
-<pre><code>&lt;increment command="" step="0" steps="27"/&gt;
-&lt;increment command="sb.segment" step="1" steps="27"/&gt;
-&lt;increment command="sb.segment" step="2" steps="27"/&gt;
-&lt;increment command="sb.number --position" step="3" steps="27"/&gt;
-&lt;increment command="sb.segment" step="4" steps="27"/&gt;
-&lt;increment command="sb.annotate --span_as_value" step="5" steps="27"/&gt;
-&lt;increment command="sb.annotate --text_spans" step="6" steps="27"/&gt;
-&lt;increment command="sb.parent --children" step="7" steps="27"/&gt;
-&lt;increment command="sb.parent --parents" step="8" steps="27"/&gt;
-&lt;increment command="sb.parent --parents" step="9" steps="27"/&gt;
-&lt;increment command="sb.parent --parents" step="10" steps="27"/&gt;
-&lt;increment command="sb.number --position" step="11" steps="27"/&gt;
-&lt;increment command="sb.hunpos" step="12" steps="27"/&gt;
-&lt;increment command="sb.number --relative" step="13" steps="27"/&gt;
-&lt;increment command="sb.annotate --select" step="14" steps="27"/&gt;
-&lt;increment command="sb.saldo" step="15" steps="27"/&gt;
-&lt;increment command="sb.readability --lix" step="16" steps="27"/&gt;
-&lt;increment command="sb.readability --ovix" step="17" steps="27"/&gt;
-&lt;increment command="sb.readability --nominal_ratio" step="18" steps="27"/&gt;
-&lt;increment command="sb.compound" step="19" steps="27"/&gt;
-&lt;increment command="sb.wsd" step="20" steps="27"/&gt;
-&lt;increment command="sb.malt" step="21" steps="27"/&gt;
-&lt;increment command="sb.sentiment" step="22" steps="27"/&gt;
-&lt;increment command="sb.annotate --select" step="23" steps="27"/&gt;
-&lt;increment command="sb.annotate --select" step="24" steps="27"/&gt;
-&lt;increment command="sb.annotate --chain" step="25" steps="27"/&gt;
-&lt;increment command="sb.cwb --export" step="26" steps="27"/&gt;
-&lt;increment command="" step="27" steps="27"/&gt;
-</code></pre>
-
+<pre><code>&lt;increment command=&quot;&quot; step=&quot;0&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.segment&quot; step=&quot;1&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.segment&quot; step=&quot;2&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.number --position&quot; step=&quot;3&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.segment&quot; step=&quot;4&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --span_as_value&quot; step=&quot;5&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --text_spans&quot; step=&quot;6&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.parent --children&quot; step=&quot;7&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.parent --parents&quot; step=&quot;8&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.parent --parents&quot; step=&quot;9&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.parent --parents&quot; step=&quot;10&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.number --position&quot; step=&quot;11&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.hunpos&quot; step=&quot;12&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.number --relative&quot; step=&quot;13&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --select&quot; step=&quot;14&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.saldo&quot; step=&quot;15&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.readability --lix&quot; step=&quot;16&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.readability --ovix&quot; step=&quot;17&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.readability --nominal_ratio&quot; step=&quot;18&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.compound&quot; step=&quot;19&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.wsd&quot; step=&quot;20&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.malt&quot; step=&quot;21&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.sentiment&quot; step=&quot;22&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --select&quot; step=&quot;23&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --select&quot; step=&quot;24&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.annotate --chain&quot; step=&quot;25&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;sb.cwb --export&quot; step=&quot;26&quot; steps=&quot;27&quot;/&gt;
+&lt;increment command=&quot;&quot; step=&quot;27&quot; steps=&quot;27&quot;/&gt;</code></pre>
 <p>This variable can of course be combined with <code>settings</code>, <code>/join</code>, and with POST requests.</p>
-
-<h2>Other calls</h2>
-
+<h2 id="other-calls">Other calls</h2>
 <p>You can get a short description of all existing API calls from the following address:</p>
-
 <blockquote>
-  <p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/api</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/v2/api</code></p>
 </blockquote>
-
 <!--
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:

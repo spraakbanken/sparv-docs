@@ -1,46 +1,23 @@
-<h2>Developing the Sparv Backend</h2>
-
-<p>This section describes the internal structure of the Sparv backend
-and its usage of the catapult and can be used as a developer's guide.</p>
-
-<h3><a name="backend"></a>Backend</h3>
-
-<p>The backend is run through the WSGI script <code>index.py</code>.
-It is available at <a href="https://spraakbanken.gu.se/ws/sparv/v2/">https://spraakbanken.gu.se/ws/sparv/v2/</a>.</p>
-
-<h4><a name="be-requirements"></a>Requirements</h4>
-
+<h2 id="developing-the-sparv-backend">Developing the Sparv Backend</h2>
+<p>This section describes the internal structure of the Sparv backend and its usage of the catapult and can be used as a developer's guide.</p>
+<h3 id="backend"><a name="backend"></a>Backend</h3>
+<p>The backend is run through the WSGI script <code>index.py</code>. It is available at <a href="https://spraakbanken.gu.se/ws/sparv/v2/" class="uri">https://spraakbanken.gu.se/ws/sparv/v2/</a>.</p>
+<h4 id="requirements"><a name="be-requirements"></a>Requirements</h4>
 <ul>
 <li>the Korp corpus pipeline, see <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">here</a> for installation instructions</li>
 <li><a href="https://www.python.org/">Python 3.4</a> or newer</li>
 </ul>
-
-<h4>Python virtual environment</h4>
-
-<p>Though it is not required, we recommend that you use a Python virtual
-environment to run the Sparv backend. This is the easiest way
-to ensure that you have all the Python dependencies needed to run the modules.</p>
-
+<h4 id="python-virtual-environment">Python virtual environment</h4>
+<p>Though it is not required, we recommend that you use a Python virtual environment to run the Sparv backend. This is the easiest way to ensure that you have all the Python dependencies needed to run the modules.</p>
 <p>Set up a Python virtual environment as a subdirectory to the <code>backend/html/app</code> directory:</p>
-
-<pre><code>python3 -m venv venv
-</code></pre>
-
+<pre><code>python3 -m venv venv</code></pre>
 <p>Activate the virtual environment and install the required Python packages:</p>
-
 <pre><code>source venv/bin/activate
-pip install -r requirements.txt
-</code></pre>
-
+pip install -r requirements.txt</code></pre>
 <p>You can then deactivate the virtual environment:</p>
-
-<pre><code>deactivate
-</code></pre>
-
-<h4>Backend Configuration</h4>
-
+<pre><code>deactivate</code></pre>
+<h4 id="backend-configuration">Backend Configuration</h4>
 <p>The configuration variables are stored in <code>html/app/config.py</code>:</p>
-
 <ul>
 <li><code>backend</code>: the address where the backend is hosted</li>
 <li><code>sparv_python</code>: the Python path to the sparv pipeline python directory</li>
@@ -55,66 +32,30 @@ pip install -r requirements.txt
 <li><code>fileupload_ext</code>: extension used for builds that contain file uploads</li>
 <li><code>socket_file</code>: path to the socket file used to communicate with the catapult</li>
 <li><code>catalaunch_binary</code>: path to the catalaunch binary file</li>
-<li><code>python_interpreter</code>: "Python" interpreter, replaced with catalaunch</li>
+<li><code>python_interpreter</code>: &quot;Python&quot; interpreter, replaced with catalaunch</li>
 </ul>
-
-<p>When running the backend with gunicorn (recommended) you may also want to modify
-the configuration in <code>html/app/gunicorn_config.py</code>.</p>
-
+<p>When running the backend with gunicorn (recommended) you may also want to modify the configuration in <code>html/app/gunicorn_config.py</code>.</p>
 <p>The suggested location for the Sparv pipeline is the directory <code>data/pipeline</code>.</p>
-
-<h4>Running the Backend</h4>
-
-<p>The backend is set up to be run with gunicorn which is installed automatically inside the Python
-virtual environment. From the backend directory you can run the following command:</p>
-
-<pre><code>html/app/venv/bin/gunicorn -c html/app/gunicorn_config.py index
-</code></pre>
-
-<p>This will start a WSGI server and bind it to the socket defined in <code>gunicorn_config.py</code>.
-Log messages are written to the file specified in the same file (or to the terminal
-if nothing is specified).</p>
-
-<p>The backend can also be started by running <code>index.py</code> with the Python interpreter but this is
-mostly used for development or debugging.</p>
-
-<h4>Makefile and Settings JSON Schema</h4>
-
-<p>The makefile for each corpus is created from a JSON object that is created by the
-script <code>html/app/schema_generator.py</code>.
-The frontend builds its form based on the requested schema. New entries can be added
-and the frontend should render them automatically. The file that creates the makefile is
-<code>html/app/make_makefile.py</code>.</p>
-
-<h3><a name="catapult"></a>Catapult</h3>
-
-<p>The catapult runs a Python instance that shares the loaded lexicons, keeps
-malt processes running and lowers the Python interpreter startup time.
-Scripts are run on the catapult with the tiny c program <code>catalaunch</code>.</p>
-
-<h4>Requirements</h4>
-
+<h4 id="running-the-backend">Running the Backend</h4>
+<p>The backend is set up to be run with gunicorn which is installed automatically inside the Python virtual environment. From the backend directory you can run the following command:</p>
+<pre><code>html/app/venv/bin/gunicorn -c html/app/gunicorn_config.py index</code></pre>
+<p>This will start a WSGI server and bind it to the socket defined in <code>gunicorn_config.py</code>. Log messages are written to the file specified in the same file (or to the terminal if nothing is specified).</p>
+<p>The backend can also be started by running <code>index.py</code> with the Python interpreter but this is mostly used for development or debugging.</p>
+<h4 id="makefile-and-settings-json-schema">Makefile and Settings JSON Schema</h4>
+<p>The makefile for each corpus is created from a JSON object that is created by the script <code>html/app/schema_generator.py</code>. The frontend builds its form based on the requested schema. New entries can be added and the frontend should render them automatically. The file that creates the makefile is <code>html/app/make_makefile.py</code>.</p>
+<h3 id="catapult"><a name="catapult"></a>Catapult</h3>
+<p>The catapult runs a Python instance that shares the loaded lexicons, keeps malt processes running and lowers the Python interpreter startup time. Scripts are run on the catapult with the tiny c program <code>catalaunch</code>.</p>
+<h4 id="requirements-1">Requirements</h4>
 <ul>
 <li><a href="http://gcc.gnu.org/install">GCC</a> for compiling the <code>catapult</code> C extension</li>
 <li><a href="https://www.python.org/">Python 3.4</a> or newer</li>
 </ul>
-
-<h4>Catapult setup</h4>
-
+<h4 id="catapult-setup">Catapult setup</h4>
 <p>The catapult can for example be placed inside the <code>data</code> directory.</p>
-
-<p>Just as for the Sparv backend we recomment that you use a Python virtual environment
-for running the catapult. Check the <a href="#be-requirements">backend requirements</a> for instructions.
-The standard location for installing the virtual environment for the catapult is inside the
-<code>catapult</code> directory.</p>
-
-<p>After setting up the Python virtual environment you need to adapt the variable <code>VENV_PATH</code>
-in the Sparv pipeline in <code>/makefiles/Makefile.config</code> so it points to the catapult virtual environment.</p>
-
-<h4>Catapult Configuration</h4>
-
+<p>Just as for the Sparv backend we recomment that you use a Python virtual environment for running the catapult. Check the <a href="#be-requirements">backend requirements</a> for instructions. The standard location for installing the virtual environment for the catapult is inside the <code>catapult</code> directory.</p>
+<p>After setting up the Python virtual environment you need to adapt the variable <code>VENV_PATH</code> in the Sparv pipeline in <code>/makefiles/Makefile.config</code> so it points to the catapult virtual environment.</p>
+<h4 id="catapult-configuration">Catapult Configuration</h4>
 <p>The configuration variables are stored in <code>config.sh</code>:</p>
-
 <ul>
 <li><code>SPARV_PYTHON</code>: the path to the <code>sb</code> pipeline Python directory</li>
 <li><code>SPARV_MODELS</code>: location of the <code>sb</code> pipeline models</li>
@@ -125,27 +66,16 @@ in the Sparv pipeline in <code>/makefiles/Makefile.config</code> so it points to
 <li><code>LOGDIR</code>: the path to the log file directory</li>
 <li><code>CATAPULT_VENV</code>: the path to the Python virtual environment used by the catapult</li>
 </ul>
-
-<h4>Running the Catapult</h4>
-
+<h4 id="running-the-catapult">Running the Catapult</h4>
 <ul>
 <li>Run <code>make</code> to build <code>catalaunch</code>.</li>
 <li>Run <code>./start-server.sh</code> to start the catapult.</li>
-<li>Set up the cron jobs listed in <code>catapult/cronjobs</code>.
-for the automatic maintenance of Sparv.</li>
+<li>Set up the cron jobs listed in <code>catapult/cronjobs</code>. for the automatic maintenance of Sparv.</li>
 </ul>
-
-<h4>Cron jobs</h4>
-
+<h4 id="cron-jobs">Cron jobs</h4>
 <p>The following cron jobs are used in Sparv:</p>
-
 <ul>
-<li><em>Cleanup</em>: Builds that have not been accessed for 7 days are removed every midnight by
-issuing <code>https://ws.spraakbanken.gu.se/ws/sparv/cleanup?secret_key=SECRETKEY</code>.</li>
-<li><em>Keep-alive</em>: The script <code>catapult/keep-alive.sh</code> is run every five minutes and restarts
-the catapult with <code>catapult/start-server.sh</code> if it does not respond to ping. Instead of
-setting up this cron job you can run the catapult using a process control system like supervisord.</li>
-<li><em>Update-saldo</em>: The Saldo lexicon is updated daily with the script <code>catapult/update-saldo.sh</code>.
-This takes some time, and is therefore run during the night. The catapult is restarted
-afterwards by the <code>keep-alive.sh</code> script.</li>
+<li><em>Cleanup</em>: Builds that have not been accessed for 7 days are removed every midnight by issuing <code>https://ws.spraakbanken.gu.se/ws/sparv/cleanup?secret_key=SECRETKEY</code>.</li>
+<li><em>Keep-alive</em>: The script <code>catapult/keep-alive.sh</code> is run every five minutes and restarts the catapult with <code>catapult/start-server.sh</code> if it does not respond to ping. Instead of setting up this cron job you can run the catapult using a process control system like supervisord.</li>
+<li><em>Update-saldo</em>: The Saldo lexicon is updated daily with the script <code>catapult/update-saldo.sh</code>. This takes some time, and is therefore run during the night. The catapult is restarted afterwards by the <code>keep-alive.sh</code> script.</li>
 </ul>

@@ -36,12 +36,13 @@ cat settings_template.tex | sed 's/LANGUAGE/english/' > settings_eng.tex
 
 # New page for new chapter
 echo "\\newcommand{\\sectionbreak}{\\clearpage}" >> settings_eng.tex
+# echo "\\newcommand{\\sectionbreak}{\\clearpage}" >> settings_swe.tex
 
 
 function make_document {
     # Convert markdown to latex/pdf:
     # pandoc $1 -t latex -o `basename $1 .md`.pdf \
-    gpp -H -DTEX=1 --include macros.gpp $1 | pandoc -t latex -o `basename $1 .md`.pdf \
+    gpp -H -DTEX=1 --include ../macros.gpp $1 | pandoc -t latex -o `basename $1 .md`.pdf \
     -H settings_$2.tex `# include in header` \
     --toc `# table of contents` \
     -N `# numbered sections` \
@@ -58,6 +59,6 @@ rm settings_swe.tex
 rm settings_eng.tex
 rm techincal_report.md
 rm användarmanual.md
-# rm dist_pipeline.md
-# rm guide_pipeline_eng.md
-# rm import_format.md
+rm dist_pipeline.md
+rm guide_pipeline_eng.md
+rm import_format.md

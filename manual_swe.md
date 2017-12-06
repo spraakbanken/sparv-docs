@@ -1,4 +1,6 @@
 
+<#pagebreak>
+
 ## Introduktion
 
 Sparv är Språkbankens annoteringsverktyg som används bland annat för att
@@ -16,14 +18,16 @@ inmatningsfältet.
 
 ![Sparvs webbgränssnitt](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.png){width=550px style="margin-left: 10px;"}
 
+<#pagebreak>
+
 ## Snabbinställningar
 
 Med kryssrutorna under inmatningsfältet kan man snabbt välja eller välja bort
 analystyper. Om man t.ex. inte vill se dependensträden i resultatet, kan man
 klicka ur kryssrutan för dependensanalysen.
 
-Ovanför inmatningsfältet väljer man om man vill mata in ren text eller XML.
-Standardläget är ren text. Om man matar in uppmärkt text måste man byta till XML
+Ovanför inmatningsfältet väljer man om man vill mata in ren text eller xml.
+Standardläget är ren text. Om man matar in uppmärkt text måste man byta till xml
 för att inte uppmärkningen ska försvinna.
 
 ## Resultatvy
@@ -39,13 +43,15 @@ Om man har valt att göra en dependensanalys så visas denna inte bara i tabelle
 utan även som ett dependensträd i tabellen i början av varje mening.
 
 Strukturella attribut, dvs. analyser som kan sträcka sig över flera ord eller
-över hela texten (t.ex. läsbarhetsvärden eller namntaggar) visas som XML-taggar
+över hela texten (t.ex. läsbarhetsvärden eller namntaggar) visas som xml-taggar
 i tabellen.
 
-Man kan även ladda ner hela analysen som XML genom att trycka på **XML**-knappen
+Man kan även ladda ner hela analysen som xml genom att trycka på **XML**-knappen
 ovanför tabellen.
 
 ![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="margin-left: 10px;"}
+
+<#pagebreak>
 
 ## Analyslägen
 
@@ -64,7 +70,7 @@ fram bättre analyser av ord med gammal stavning.
 
 När man vill analysera en text som inte har någon uppmärkning räcker det oftast
 att man skriver in texten i inmatningsfältet och sedan trycker på
-**Kör**-knappen. Om texten innehåller XML behöver man dock ändra på några
+**Kör**-knappen. Om texten innehåller xml behöver man dock ändra på några
 inställningar för att berätta för Sparv vilka funktioner de olika taggarna i
 indatan fyller. Inställningarna öppnas genom att klicka på **Visa avancerade
 inställningar**. Här kan man ange om styckes-, menings- och ordsegmenteringen
@@ -77,8 +83,25 @@ t.ex. bara intresserad av läsbarhetsvärdet **lix** kan man klicka ur **ovix**
 och **nk** i de avancerade inställningarna. Man kan få en kort förklaring för en
 inställning genom att klicka på frågetecknet bredvid den. Med hjälp av återställningsknappen kan man få fram standardinställningarna.
 
-![Sparvs avancerade inställningar i XML-läget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar.png){width=550px}
+![Sparvs avancerade inställningar i xml-läget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar.png){width=550px}
+
+<#pagebreak>
 
 ## Filuppladdning
 
-![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=550px style="margin-left: 10px;"}
+Istället för att mata in text i Sparvs textfält kan man använda sig av
+filuppladdningen genom att trycka på **Ladda upp**-knappen. Accepterade
+filformat är txt (ren text) och xml. Dokument skapade i Microsoft Word och
+liknande kan inte analyseras. Om man laddas upp xml-filer behöver man anpassa de
+avancerade inställningarna för att inte uppmärkningen ska tolkas som vanlig
+text. Även analysspråket måste väljas i filuppladdningsläget. Observera att man
+kan ladda upp och analysera flera filer åt gången. Inställningarna och
+språkvalet gäller då alla filer som laddas upp i samma körning. Vissa analyser
+tar lång tid på sig och om man vill slippa vänta kan man skriva in sin
+mailadress i email-fältet. Man kommer då att få ett mail med en nedladdningslänk
+när analysen är klar. Det går bra att stänga webbläsarfönstret medan analysen körs.
+
+När man använder sig av filuppladdningen visas resultatet inte som tabell utan
+man kan ladda ner en zip-fil med den annoterade texten i xml-format.
+
+![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=400px style="margin-left: 10px;"}

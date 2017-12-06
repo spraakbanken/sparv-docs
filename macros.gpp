@@ -1,0 +1,12 @@
+
+<#define ref|#1 #2>
+<#define pagebreak>
+<#ifdef HTML>
+     <#define ref|<a href="\##1">#2</a>>
+     <#define pagebreak|>
+     <#define filename|<code class="filename">#1</code>>
+<#endif>
+<#ifdef TEX>
+     <#define ref|#2 in section \\ref{#1}>
+     <#define pagebreak|\\clearpage>
+<#endif>

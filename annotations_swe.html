@@ -1,16 +1,12 @@
-<h2>Annotationer i Sparv</h2>
-
+<h2 id="annotationer-i-sparv">Annotationer i Sparv</h2>
 <p>För texter som är skrivna i nusvenska kan Sparv generera följande typer av annotationer:</p>
-
 <ul>
-<li><p>Ordklasstaggning:</p>
-
+<li>Ordklasstaggning:
 <ul>
 <li><code>pos</code>: ordklasstagg (av engelskans 'part of speech'), se http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
 <li><code>msd</code>: morfosyntaktisk tagg, se http://spraakbanken.gu.se/korp/markup/msdtags.html</li>
 </ul></li>
-<li><p>SALDO-baserade analyser:</p>
-
+<li>SALDO-baserade analyser:
 <ul>
 <li><code>baseform</code>: grundform</li>
 <li><code>lemgram</code>: lemgram, en formenhet som identifierar böjningstabellen</li>
@@ -18,37 +14,32 @@
 <li>(<code>saldo</code>: identifierar en betydelse i SALDO - <em>kommer att tas bort snart</em>)</li>
 <li><code>sentiment</code>: attitydvärde</li>
 </ul></li>
-<li><p>Sammansättningsanalys (också baserad på SALDO):</p>
-
+<li>Sammansättningsanalys (också baserad på SALDO):
 <ul>
 <li><code>complemgram</code>: sammansatt lemgram</li>
 <li><code>compwf</code>: sammansatt ordform</li>
 <li>(<code>prefix</code>: förled vid sammansättningar - <em>kommer att tas bort snart</em>)</li>
 <li>(<code>suffix</code>: efterled vid sammansättningar - <em>kommer att tas bort snart</em>)</li>
 </ul></li>
-<li><p>Dependensanalys:</p>
-
+<li>Dependensanalys:
 <ul>
 <li><code>ref</code>: ordets position i meningen</li>
 <li><code>dephead</code>: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av</li>
 <li><code>deprel</code>: dependensrelation, den relation detta ord har till sitt dependenshuvud, se http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html</li>
 </ul></li>
-<li><p>Namnigenkänning:</p>
-
+<li>Namnigenkänning:
 <ul>
 <li><code>ne.ex</code>: namnentitet (namnuttryck, numerisk uttryck eller tidsuttryck)</li>
 <li><code>ne.type</code>: namnentitetstyp</li>
 <li><code>ne.subtype</code>: namnentitetsundertyp</li>
 </ul></li>
-<li><p>Läsbarhetsindex:</p>
-
+<li>Läsbarhetsindex:
 <ul>
 <li><code>text.lix</code>: LIX, läsbarhetsindex</li>
 <li><code>text.ovix</code>: OVIX, ordvariationsindex</li>
 <li><code>text.nk</code>: Nominalkvot</li>
 </ul></li>
-<li><p>Lexikala klasser:</p>
-
+<li>Lexikala klasser:
 <ul>
 <li><code>blingbring</code>: lexikala klasser från Blingbring-resursen (på ordnivå)</li>
 <li><code>swefn</code>: ramar fråm swedish FrameNet (på ordnivå)</li>
@@ -56,6 +47,4 @@
 <li><code>text.swefn</code>: ramar fråm swedish FrameNet (på dokumentnivå)</li>
 </ul></li>
 </ul>
-
-<p>Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
-märkas upp med en delmängd av ovanstående annotationstyper.</p>
+<p>Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall märkas upp med en delmängd av ovanstående annotationstyper.</p>
