@@ -4,10 +4,10 @@ set -x
 # Requires markdown and latex
 
 
-# # Get documentation for pipeline
-# svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/dist_pipeline.md
-# svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/guide_pipeline_eng.md
-# svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/import_format.md
+# Get documentation for pipeline
+svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/dist_pipeline.md
+svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/guide_pipeline_eng.md
+svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/import_format.md
 
 # Concatenate all markdownfiles and add headings
 
