@@ -7,8 +7,9 @@ Sparv är Språkbankens annoteringsverktyg som används bland annat för att
 analysera korpusarna i Korp och texterna i Strix. Sparvs webbgränssnitt
 (https://spraakbanken.gu.se/sparv)  kan användas för att annotera egna texter.
 
-Denna användarhandledningen beskriver de flesta funktionerna som finns i Sparv.
-Det finns även ett par övningsuppgifter för Sparv som du kan ladda hem
+Denna användarhandledningen beskriver de flesta funktionerna som finns
+tillgängliga i webbgränssnittet. Det finns även ett par övningsuppgifter för
+Sparv som du kan ladda hem
 [här](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
 
 För att göra en analys räcker det att skriva eller klistra in en text i
