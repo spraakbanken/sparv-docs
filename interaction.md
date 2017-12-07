@@ -1,6 +1,4 @@
 
-## Interaction between the Sparv Components
-
 The following image illustrates how the components involved in the Sparv web
 interface interact with each other and with the user, both before and during the
 analysis.

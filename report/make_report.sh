@@ -28,7 +28,8 @@ cat ../dist_backend_eng.md >> techincal_report.md
 cat ../devel_backend_eng.md >> techincal_report.md
 echo -e "\n# The Sparv Web API\n" >> techincal_report.md
 cat ../ws_eng.md >> techincal_report.md
-cat ../interaction.md | sed 's/^##/#/' >> techincal_report.md
+echo -e "\n# Interaction between the Sparv Components\n" >> techincal_report.md
+cat ../interaction.md >> techincal_report.md
 
 cat ../manual_swe.md | sed 's/^##/#/' > användarmanual.md
 

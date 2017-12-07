@@ -11,7 +11,7 @@ It is available at [https://spraakbanken.gu.se/ws/sparv/v2/](https://spraakbanke
 
 #### <a name="be-requirements"></a>Requirements
 
-* the Korp corpus pipeline, see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions
+* the Sparv corpus pipeline, see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions
 * [Python 3.4](https://www.python.org/) or newer
 
 
