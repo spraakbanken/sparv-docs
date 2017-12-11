@@ -41,7 +41,7 @@ muspekaren över dem, t.ex. etiketterna i dependensanalysen, kategorierna i
 namntaggarna och de morfosyntaktiska beskrivningarna.
 
 Om man har valt att göra en dependensanalys så visas denna inte bara i tabellen
-utan även som ett dependensträd i tabellen i början av varje mening.
+utan även som ett dependensträd i början av varje mening.
 
 Strukturella attribut, dvs. analyser som kan sträcka sig över flera ord eller
 över hela texten (t.ex. läsbarhetsvärden eller namntaggar) visas som xml-taggar
@@ -93,7 +93,7 @@ inställning genom att klicka på frågetecknet bredvid den. Med hjälp av åter
 Istället för att mata in text i Sparvs textfält kan man använda sig av
 filuppladdningen genom att trycka på **Ladda upp**-knappen. Accepterade
 filformat är txt (ren text) och xml. Dokument skapade i Microsoft Word och
-liknande kan inte analyseras. Om man laddas upp xml-filer behöver man anpassa de
+liknande kan inte analyseras. Om man laddar upp xml-filer behöver man anpassa de
 avancerade inställningarna för att inte uppmärkningen ska tolkas som vanlig
 text. Även analysspråket måste väljas i filuppladdningsläget. Observera att man
 kan ladda upp och analysera flera filer åt gången. Inställningarna och
