@@ -11,25 +11,25 @@ svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/import_format.m
 
 # Concatenate all markdownfiles and add headings
 
-# echo -e "Korp 6: Technical Report\n" > techincal_report.md
-echo -e "\n# Acknowledgements\n" > techincal_report.md
-echo -e "\nThis work and research was supported by Malin Ahlberg, Peter Ljunglöf and Roland Schäfer. We thank our colleagues and former colleagues who made great contributions to Sparv.\n" >> techincal_report.md
+# echo -e "Korp 6: Technical Report\n" > technical_report.md
+echo -e "\n# Acknowledgements\n" > technical_report.md
+echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg, Gerlof Bouma, Martha Dís Brandt, Peter Ljunglöf, Richard Johansson, Luis Nieto Piña and Roland Schäfer. We thank our colleagues and former colleagues who made great contributions to Sparv.\n" >> technical_report.md
 
-echo -e "\n# The Sparv Pipeline\n" >> techincal_report.md
-cat dist_pipeline.md >> techincal_report.md
-cat guide_pipeline_eng.md >> techincal_report.md
-cat import_format.md >> techincal_report.md
-cat ../annotations_eng.md >> techincal_report.md
-echo -e "\n# The Sparv Frontend\n" >> techincal_report.md
-cat ../dist_frontend_eng.md >> techincal_report.md
-cat ../devel_frontend_eng.md >> techincal_report.md
-echo -e "\n# The Sparv Backend\n" >> techincal_report.md
-cat ../dist_backend_eng.md >> techincal_report.md
-cat ../devel_backend_eng.md >> techincal_report.md
-echo -e "\n# The Sparv Web API\n" >> techincal_report.md
-cat ../ws_eng.md >> techincal_report.md
-echo -e "\n# Interaction between the Sparv Components\n" >> techincal_report.md
-cat ../interaction.md >> techincal_report.md
+echo -e "\n# The Sparv Pipeline\n" >> technical_report.md
+cat dist_pipeline.md >> technical_report.md
+cat guide_pipeline_eng.md >> technical_report.md
+cat import_format.md >> technical_report.md
+cat ../annotations_eng.md >> technical_report.md
+echo -e "\n# The Sparv Frontend\n" >> technical_report.md
+cat ../dist_frontend_eng.md >> technical_report.md
+cat ../devel_frontend_eng.md >> technical_report.md
+echo -e "\n# The Sparv Backend\n" >> technical_report.md
+cat ../dist_backend_eng.md >> technical_report.md
+cat ../devel_backend_eng.md >> technical_report.md
+echo -e "\n# The Sparv Web API\n" >> technical_report.md
+cat ../ws_eng.md >> technical_report.md
+echo -e "\n# Interaction between the Sparv Components\n" >> technical_report.md
+cat ../interaction.md >> technical_report.md
 
 cat ../manual_swe.md | sed 's/^##/#/' > användarmanual.md
 
@@ -54,12 +54,12 @@ function make_document {
 }
 
 make_document användarmanual.md swe
-make_document techincal_report.md eng
+make_document technical_report.md eng
 
 # Clean-up
 rm settings_swe.tex
 rm settings_eng.tex
-rm techincal_report.md
+rm technical_report.md
 rm användarmanual.md
 rm dist_pipeline.md
 rm guide_pipeline_eng.md
