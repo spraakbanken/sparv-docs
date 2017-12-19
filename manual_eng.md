@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Sparv is the annotation tool developed by Språkbanken that is used for analysing
+Sparv is an annotation tool developed by Språkbanken that is used for analysing
 the corpora in Korp and the texts in Strix. The Sparv web interface (https://spraakbanken.gu.se/sparv) can be used for annotating your own texts.
 
 This user manual describes most of the functions available in the Sparv web
@@ -11,99 +11,102 @@ interface. There are also exercises in Swedish [available for download](https://
 
 To make a Sparv analysis you can just type or paste some text into the text
 field (or hit one of the example buttons) and then press the green
-**Run**-button. When the analysis is done the result is shown as a table
-underneath the text input field.
+**Run** button. When the analysis is done the result is shown as a table
+beneath the text input field.
 
-![The Sparv web interface](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.png){width=550px style="margin-left: 10px;"}
+![The Sparv web interface](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt_en.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
-## Quick settings
+## Quick Settings
 
 The check boxes under the text input field can be used to quickly select or
 deselect different types of annotations. For example, if you would like to
 exclude the dependency trees from the result you can deselect the dependency
 analysis check box.
 
-Above the text field you can choose if you can choose between plain text or xml
-input. If your text already has some mark-up you need to select xml, otherwise
-your annotations will be lost after the analysis.
+Above the text field you can choose between plain text or xml input. If your
+text already has some mark-up you need to select xml, otherwise all existing
+annotations will be lost after the analysis.
 
-## Result view
+## Result View
 
-When the analysis is done the result is shown as a table underneath the text
-input field. Each column represents one type of analysis on word level. By hovering over the names in the table header 
+When the analysis is done the result is shown as a table below the text input
+field. Each column represents one type of analysis on word level. When hovering
+over the names in the table header a short explanation will is displayed. The
+same goes for many abbreviations used in the analysis, e.g. the labels in the
+dependency analysis, the named entity categories and the morphosyntactic tags.
 
-När analysen är klar visas resultatet som en tabell under inmatningsfältet.
-Varje kolumn i tabellen representerar en viss typ av analys på ordnivå. Man kan
-få en kort förklaring för en analystyp genom att hålla musen över namnet i
-tabellhuvudet. Även många andra förkortningar förklaras när man håller
-muspekaren över dem, t.ex. etiketterna i dependensanalysen, kategorierna i
-namntaggarna och de morfosyntaktiska beskrivningarna.
+The dependency analysis is displayed as a dependency tree in the beginning of
+every sentence in addition to the dependency relations being shown in the result
+table. Structural attributes, i.e. analyses that can stretch across several words
+or the entire text (e.g. readability metrics or name tags) are shown as xml tags
+in the table.
 
-Om man har valt att göra en dependensanalys så visas denna inte bara i tabellen
-utan även som ett dependensträd i början av varje mening.
+By pressing the **XML** button above the result table you can download a
+completed analysis in xml format.
 
-Strukturella attribut, dvs. analyser som kan sträcka sig över flera ord eller
-över hela texten (t.ex. läsbarhetsvärden eller namntaggar) visas som xml-taggar
-i tabellen.
-
-Man kan även ladda ner hela analysen som xml genom att trycka på **XML**-knappen
-ovanför tabellen.
-
-![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="margin-left: 10px;"}
+![A completed Sparv analysis](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat_en.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
-## Analyslägen
+## Analysis Modes
 
-Under Sparvlogotypen finns det en analysspråksväljare. Med hjälp av denna kan
-man analysera texter som är skrivna på andra språk än svenska. I nuläget har
-Sparv stöd för 20 analysspråk, men för de flesta språken stöds enbart
-ordklasstaggning och lemmatisering.
+Beneath the Sparv logo you can find a dropdown menu for picking the language of
+analysis. This menu lets you analyse texts written in other languages than
+Swedish. Currently Sparv supports 20 different languages but most of them only support part-of-speech tagging and lemmatisation.
 
-Sparv har även ett analysläge för att annotera svenska texter från 1800-talet.
-Här används information från två äldre ordböcker (Dalin och Swedberg) för att få
-fram bättre analyser av ord med gammal stavning.
+Sparv has an analysis mode for annotating Swedish texts from the 1800's. In this
+mode information from two older dictionaries (Dalin and Swedberg) is used in
+order to obtain better analyses for words with older spelling.
 
-![Språkväljarmenyn](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare.png){width=200px style="float: right; margin-left: 10px;"}
+![The language picker](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare_en.png){width=200px style="float: right; margin-left: 10px;"}
 
-## Avancerade inställningar
+## Advanced Settings
 
-När man vill analysera en text som inte har någon uppmärkning räcker det oftast
-att man skriver in texten i inmatningsfältet och sedan trycker på
-**Kör**-knappen. Om texten innehåller xml behöver man dock ändra på några
-inställningar för att berätta för Sparv vilka funktioner de olika taggarna i
-indatan fyller. Inställningarna öppnas genom att klicka på **Visa avancerade
-inställningar**. Här kan man ange om styckes-, menings- och ordsegmenteringen
-ska ske automatiskt eller om befintliga attribut ska användas, man kan
-specifiera vad dokumentelementet heter, samt ange ytterligare taggar och
-attribut som ska bevaras från indatan. Taggar och attribut som inte specifieras
-kommer att försvinna i resultatet. Man har även kontroll över exakt vilka
-analyser som ska göras genom att klicka på de olika analysattributen. Är man
-t.ex. bara intresserad av läsbarhetsvärdet **lix** kan man klicka ur **ovix**
-och **nk** i de avancerade inställningarna. Man kan få en kort förklaring för en
-inställning genom att klicka på frågetecknet bredvid den. Med hjälp av återställningsknappen kan man få fram standardinställningarna.
+When analysing texts without any mark-up it is often enough to paste the text in
+the input field and hit the **Run** button. If the text contains xml you need to
+adjust the settings in order to let Sparv know what the different tags in your
+data represent.
 
-![Sparvs avancerade inställningar i xml-läget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar.png){width=550px}
+You can open the settings by clicking on **Show advanced settings**. Then you
+can specify if the segmentation into paragraphs, sentences, and words should be
+done automatically or if existing tags should be used instead. You can also
+specify the name of the document element and enter additional tags and
+attributes that are available in your input data. Any tags and attributes not specified in the settings will be removed from the result.
+
+The advanced settings let you control exactly which analyses should be included
+in the result. You can select and deselect analyses by clicking on the different
+attributes. E.g. if you are only interested in the readability metric **lix**
+you can deselect **ovix** and **nk** in the advanced settings. If you want to
+know more about a setting you can click on the question mark beside it and a
+short explanation will be displayed. The reset button allows you to return to
+the default settings.
+
+![The advanced settings in xml mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png){width=550px}
 
 <#pagebreak>
 
-## Filuppladdning
+## File Upload
 
-Istället för att mata in text i Sparvs textfält kan man använda sig av
-filuppladdningen genom att trycka på **Ladda upp**-knappen. Accepterade
-filformat är txt (ren text) och xml. Dokument skapade i Microsoft Word och
-liknande kan inte analyseras. Om man laddar upp xml-filer behöver man anpassa de
-avancerade inställningarna för att inte uppmärkningen ska tolkas som vanlig
-text. Även analysspråket måste väljas i filuppladdningsläget. Observera att man
-kan ladda upp och analysera flera filer åt gången. Inställningarna och
-språkvalet gäller då alla filer som laddas upp i samma körning. Vissa analyser
-tar lång tid på sig och om man vill slippa vänta kan man skriva in sin
-mailadress i email-fältet. Man kommer då att få ett mail med en nedladdningslänk
-när analysen är klar. Det går bra att stänga webbläsarfönstret medan analysen körs.
+Instead of feeding text directly into the text field you can use the file upload
+mode by pressing the **Upload** button. Valid input formats are txt (plain text)
+and xml. Documents created with Microsoft Word or similar text processing
+software cannot be analysed.
 
-När man använder sig av filuppladdningen visas resultatet inte som tabell utan
-man kan ladda ner en zip-fil med den annoterade texten i xml-format.
+If you choose to upload xml files you will need to adjust the settings to keep
+Sparv from interpreting your mark-up as text. You also need to adjust the
+language of analysis if you upload text which is written in another language
+than Swedish. Sparv allows for uploading multiple files at a time. The settings
+and choice of language will be applied to all files analysed in the same run.
 
-![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=400px style="margin-left: 10px;"}
+Some analyses take quite some time to process and if you don't want to wait that
+long you can fill in your e-mail address and you will get an e-mail with a
+download link as soon as the analysis is completed. If you have supplied your
+e-mail address it is okay to close your browser while your text is being
+processed.
+
+In file upload mode the result is not shown as a table but instead you will be
+able to download a zip file containing the annotated text in xml format.
+
+![File upload mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning_en.png){width=400px style="margin-left: 10px;"}

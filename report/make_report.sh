@@ -32,13 +32,10 @@ echo -e "\n# Interaction between the Sparv Components\n" >> technical_report.md
 cat ../interaction.md >> technical_report.md
 
 cat ../manual_swe.md | sed 's/^##/#/' > användarmanual.md
+cat ../manual_eng.md | sed 's/^##/#/' > usermanual.md
 
 cat settings_template.tex | sed 's/LANGUAGE/swedish/' > settings_swe.tex
 cat settings_template.tex | sed 's/LANGUAGE/english/' > settings_eng.tex
-
-# New page for new chapter
-echo "\\newcommand{\\sectionbreak}{\\clearpage}" >> settings_eng.tex
-# echo "\\newcommand{\\sectionbreak}{\\clearpage}" >> settings_swe.tex
 
 
 function make_document {
@@ -54,13 +51,18 @@ function make_document {
 }
 
 make_document användarmanual.md swe
+make_document usermanual.md eng
+
+# New page for new chapter in technical report
+echo "\\newcommand{\\sectionbreak}{\\clearpage}" >> settings_eng.tex
 make_document technical_report.md eng
 
 # Clean-up
 rm settings_swe.tex
 rm settings_eng.tex
-rm technical_report.md
 rm användarmanual.md
+rm usermanual.md
+rm technical_report.md
 rm dist_pipeline.md
 rm guide_pipeline_eng.md
 rm import_format.md
