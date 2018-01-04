@@ -25,26 +25,26 @@ deselect different types of annotations. For example, if you would like to
 exclude the dependency trees from the result you can deselect the dependency
 analysis check box.
 
-Above the text field you can choose between plain text or xml input. If your
-text already has some mark-up you need to select xml, otherwise all existing
+Above the text field you can choose between plain text or XML input. If your
+text already has some mark-up you need to select XML, otherwise all existing
 annotations will be lost after the analysis.
 
 ## Result View
 
 When the analysis is done the result is shown as a table below the text input
 field. Each column represents one type of analysis on word level. When hovering
-over the names in the table header a short explanation will is displayed. The
+over the names in the table header a short explanation is displayed. The
 same goes for many abbreviations used in the analysis, e.g. the labels in the
 dependency analysis, the named entity categories and the morphosyntactic tags.
 
 The dependency analysis is displayed as a dependency tree in the beginning of
 every sentence in addition to the dependency relations being shown in the result
 table. Structural attributes, i.e. analyses that can stretch across several words
-or the entire text (e.g. readability metrics or name tags) are shown as xml tags
+or the entire text (e.g. readability metrics or name tags) are shown as XML tags
 in the table.
 
 By pressing the **XML** button above the result table you can download a
-completed analysis in xml format.
+completed analysis in XML format.
 
 ![A completed Sparv analysis](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat_en.png){width=550px style="margin-left: 10px;"}
 
@@ -65,7 +65,7 @@ order to obtain better analyses for words with older spelling.
 ## Advanced Settings
 
 When analysing texts without any mark-up it is often enough to paste the text in
-the input field and hit the **Run** button. If the text contains xml you need to
+the input field and hit the **Run** button. If the text contains XML you need to
 adjust the settings in order to let Sparv know what the different tags in your
 data represent.
 
@@ -83,7 +83,7 @@ know more about a setting you can click on the question mark beside it and a
 short explanation will be displayed. The reset button allows you to return to
 the default settings.
 
-![The advanced settings in xml mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png){width=550px}
+![The advanced settings in XML mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png){width=550px}
 
 <#pagebreak>
 
@@ -91,10 +91,10 @@ the default settings.
 
 Instead of feeding text directly into the text field you can use the file upload
 mode by pressing the **Upload** button. Valid input formats are txt (plain text)
-and xml. Documents created with Microsoft Word or similar text processing
+and XML. Documents created with Microsoft Word or similar text processing
 software cannot be analysed.
 
-If you choose to upload xml files you will need to adjust the settings to keep
+If you choose to upload XML files you will need to adjust the settings to keep
 Sparv from interpreting your mark-up as text. You also need to adjust the
 language of analysis if you upload text which is written in another language
 than Swedish. Sparv allows for uploading multiple files at a time. The settings
@@ -107,6 +107,6 @@ e-mail address it is okay to close your browser while your text is being
 processed.
 
 In file upload mode the result is not shown as a table but instead you will be
-able to download a zip file containing the annotated text in xml format.
+able to download a zip file containing the annotated text in XML format.
 
 ![File upload mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning_en.png){width=400px style="margin-left: 10px;"}

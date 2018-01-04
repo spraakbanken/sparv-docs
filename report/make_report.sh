@@ -1,8 +1,7 @@
-set -x
+#set -x
 
 # Script for creating technical report from markdown files
 # Requires markdown and latex
-
 
 # Get documentation for pipeline
 svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/dist_pipeline.md
@@ -11,7 +10,7 @@ svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/import_format.m
 
 # Concatenate all markdownfiles and add headings
 
-# echo -e "Korp 6: Technical Report\n" > technical_report.md
+# echo -e "Sparv 2: Technical Report\n" > technical_report.md
 echo -e "\n# Acknowledgements\n" > technical_report.md
 echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg, Gerlof Bouma, Martha Dís Brandt, Peter Ljunglöf, Richard Johansson, Luis Nieto Piña and Roland Schäfer. We thank our colleagues and former colleagues who made great contributions to Sparv.\n" >> technical_report.md
 

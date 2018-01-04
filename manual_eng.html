@@ -8,11 +8,11 @@
 </div>
 <h2 id="quick-settings">Quick Settings</h2>
 <p>The check boxes under the text input field can be used to quickly select or deselect different types of annotations. For example, if you would like to exclude the dependency trees from the result you can deselect the dependency analysis check box.</p>
-<p>Above the text field you can choose between plain text or xml input. If your text already has some mark-up you need to select xml, otherwise all existing annotations will be lost after the analysis.</p>
+<p>Above the text field you can choose between plain text or XML input. If your text already has some mark-up you need to select XML, otherwise all existing annotations will be lost after the analysis.</p>
 <h2 id="result-view">Result View</h2>
-<p>When the analysis is done the result is shown as a table below the text input field. Each column represents one type of analysis on word level. When hovering over the names in the table header a short explanation will is displayed. The same goes for many abbreviations used in the analysis, e.g. the labels in the dependency analysis, the named entity categories and the morphosyntactic tags.</p>
-<p>The dependency analysis is displayed as a dependency tree in the beginning of every sentence in addition to the dependency relations being shown in the result table. Structural attributes, i.e. analyses that can stretch across several words or the entire text (e.g. readability metrics or name tags) are shown as xml tags in the table.</p>
-<p>By pressing the <strong>XML</strong> button above the result table you can download a completed analysis in xml format.</p>
+<p>When the analysis is done the result is shown as a table below the text input field. Each column represents one type of analysis on word level. When hovering over the names in the table header a short explanation is displayed. The same goes for many abbreviations used in the analysis, e.g. the labels in the dependency analysis, the named entity categories and the morphosyntactic tags.</p>
+<p>The dependency analysis is displayed as a dependency tree in the beginning of every sentence in addition to the dependency relations being shown in the result table. Structural attributes, i.e. analyses that can stretch across several words or the entire text (e.g. readability metrics or name tags) are shown as XML tags in the table.</p>
+<p>By pressing the <strong>XML</strong> button above the result table you can download a completed analysis in XML format.</p>
 <div class="figure">
 <img src="https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat_en.png" alt="A completed Sparv analysis" style="margin-left: 10px;" width="550" />
 <p class="caption">A completed Sparv analysis</p>
@@ -25,18 +25,18 @@
 <p class="caption">The language picker</p>
 </div>
 <h2 id="advanced-settings">Advanced Settings</h2>
-<p>When analysing texts without any mark-up it is often enough to paste the text in the input field and hit the <strong>Run</strong> button. If the text contains xml you need to adjust the settings in order to let Sparv know what the different tags in your data represent.</p>
+<p>When analysing texts without any mark-up it is often enough to paste the text in the input field and hit the <strong>Run</strong> button. If the text contains XML you need to adjust the settings in order to let Sparv know what the different tags in your data represent.</p>
 <p>You can open the settings by clicking on <strong>Show advanced settings</strong>. Then you can specify if the segmentation into paragraphs, sentences, and words should be done automatically or if existing tags should be used instead. You can also specify the name of the document element and enter additional tags and attributes that are available in your input data. Any tags and attributes not specified in the settings will be removed from the result.</p>
 <p>The advanced settings let you control exactly which analyses should be included in the result. You can select and deselect analyses by clicking on the different attributes. E.g. if you are only interested in the readability metric <strong>lix</strong> you can deselect <strong>ovix</strong> and <strong>nk</strong> in the advanced settings. If you want to know more about a setting you can click on the question mark beside it and a short explanation will be displayed. The reset button allows you to return to the default settings.</p>
 <div class="figure">
-<img src="https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png" alt="The advanced settings in xml mode" width="550" />
-<p class="caption">The advanced settings in xml mode</p>
+<img src="https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png" alt="The advanced settings in XML mode" width="550" />
+<p class="caption">The advanced settings in XML mode</p>
 </div>
 <h2 id="file-upload">File Upload</h2>
-<p>Instead of feeding text directly into the text field you can use the file upload mode by pressing the <strong>Upload</strong> button. Valid input formats are txt (plain text) and xml. Documents created with Microsoft Word or similar text processing software cannot be analysed.</p>
-<p>If you choose to upload xml files you will need to adjust the settings to keep Sparv from interpreting your mark-up as text. You also need to adjust the language of analysis if you upload text which is written in another language than Swedish. Sparv allows for uploading multiple files at a time. The settings and choice of language will be applied to all files analysed in the same run.</p>
+<p>Instead of feeding text directly into the text field you can use the file upload mode by pressing the <strong>Upload</strong> button. Valid input formats are txt (plain text) and XML. Documents created with Microsoft Word or similar text processing software cannot be analysed.</p>
+<p>If you choose to upload XML files you will need to adjust the settings to keep Sparv from interpreting your mark-up as text. You also need to adjust the language of analysis if you upload text which is written in another language than Swedish. Sparv allows for uploading multiple files at a time. The settings and choice of language will be applied to all files analysed in the same run.</p>
 <p>Some analyses take quite some time to process and if you don't want to wait that long you can fill in your e-mail address and you will get an e-mail with a download link as soon as the analysis is completed. If you have supplied your e-mail address it is okay to close your browser while your text is being processed.</p>
-<p>In file upload mode the result is not shown as a table but instead you will be able to download a zip file containing the annotated text in xml format.</p>
+<p>In file upload mode the result is not shown as a table but instead you will be able to download a zip file containing the annotated text in XML format.</p>
 <div class="figure">
 <img src="https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning_en.png" alt="File upload mode" style="margin-left: 10px;" width="400" />
 <p class="caption">File upload mode</p>
