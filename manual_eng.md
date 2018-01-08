@@ -4,7 +4,7 @@
 ## Introduction
 
 Sparv is an annotation tool developed by Språkbanken that is used for analysing
-the corpora in Korp and the texts in Strix. The Sparv web interface (https://spraakbanken.gu.se/sparv) can be used for annotating your own texts.
+the corpora in Korp and the texts in Strix. The [Sparv web interface](https://spraakbanken.gu.se/sparv) can be used for annotating your own texts.
 
 This user manual describes most of the functions available in the Sparv web
 interface. There are also exercises in Swedish [available for download](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
@@ -12,7 +12,7 @@ interface. There are also exercises in Swedish [available for download](https://
 To make a Sparv analysis you can just type or paste some text into the text
 field (or hit one of the example buttons) and then press the green
 **Run** button. When the analysis is done the result is shown as a table
-beneath the text input field.
+below the text input field.
 
 ![The Sparv web interface](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt_en.png){width=550px style="margin-left: 10px;"}
 
@@ -43,8 +43,7 @@ table. Structural attributes, i.e. analyses that can stretch across several word
 or the entire text (e.g. readability metrics or name tags) are shown as XML tags
 in the table.
 
-By pressing the **XML** button above the result table you can download a
-completed analysis in XML format.
+By pressing the **XML** button above the result table you can download the analysis in XML format.
 
 ![A completed Sparv analysis](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat_en.png){width=550px style="margin-left: 10px;"}
 
@@ -52,7 +51,7 @@ completed analysis in XML format.
 
 ## Analysis Modes
 
-Beneath the Sparv logo you can find a dropdown menu for picking the language of
+Below the Sparv logo you can find a dropdown menu for picking the language of
 analysis. This menu lets you analyse texts written in other languages than
 Swedish. Currently Sparv supports 20 different languages but most of them only support part-of-speech tagging and lemmatisation.
 
