@@ -4,10 +4,13 @@
 ## Introduction
 
 Sparv is an annotation tool developed by Språkbanken that is used for analysing
-the corpora in Korp and the texts in Strix. The [Sparv web interface](https://spraakbanken.gu.se/sparv) can be used for annotating your own texts.
+the corpora in Korp and the texts in Strix. The [Sparv web
+interface](https://spraakbanken.gu.se/sparv) can be used for annotating your own
+texts.
 
 This user manual describes most of the functions available in the Sparv web
-interface. There are also exercises in Swedish [available for download](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
+interface. There are also exercises in Swedish [available for
+download](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
 
 To make a Sparv analysis you can just type or paste some text into the text
 field (or hit one of the example buttons) and then press the green
@@ -53,7 +56,8 @@ By pressing the **XML** button above the result table you can download the analy
 
 Below the Sparv logo you can find a dropdown menu for picking the language of
 analysis. This menu lets you analyse texts written in other languages than
-Swedish. Currently Sparv supports 20 different languages but most of them only support part-of-speech tagging and lemmatisation.
+Swedish. Currently Sparv supports 20 different languages but most of them only
+support part-of-speech tagging and lemmatisation.
 
 Sparv has an analysis mode for annotating Swedish texts from the 1800's. In this
 mode information from two older dictionaries (Dalin and Swedberg) is used in
@@ -72,7 +76,8 @@ You can open the settings by clicking on **Show advanced settings**. Then you
 can specify if the segmentation into paragraphs, sentences, and words should be
 done automatically or if existing tags should be used instead. You can also
 specify the name of the document element and enter additional tags and
-attributes that are available in your input data. Any tags and attributes not specified in the settings will be removed from the result.
+attributes that are available in your input data. Any tags and attributes not
+specified in the settings will be removed from the result.
 
 The advanced settings let you control exactly which analyses should be included
 in the result. You can select and deselect analyses by clicking on the different
