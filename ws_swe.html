@@ -1,16 +1,17 @@
 <p>Sparv har ett API som ligger på adressen:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv</code></p>
 </blockquote>
+<p>Den här dokumentationen är för API-version 2.</p>
 <h2 id="anrop-för-att-annotera-text">Anrop för att annotera text</h2>
 <p>Frågor till nättjänsten kan göras med ett enkelt GET-anrop:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=En+exempelmening+till+nättjänsten</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=En+exempelmening+till+nättjänsten</code></p>
 </blockquote>
 <p>Svaret kommer i form av ett XML-objekt. För detta anropet blir svaret:</p>
 <pre><code>&lt;result&gt;
 &lt;build hash=&quot;edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;/&gt;
-&lt;corpus link=&quot;https://ws.spraakbanken.gu.se/ws/sparv/latest/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;&gt;
+&lt;corpus link=&quot;https://ws.spraakbanken.gu.se/ws/sparv/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;&gt;
 &lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
 &lt;paragraph&gt;
 &lt;sentence id=&quot;8f7-84d&quot;&gt;
@@ -25,37 +26,37 @@
 &lt;/result&gt;</code></pre>
 <p>För större texter stöds också POST-anrop som skickas till samma address. Ett exempel med curl:</p>
 <blockquote>
-<p><code>curl -X POST --data-binary text=&quot;En exempelmening till nättjänsten&quot; https://ws.spraakbanken.gu.se/ws/sparv/latest/</code></p>
+<p><code>curl -X POST --data-binary text=&quot;En exempelmening till nättjänsten&quot; https://ws.spraakbanken.gu.se/ws/sparv/</code></p>
 </blockquote>
 <p>Svaret blir samma som för ovanstående GET-anropet.</p>
 <p>Det är också möjligt att ladda upp XML- eller textfiler med curl:</p>
 <blockquote>
-<p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/latest/upload?</code></p>
+<p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/upload?</code></p>
 </blockquote>
 <p>Svaret är en nedladdningslänk till en zip-fil som innehåller annotationen.</p>
 <h2 id="inställningar">Inställningar</h2>
 <p>Nättjänsten har stöd för bland annat att byta ord-, mening- och styckessegmenterare och vilka attribut som ska genereras. Dessa ges som ett JSON-objekt till <code>settings</code>-variabeln. Detta objekt måste uppfylla JSON-schemat som fås av detta anrop:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/schema</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/schema</code></p>
 </blockquote>
 <p>Eftersom schemat innehåller <code>default</code>-värden för alla inställningar är detta argument valfritt, och alla inställningar behövs inte anges.</p>
 <p>Ett anrop där bara dependensinformationen genereras ser ut så här:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Det+trodde+jag+aldrig.&amp;settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Det+trodde+jag+aldrig.&amp;settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
 <p>POST-anropet med curl görs såhär:</p>
 <blockquote>
-<p><code>curl -X POST -g --data-binary text=&quot;Det trodde jag aldrig.&quot; 'https://ws.spraakbanken.gu.se/ws/sparv/latest/?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}'</code></p>
+<p><code>curl -X POST -g --data-binary text=&quot;Det trodde jag aldrig.&quot; 'https://ws.spraakbanken.gu.se/ws/sparv/?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}'</code></p>
 </blockquote>
 <p>På <a href="http://spraakbanken.gu.se/sparv">frontenden</a> så finns en knapp <code>Visa Formulärets JSON</code> under <code>Visa avancerade inställningar</code> som visar formulärets JSON-objekt som skickas med i <code>settings</code>-variabeln.</p>
 <p>Makefilen som genereras för ett visst inställningsobjekt kan också fås. Ett anrop ser ut så här:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/makefile?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/makefile?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
 <h2 id="återuppta-byggen">Återuppta byggen</h2>
 <p>Längst upp i svarets XML finns ett hash-nummer i <code>build</code>-taggens <code>hash</code>-attribut. Detta kan användas för att återuppta byggen. För att visa första exemplet ovan används detta anrop:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
 </blockquote>
 <p>Svaret innehåller förutom det annoterade resultatet också orginaltexten och vilka inställningar som användes (grundinställningarna). Hela svaret ser ut så här:</p>
 <pre><code>&lt;result&gt;
@@ -107,7 +108,7 @@
 }&lt;/settings&gt;
 &lt;original&gt;&amp;lt;text&amp;gt;En exempelmening till nättjänsten&amp;lt;/text&amp;gt;&lt;/original&gt;
 &lt;build hash=&#39;edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;/&gt;
-&lt;corpus link=&#39;https://ws.spraakbanken.gu.se/ws/sparv/latest/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;&gt;
+&lt;corpus link=&#39;https://ws.spraakbanken.gu.se/ws/sparv/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;&gt;
     &lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
         &lt;paragraph&gt;
             &lt;sentence id=&quot;8f7-84d&quot;&gt;
@@ -140,13 +141,13 @@
 </ul>
 <p>Ett exempel på analys av tyska kan se ut så här:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={&quot;lang&quot;:&quot;de&quot;}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={&quot;lang&quot;:&quot;de&quot;}</code></p>
 </blockquote>
 <p>Beroende på vilket språk man väljer, finns det stöd för olika annotationer och verktyg. Använd <a href="http://spraakbanken.gu.se/sparv">frontenden</a> för att enklast se vilka valmöjligheter som finns för ett visst språk.</p>
 <h2 id="inkrementell-framstegsinformation">Inkrementell framstegsinformation</h2>
 <p>Med flaggan till anropen ovan <code>incremental=true</code> fås information om hur byggprocessen förlöper. Ett exempelanrop ser ut så här:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
 </blockquote>
 <p>Resultat-XML:en innehåller då dessa extra taggar:</p>
 <pre><code>&lt;increment command=&quot;&quot; step=&quot;0&quot; steps=&quot;27&quot;/&gt;
@@ -181,27 +182,27 @@
 <h2 id="övriga-anrop">Övriga anrop</h2>
 <p>Du kan få en kort översikt över alla anrop här:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/api</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/api</code></p>
 </blockquote>
 <!--
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/ping`
+> `https://ws.spraakbanken.gu.se/ws/sparv/ping`
 
 Statusarna för alla byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/status`
+> `https://ws.spraakbanken.gu.se/ws/sparv/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/cleanup`
+> `https://ws.spraakbanken.gu.se/ws/sparv/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/cleanup/errors`
+> `https://ws.spraakbanken.gu.se/ws/sparv/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/api`
+> `https://ws.spraakbanken.gu.se/ws/sparv/api`
 -->

@@ -1,16 +1,17 @@
 <p>Sparv has an API which is available at the following address:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv</code></p>
 </blockquote>
+<p>This documentation is for API version 2.</p>
 <h2 id="queries-for-annotating-texts">Queries for Annotating Texts</h2>
 <p>Queries to the web service can be sent as a simple GET request:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=En+exempelmening+till+nättjänsten</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=En+exempelmening+till+nättjänsten</code></p>
 </blockquote>
 <p>The response is an XML-objekt which for the above request looks like this:</p>
 <pre><code>&lt;result&gt;
 &lt;build hash=&quot;edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;/&gt;
-&lt;corpus link=&quot;https://ws.spraakbanken.gu.se/ws/sparv/latest/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;&gt;
+&lt;corpus link=&quot;https://ws.spraakbanken.gu.se/ws/sparv/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&quot;&gt;
 &lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
 &lt;paragraph&gt;
 &lt;sentence id=&quot;8f7-84d&quot;&gt;
@@ -25,39 +26,39 @@
 &lt;/result&gt;</code></pre>
 <p>POST requests are also supported using the same address. This can be useful for longer texts. Here is an example using curl:</p>
 <blockquote>
-<p><code>curl -X POST --data-binary text=&quot;En exempelmening till nättjänsten&quot; https://ws.spraakbanken.gu.se/ws/sparv/latest/</code></p>
+<p><code>curl -X POST --data-binary text=&quot;En exempelmening till nättjänsten&quot; https://ws.spraakbanken.gu.se/ws/sparv/</code></p>
 </blockquote>
 <p>The response is the same as for the above GET request.</p>
 <p>It is also possible to upload text or XML files using curl:</p>
 <blockquote>
-<p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/latest/upload?</code></p>
+<p><code>curl -X POST -F files[]=@/path/to/file/myfile.txt https://ws.spraakbanken.gu.se/ws/sparv/upload?</code></p>
 </blockquote>
 <p>The response will be a download link to a zip file containing the annotation.</p>
 <h2 id="settings">Settings</h2>
 <p>The web service supports some costum settings, e.g. it lets you chose between different tokenizers on word, sentence, and paragraph level and you can define which annotations should be generated.</p>
 <p>These settings can be provided as a JSON object to the <code>settings</code> variable. This object must satisfy the JSON schema available at the following adress:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/schema</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/schema</code></p>
 </blockquote>
 <p>The schema holds default values for all the attributes. The use of the settings variable is therefore optional.</p>
 <p>A request which only generates a dependency analysis could look like this:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Det+trodde+jag+aldrig.&amp;settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Det+trodde+jag+aldrig.&amp;settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
 <p>Or as a POST request using curl:</p>
 <blockquote>
-<p><code>curl -X POST -g --data-binary text=&quot;Det trodde jag aldrig.&quot; 'https://ws.spraakbanken.gu.se/ws/sparv/latest/?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}'</code></p>
+<p><code>curl -X POST -g --data-binary text=&quot;Det trodde jag aldrig.&quot; 'https://ws.spraakbanken.gu.se/ws/sparv/?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}'</code></p>
 </blockquote>
 <p>If you are not sure how to define the settings variable you can get help from the <a href="https://spraakbanken.gu.se/sparv">frontend</a> by clicking <code>Show JSON Settings</code> under <code>Show advanced settings</code>. This will generate the JSON-objekt for the chosen settings which is sent in the <code>settings</code> variable.</p>
 <p>The makefile which is generated for a certain set of settings can be viewed by sending a <code>makefile</code> query:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/makefile?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/makefile?settings={&quot;positional_attributes&quot;:{&quot;dependency_attributes&quot;:[&quot;ref&quot;,&quot;dephead&quot;,&quot;deprel&quot;],&quot;lexical_attributes&quot;:[],&quot;compound_attributes&quot;:[]}}</code></p>
 </blockquote>
 <h2 id="joining-a-build">Joining a Build</h2>
 <p>At the top of the XML response you can find a hash number inside the <code>build</code>-tag. This hash can be used to join a build of an earlier build.</p>
 <p>The following request is used for joining the build from the first example of this documentation:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/join?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa</code></p>
 </blockquote>
 <p>The response contains the chosen settings, the original text and of course the result of the annotation. The entire response looks like this:</p>
 <pre><code>&lt;result&gt;
@@ -109,7 +110,7 @@
 }&lt;/settings&gt;</code></pre>
 <pre><code>&lt;original&gt;&amp;lt;text&amp;gt;En exempelmening till nättjänsten&amp;lt;/text&amp;gt;&lt;/original&gt;
 &lt;build hash=&#39;edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;/&gt;
-&lt;corpus link=&#39;https://ws.spraakbanken.gu.se/ws/sparv/latest/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;&gt;
+&lt;corpus link=&#39;https://ws.spraakbanken.gu.se/ws/sparv/download?hash=edb2a4717701a65b721d97834a56b129dc3bf6aa&#39;&gt;
     &lt;text lix=&quot;54.00&quot; ovix=&quot;inf&quot; nk=&quot;inf&quot;&gt;
         &lt;paragraph&gt;
             &lt;sentence id=&quot;8f7-84d&quot;&gt;
@@ -143,13 +144,13 @@
 </ul>
 <p>This is an example of an analysis of a German sentence:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={&quot;lang&quot;:&quot;de&quot;}</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Nun+folgt+ein+deutscher+Beispielsatz.&amp;settings={&quot;lang&quot;:&quot;de&quot;}</code></p>
 </blockquote>
 <p>Different kinds of settings are supported for different languages. Please use the <a href="https://spraakbanken.gu.se/sparv">frontend</a> if you want to check which options there are for a certain language.</p>
 <h2 id="incremental-progress-information">Incremental Progress Information</h2>
 <p>By adding the flag <code>incremental=true</code> to your usual query you can receive more information on how your analysis is being processed. An example query could look like this:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/?text=Nu+med+inkrementell+information&amp;incremental=true</code></p>
 </blockquote>
 <p>The resulting XML will contain the following extra tags:</p>
 <pre><code>&lt;increment command=&quot;&quot; step=&quot;0&quot; steps=&quot;27&quot;/&gt;
@@ -184,27 +185,27 @@
 <h2 id="other-calls">Other calls</h2>
 <p>You can get a short description of all existing API calls from the following address:</p>
 <blockquote>
-<p><code>https://ws.spraakbanken.gu.se/ws/sparv/latest/api</code></p>
+<p><code>https://ws.spraakbanken.gu.se/ws/sparv/api</code></p>
 </blockquote>
 <!--
 ## Övriga anrop
 Visar om nättjänstens python-bakända svarar på ping:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/ping`
+> `https://ws.spraakbanken.gu.se/ws/sparv/ping`
 
 Statusarna för alla byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/status`
+> `https://ws.spraakbanken.gu.se/ws/sparv/status`
 
 Ta bort byggen som inte hämtats på över 24 timmar:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/cleanup`
+> `https://ws.spraakbanken.gu.se/ws/sparv/cleanup`
 
 Ta bort felaktiga byggen:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/cleanup/errors`
+> `https://ws.spraakbanken.gu.se/ws/sparv/cleanup/errors`
 
 Visa nättjänstens api i ett swagger-ui JSON-schema:
 
-> `https://ws.spraakbanken.gu.se/ws/sparv/latest/api`
+> `https://ws.spraakbanken.gu.se/ws/sparv/api`
 -->

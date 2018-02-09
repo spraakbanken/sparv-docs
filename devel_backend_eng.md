@@ -7,7 +7,7 @@ and its usage of the catapult and can be used as a developer's guide.
 ### <a name="backend"></a>Backend
 
 The backend is run through the WSGI script `index.py`.
-It is available at [https://spraakbanken.gu.se/ws/sparv/latest/](https://spraakbanken.gu.se/ws/sparv/latest/).
+It is available at [https://spraakbanken.gu.se/ws/sparv](https://spraakbanken.gu.se/ws/sparv).
 
 #### <a name="be-requirements"></a>Requirements
 
