@@ -39,6 +39,7 @@ cat settings_template.tex | sed 's/LANGUAGE/english/' > settings_eng.tex
 
 function make_document {
     # Convert markdown to latex/pdf:
+    # Use macro.gpp to insert page breaks, references and files
     # pandoc $1 -t latex -o `basename $1 .md`.pdf \
     gpp -H -DTEX=1 --include ../macros.gpp $1 | pandoc -t latex -o `basename $1 .md`.pdf \
     -H settings_$2.tex `# include in header` \
