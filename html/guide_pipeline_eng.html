@@ -15,176 +15,164 @@
 <p>The Sparv corpus pipeline consists of Python modules which are located in the <code>python</code> directory. Most of the modules contain code to solve a single task, e.g. part-of-speech tagging, tokenisation etc. Some of the modules call external tools, e.g. Hunpos or the MaltParser.</p>
 <p>The following is a short summary of most of the existing modules and their basic functionalities. More information on every script can be found in the doc strings of the functions.</p>
 <table>
+<colgroup>
+<col width="27%" />
+<col width="72%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Module</th>
-<th align="left">Description</th>
+<th>Module</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><em>annotate.py</em></td>
-<td align="left">Different types of small annotations.</td>
+<td><em>annotate.py</em></td>
+<td>Different types of small annotations.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>compound.py</em></td>
-<td align="left">Compound analysis using SALDO.</td>
+<td><em>compound.py</em></td>
+<td>Compound analysis using SALDO.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>crf.py</em></td>
-<td align="left">Sentence segmentation with Conditional Random Fields.</td>
+<td><em>crf.py</em></td>
+<td>Sentence segmentation with Conditional Random Fields.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>cwb.py</em></td>
-<td align="left">Creates the different output formats (VRT, XML, Corpus Workbench files).</td>
+<td><em>cwb.py</em></td>
+<td>Creates the different output formats (VRT, XML, Corpus Workbench files).</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>dateformat.py</em></td>
-<td align="left">Date formatting.</td>
+<td><em>dateformat.py</em></td>
+<td>Date formatting.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>diapivot.py</em></td>
-<td align="left">Creates the diachronic pivot, linking older Swedish texts to SALDO.</td>
+<td><em>diapivot.py</em></td>
+<td>Creates the diachronic pivot, linking older Swedish texts to SALDO.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>fileid.py</em></td>
-<td align="left">Creates IDs for every file in the corpus.</td>
+<td><em>fileid.py</em></td>
+<td>Creates IDs for every file in the corpus.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>freeling.py</em></td>
-<td align="left">For annotation of other languages. Calls the Freeling software and processes</td>
+<td><em>freeling.py</em></td>
+<td>For annotation of other languages. Calls the Freeling software and processes its output. (Only available in the AGPL-version of Sparv)</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">its output. (Only available in the AGPL-version of Sparv)</td>
+<td><em>geo.py</em></td>
+<td>Annotates geographical features.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>geo.py</em></td>
-<td align="left">Annotates geographical features.</td>
+<td><em>hist.py</em></td>
+<td>Different functions used for annotation historical Swedish texts.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>hist.py</em></td>
-<td align="left">Different functions used for annotation historical Swedish texts.</td>
+<td><em>hunpos_morphtable.py</em></td>
+<td>Creates a morphtable file for Hunpos, based on SALDO.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>hunpos_morphtable.py</em></td>
-<td align="left">Creates a morphtable file for Hunpos, based on SALDO.</td>
+<td><em>hunpos.py</em></td>
+<td>Part-of-speech tagging with Hunpos.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>hunpos.py</em></td>
-<td align="left">Part-of-speech tagging with Hunpos.</td>
+<td><em>info.py</em></td>
+<td>Creates an info file which is used by CWB.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>info.py</em></td>
-<td align="left">Creates an info file which is used by CWB.</td>
+<td><em>install.py</em></td>
+<td>Installs corpora on other machines.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>install.py</em></td>
-<td align="left">Installs corpora on other machines.</td>
+<td><em>lemgram_index.py</em></td>
+<td>Creates a lemgramindex which is used by Korp.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>lemgram_index.py</em></td>
-<td align="left">Creates a lemgramindex which is used by Korp.</td>
+<td><em>lexical_classes.py</em></td>
+<td>Creates annotations for lexical classes with different resources (Blingbring, SweFN).</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>lexical_classes.py</em></td>
-<td align="left">Creates annotations for lexical classes with different resources (Blingbring,</td>
+<td><em>lmflexicon.py</em></td>
+<td>Parses LMF lexicons.</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">SweFN).</td>
+<td><em>malt.py</em></td>
+<td>Syntactic parsing with the MaltParser.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>lmflexicon.py</em></td>
-<td align="left">Parses LMF lexicons.</td>
+<td><em>number.py</em></td>
+<td>Different types of numbering used e.g. in structural attributes.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>malt.py</em></td>
-<td align="left">Syntactic parsing with the MaltParser.</td>
+<td><em>parent.py</em></td>
+<td>Adds annotations for parent links and/or children links (needed for pipeline internal purposes).</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>number.py</em></td>
-<td align="left">Different types of numbering used e.g. in structural attributes.</td>
+<td><em>readability.py</em></td>
+<td>Creates annotations for readability measures.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>parent.py</em></td>
-<td align="left">Adds annotations for parent links and/or children links (needed for pipeline</td>
+<td><em>relations.py</em></td>
+<td>Creates data used by the word picture.</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">internal purposes).</td>
+<td><em>saldo.py</em></td>
+<td>Different types of SALDO-annotations.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>readability.py</em></td>
-<td align="left">Creates annotations for readability measures.</td>
+<td><em>segment.py</em></td>
+<td>All kinds of segmentation/tokenisation (paragraph, sentence, word).</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>relations.py</em></td>
-<td align="left">Creates data used by the word picture.</td>
+<td><em>sent_align.py</em></td>
+<td>Sentence linking of parallel corpora.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>saldo.py</em></td>
-<td align="left">Different types of SALDO-annotations.</td>
+<td><em>sentiment.py</em></td>
+<td>Creates sentiment annotations.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>segment.py</em></td>
-<td align="left">All kinds of segmentation/tokenisation (paragraph, sentence, word).</td>
+<td><em>suc2hunpos.py</em></td>
+<td>Creates a test material based on SUC3 for Hunpos.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>sent_align.py</em></td>
-<td align="left">Sentence linking of parallel corpora.</td>
+<td><em>swener.py</em></td>
+<td>Creates named-entity annotations with hfst-SweNER.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>sentiment.py</em></td>
-<td align="left">Creates sentiment annotations.</td>
+<td><em>timespan.py</em></td>
+<td>Handles time spans.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>suc2hunpos.py</em></td>
-<td align="left">Creates a test material based on SUC3 for Hunpos.</td>
+<td><em>train_nst_comp_model.py</em></td>
+<td>Trains a compound part-of-speech model used by the compound analysis.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>swener.py</em></td>
-<td align="left">Creates named-entity annotations with hfst-SweNER.</td>
+<td><em>train_stats_model.py</em></td>
+<td>Trains a statistical model used by the compound analysis.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>timespan.py</em></td>
-<td align="left">Handles time spans.</td>
+<td><em>treetagger.py</em></td>
+<td>For annotation of other languages. Calls the TreeTagger software and processes its output.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>train_nst_comp_model.py</em></td>
-<td align="left">Trains a compound part-of-speech model used by the compound analysis.</td>
+<td><em>vw.py</em></td>
+<td>Topic modelling with vowpal wabbit.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>train_stats_model.py</em></td>
-<td align="left">Trains a statistical model used by the compound analysis.</td>
+<td><em>word_align.py</em></td>
+<td>Word linking of parallel corpora with fast_align and cdec.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>treetagger.py</em></td>
-<td align="left">For annotation of other languages. Calls the TreeTagger software and processes</td>
+<td><em>wsd.py</em></td>
+<td>Crates annotations for word sense disambiguation.</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">its output.</td>
+<td><em>xmlanalyser.py</em></td>
+<td>An analyzer for pseudo-XML documents.</td>
 </tr>
 <tr class="odd">
-<td align="left"><em>vw.py</em></td>
-<td align="left">Topic modelling with vowpal wabbit.</td>
-</tr>
-<tr class="even">
-<td align="left"><em>word_align.py</em></td>
-<td align="left">Word linking of parallel corpora with fast_align and cdec.</td>
-</tr>
-<tr class="odd">
-<td align="left"><em>wsd.py</em></td>
-<td align="left">Crates annotations for word sense disambiguation.</td>
-</tr>
-<tr class="even">
-<td align="left"><em>xmlanalyser.py</em></td>
-<td align="left">An analyzer for pseudo-XML documents.</td>
-</tr>
-<tr class="odd">
-<td align="left"><em>xmlparser.py</em></td>
-<td align="left">Parses XML and generates files in the pipeline's working format.</td>
+<td><em>xmlparser.py</em></td>
+<td>Parses XML and generates files in the pipeline's working format.</td>
 </tr>
 </tbody>
 </table>
@@ -239,7 +227,7 @@ Dependency head and dependency relation. Created by <em>malt.py</em>, with <em>w
 <p>A module function can be concluded with calling <code>util.write_annotation()</code> which takes a path to an annotation file and a dictionary as arguments and saves the dictionary contents to the specified file path.</p>
 <p>A module should also contain some code that makes its functions available from the command line. This is what the last two lines in the above example are there for. As arguments to the function <code>util.run.main</code> you can list all the names of the functions you want to be able to use from the command line in the following format: <code>alias=name_of_function</code>. The chosen alias can then be specified as a flag in the command line. The first function may be set as default by omitting the alias.</p>
 <h3 id="makefile">Makefile</h3>
-<p>When running the Sparv pipeline its different modules are coordinated with makefiles. There are two global makefiles containing configurations and rules for the creation of annotations (<code>Makefile.config</code>, <code>Makefile.rules</code>). Furthermore, each corpus has its own makefile (<code>Makefile</code>) that containt information about the data format and about which annotations should be used. The two global makefiles are imported by the corpus specific makefile.</p>
+<p>When running the Sparv pipeline its different modules are coordinated with makefiles. There are two global makefiles containing configurations and rules for the creation of annotations (<code>Makefile.config</code>, <code>Makefile.rules</code>). Furthermore, each corpus has its own makefile (<code>Makefile</code>) that contains information about the data format and about which annotations should be used. The two global makefiles are imported by the corpus specific makefile.</p>
 <p>Documentation for the different corpus specific makefiles can be found in <code>Makefile.template</code>. This file is distributed together with the other makefiles in the Sparv pipeline.</p>
 <p><code>Makefile.rules</code> is the file containing all rules that create annotations. <code>Makefile.config</code> contains variables that can be configured.</p>
 <p>A rule in Makefile.rules can for example look like this:</p>
