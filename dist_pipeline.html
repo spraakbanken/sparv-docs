@@ -1,0 +1,219 @@
+<h2 id="setting-up-the-sparv-pipeline">Setting up the Sparv Pipeline</h2>
+<p>This section describes how to get the Sparv corpus pipeline up and running on your own machine. Begin by downloading the latest version of the corpus pipeline <a href="https://spraakbanken.gu.se/pub/sparv.dist/sparv_pipeline/?C=M;O=D">here</a>.</p>
+<p>Note that the source code is made available in two different versions:</p>
+<ul>
+<li>under the <a href="https://opensource.org/licenses/MIT">MIT license</a> without usage of FreeLing</li>
+<li>under the <a href="http://www.gnu.org/licenses/agpl.html">AGPL license</a> including calls to FreeLing</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<p>To use the corpus pipeline you need the following:</p>
+<ul>
+<li>A Unix-like environment (e.g. Linux, OS X)</li>
+<li><a href="http://python.org/">Python 3.4</a> or newer</li>
+<li>GNU Make</li>
+<li><a href="http://code.google.com/p/hunpos/">Hunpos</a>, with its path included in your <code>PATH</code> environment variable</li>
+<li>Java</li>
+</ul>
+<p>Optional:</p>
+<ul>
+<li><a href="http://cwb.sourceforge.net/beta.php">Corpus Workbench</a> (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)</li>
+<li><a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> (if you want to use named entity recognition; experimental feature)</li>
+<li><a href="http://devel.cpl.upc.edu/freeling">freeling</a> 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
+<li><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)</li>
+<li><a href="https://github.com/clab/fast_align">fast_align</a> (if you want to run word-linking on parallel corpora)</li>
+</ul>
+<h3 id="installing-the-required-software">Installing the required software</h3>
+<p>The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.</p>
+<h4 id="python-virtual-environment">Python virtual environment</h4>
+<p>Set up a Python virtual environment as a subdirectory to the <code>annotate</code> directory:</p>
+<pre><code>python3 -m venv venv</code></pre>
+<p>Activate the virtual environment and install the required Python packages:</p>
+<pre><code>source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+<p>You can then deactivate the virtual environment:</p>
+<pre><code>deactivate</code></pre>
+<h4 id="hunpos">Hunpos</h4>
+<p>Hunpos can be downloaded from <a href="http://code.google.com/p/hunpos/">here</a>. Installation is done by unpacking and then adding the path of the executables to your <code>PATH</code> environmental variable. If you are running a 64-bit OS, you might also have to install 32-bit compatibility libraries if Hunpos won't run:</p>
+<pre><code>sudo apt install ia32-libs</code></pre>
+<p>On Arch Linux, activate the <code>multilib</code> repository and install <code>lib32-gcc-libs</code>.</p>
+<p>If that doesn't work, you might have to compile Hunpos from its source code.</p>
+<h4 id="hfst-swener-optional">hfst-SweNER (optional)</h4>
+<p>The current version of hfst-SweNER expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER's named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
+<pre><code>#! /usr/bin/env python2</code></pre>
+<h4 id="treetagger-and-freeling-optional">TreeTagger and Freeling (optional)</h4>
+<p>TreeTagger and Freeling is used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided read-me file. If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
+<p>The Freeling model files (configuration files) must be copied from the Freeling source code (the directory <code>data/config</code>) into the <code>models/freeling</code> directory of the pipeline. The configuration files need to be re-named to a two-letter language code followed by the file ending <code>.cfg</code>, e.g. the English parameter file is called <code>en.cfg</code>.</p>
+<p>The following is a list over the languages currently supported by the corpus pipeline, their language codes and which tool Sparv uses to analyze them:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Language</th>
+<th align="left">Code</th>
+<th align="left">Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bulgarian</td>
+<td align="left">bg</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Catalan</td>
+<td align="left">ca</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Dutch</td>
+<td align="left">nl</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">English</td>
+<td align="left">en</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Estonian</td>
+<td align="left">et</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Finnish</td>
+<td align="left">fi</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="odd">
+<td align="left">French</td>
+<td align="left">fr</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="even">
+<td align="left">Galician</td>
+<td align="left">gl</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">German</td>
+<td align="left">de</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="even">
+<td align="left">Italian</td>
+<td align="left">it</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Latin</td>
+<td align="left">la</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Norwegian</td>
+<td align="left">no</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Polish</td>
+<td align="left">pl</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Portuguese</td>
+<td align="left">pt</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Romanian</td>
+<td align="left">ro</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Russian</td>
+<td align="left">ru</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Slovak</td>
+<td align="left">sk</td>
+<td align="left">TreeTagger</td>
+</tr>
+<tr class="even">
+<td align="left">Slovenian</td>
+<td align="left">sl</td>
+<td align="left">Freeling</td>
+</tr>
+<tr class="odd">
+<td align="left">Spanish</td>
+<td align="left">es</td>
+<td align="left">Freeling</td>
+</tr>
+</tbody>
+</table>
+<!-- Asturian      as -->
+<h4 id="installing-other-optional-software">Installing other optional software</h4>
+<p>To install the software listed under optional, please follow the installation instructions on the respective websites or in the provided read-me files. Make sure to include their paths in the your <code>PATH</code> environment variable. If you are using fast_align, please copy the binary files <code>atools</code> and <code>fast_align</code> into the <code>bin/word_alignment</code> folder of the pipeline. Installation instructions for Corpus Workbench are given <a href="#cwb_install">below</a>.</p>
+<h3 id="installing-the-corpus-import-tools">Installing the Corpus Import tools</h3>
+<ol style="list-style-type: decimal">
+<li>Install the corpus import tools by unpacking the archive to a directory of your choice (referred to as <code>installation_dir</code> from here on).</li>
+<li>Set a new environment variable <code>SPARV_MAKEFILES</code> to <code>installation_dir/annotate/makefiles</code>.</li>
+</ol>
+<h3 id="editing-some-variables">Editing some variables</h3>
+<p>In Makefile.config you will find a section called <em>Configuration</em>. Here you will need to specify the path to the pipeline directory. If you are planning on using the pipeline to install corpora on a remote computer, you must (in addition to installing CWB) edit the <code>remote_host</code>, <code>remote_cwb_datadir</code> and <code>remote_cwb_registry</code> variables. If you are going to use anything database related (generating lemgram index or Word Picture data for Korp) you also have to edit the value of <code>rel_mysql_dbname</code>.</p>
+<h3 id="downloading-and-updating-the-models">Downloading and updating the models</h3>
+<p>Certain annotations need models to work. To download and generate the models follow these simple steps:</p>
+<ol style="list-style-type: decimal">
+<li>Navigate to the <code>installation_dir/annotate/models</code> directory in a terminal.</li>
+<li>Run the command <code>make clean</code>, and then <code>make all</code>.</li>
+</ol>
+<p>By default, the part-of-speech tagger also relies on the SALDO model. You can disable this dependency by commenting out the line beginning with <code>hunpos_morphtable</code> in Makefile.config, or changing its value to <code>$(SPARV_MODELS)/hunpos.suc.morphtable</code>.</p>
+<h3 id="preparing-a-corpus">Preparing a corpus</h3>
+<p>Create a directory for your corpus (e.g. <code>mycorpus</code>) under the <code>installation_dir/corpora</code> directory. Under your new directory create another directory containing your input texts (e.g. <code>original</code>).</p>
+<p>The input text must meet the following criteria:</p>
+<ul>
+<li>The files must be encoded in <strong>UTF-8</strong>.</li>
+<li>The format must be <strong>valid XML</strong>, <em>with the following two exceptions</em>:
+<ol style="list-style-type: decimal">
+<li>No root element is needed. It is however required that all text in the file must be contained within elements.<br />
+The simplest valid file possible consists of a single element, for example <code>&lt;text&gt;</code>, containing nothing but raw text.<br />
+</li>
+<li>Overlapping elements are allowed (<code>&lt;a&gt;&lt;b&gt;&lt;/a&gt;&lt;/b&gt;</code>).</li>
+</ol></li>
+<li>No file should be larger than <strong>~10-20 MB</strong>, or you might run into memory problems. Split larger files into smaller files.</li>
+</ul>
+<p>Every corpus needs a <em>Makefile</em> in which you configure the format of your input material and what annotations you want. You can use the included <code>Makefile.example</code> as a base for a simple corpus, or <code>Makefile.template</code> if you want to dive into the more advanced stuff. Whichever file you choose, you should put it in the directory you created for your corpus, and name the file <code>Makefile</code>.</p>
+<p>By default <code>Makefile.example</code> is configured to read the source files from a directory named <code>original</code>, and assumes that all the text is contained within a <code>&lt;text&gt;</code> element. This can easily be changed by editing the <code>original_dir</code> and <code>xml_elements</code> variables in the Makefile. For a description of every available variable and setting, see <code>Makefile.template</code>.</p>
+<p>Once you have edited the Makefile to fit your source material and needs, you are ready to execute it by running one of the following commands in a terminal:</p>
+<p><strong><code>make TEXT</code></strong><br />
+This will parse your source files, which is a good place to start just to make sure everything works as it should. If there are any problems with the format of your source files, the script will complain.</p>
+<p><strong><code>make vrt</code></strong><br />
+This will run every type of annotation that you have specified in the Makefile, and will output a VRT file for every input file. The VRT format is used as input for Corpus Workbench to create binary corpus files. The resulting files will be found in the <code>annotations</code> directory (created automatically).</p>
+<p><strong><code>make export</code></strong><br />
+Same as <code>make vrt</code>, except the output format is XML and the files are saved to the <code>export.original</code> directory.</p>
+<p><strong><code>make cwb</code></strong><br />
+This command will take the VRT files and convert them to a Corpus Workbench corpus.</p>
+<p><strong><code>make install_corpus</code></strong><br />
+This will copy your Corpus Workbench corpus to a remote computer.</p>
+<p><strong><code>make relations</code></strong><br />
+Provided that you are using syntactic parsing, this will generate the relations data for the Word Picture in Korp.</p>
+<p><strong><code>make install_relations</code></strong><br />
+This will install the relations data to a remote MySQL server.</p>
+<p><strong><code>make add</code></strong><br />
+If you remove or add source files to your corpus after having already run one of the commands above, you will have to run the above command.</p>
+<p>For a complete list of available commands, run <strong><code>make</code></strong> without any arguments.</p>
+<h3 id="installing-corpus-workbench-optional"><a name="cwb_install"></a>Installing Corpus Workbench (optional)</h3>
+<p>If you are not going to use the Korp backend, you can skip this step.</p>
+<p>You will need the latest version of CWB for unicode support. Install by following these steps:</p>
+<p>Check out the latest version of the source code from subversion by running the following command in a terminal:</p>
+<pre><code>svn co https://cwb.svn.sourceforge.net/svnroot/cwb/cwb/trunk cwb</code></pre>
+<p>Navigate to the new cwb directory and run the following command:</p>
+<pre><code>sudo ./install-scripts/cwb-install-ubuntu</code></pre>
+<p>CWB is now installed, and by default you will find it under <code>/usr/local/cwb-X.X.X/bin</code> (where <code>X.X.X</code> is the version number). Confirm that the installation was successful by typing:</p>
+<pre><code>/usr/local/cwb-X.X.X/bin/cqp -v</code></pre>
+<p>CWB needs two directories for storing the corpora. One for the data, and one for the corpus registry. You may create these directories wherever you want, but let's assume that you have created the following two:</p>
+<pre><code>/corpora/data
+/corpora/registry</code></pre>
+<p>You also need to edit the following variables in <code>installation_dir/annotate/makefiles/Makefile.config</code>, pointing to the directories created above:</p>
+<pre><code>export CWB_DATADIR ?= /corpora/data
+export CORPUS_REGISTRY ?= /corpora/registry</code></pre>
+<p>If you're not running Ubuntu or if you run into any problems, refer to the INSTALL text file in the cwb dir for further instructions.</p>

@@ -1,0 +1,129 @@
+<!--##Korpusimportkedjan-->
+<p>Syftet med detta dokument är att förklara hur korpusimportkedjan är uppbyggd för den som är intresserad av att förbättra eller tillföra ny funktionalitet. Om du jobbar på Språkbanken borde du hämta källfilerna från Subversion. Kolla den interna wikin för mer information.</p>
+<h3 id="hämta-hem-och-installera-importkedjan">Hämta hem och installera importkedjan</h3>
+<p>Nedladdningslänken och installationsinstruktioner till importkedjan hittar du <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/distribution/importkedja">på distributionssidan</a>.</p>
+<p>För att köra importkedjan går man till väga på samma sätt som när man kör den på en av våra servrar, vilket finns beskrivet <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/korpusimport">här</a>.</p>
+<p>Formatet på indatan finns beskrivet <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/indataformat">här</a>.</p>
+<h3 id="katalogstruktur">Katalogstruktur</h3>
+<pre><code>    annotate/
+        bin/       Binärfiler
+        makefiles/ Makefiler
+        models/    Språkliga modeller
+        python/    Pythonscript
+        tests/     Tester</code></pre>
+<h3 id="importkedjans-uppbyggnad">Importkedjans uppbyggnad</h3>
+<p>Annoteringskedjan består av en mängd Python-script, som ligger under katalogen <code>python</code>. I regel är det ett script per typ av uppgift, till exempel ett script för ordklasstaggning, ett för olika sorters segmentering, och så vidare. Vissa av dessa script anropar externa verktyg, som till exempel Hunpos eller MaltParser.</p>
+<p>Följande är en lista över de script som finns, och en kort förklaring av deras funktion. Vidare dokumentation finns vanligtvis i docstringen till respektive funktion.</p>
+<ul>
+<li><em>align.py</em><br />
+Sammanlänkning av parallellkorpusar.</li>
+<li><em>annotate.py</em><br />
+Blandade småannoteringar.</li>
+<li><em>compound.py</em><br />
+Sammansättningsanalys med hjälp av SALDO.</li>
+<li><em>crf.py</em><br />
+Meningssegmentering med CRF.</li>
+<li><em>cwb.py</em><br />
+Skapar det slutgiltiga VRT-formatet och kodar Corpus Workbench-filer.</li>
+<li><em>dateformat.py</em><br />
+Datumformatering.</li>
+<li><em>diapivot.py</em></li>
+<li><em>fileid.py</em><br />
+Skapar IDn för varje fil i korpusen.</li>
+<li><em>hist.py</em><br />
+Diverse funktioner för annotering av historiska korpusar.</li>
+<li><em>hunpos_morphtable.py</em><br />
+Skapar en morphtable-fil för användning med Hunpos, baserad på SALDO.</li>
+<li><em>hunpos.py</em><br />
+Ordklasstaggning med hjälp av Hunpos.</li>
+<li><em>info.py</em><br />
+Skapar info-fil som används av CWB.</li>
+<li><em>install.py</em><br />
+Installerar korpusar på annan maskin.</li>
+<li><em>lemgram_index.py</em><br />
+Skapar ett lemgramindex som används av Korp.</li>
+<li><em>lemgrampos.py</em><br />
+</li>
+<li><em>lmflexicon.py</em><br />
+Parsar LMF-lexikon.</li>
+<li><em>malt.py</em><br />
+Syntaktisk parsning med hjälp av MaltParsern.</li>
+<li><em>number.py</em><br />
+Diverse numrering.</li>
+<li><em>parent.py</em><br />
+</li>
+<li><em>relations.py</em><br />
+Skapar ordbildsdata.</li>
+<li><em>saldo.py</em><br />
+SALDO-annotering.</li>
+<li><em>segment.py</em><br />
+All segmentering (stycke, mening, ord).</li>
+<li><em>sent_align.py</em><br />
+Meningslänkning av parallellkorpusar.</li>
+<li><em>suc2hunpos.py</em><br />
+Skapar träningsmaterial baserat på SUC3 för Hunpos.</li>
+<li><em>timespan.py</em><br />
+Hanterar tidsspann.</li>
+<li><em>word_align.py</em><br />
+Ordlänkning av parallellkorpusar med hjälp av fast_align och cdec.</li>
+<li><em>xmlparser.py</em><br />
+Parsar XML och genererar filer i importkedjans arbetsformat.</li>
+</ul>
+<p>Det första som sker vid körning av kedjan är att indatan i XML-format parsas av xmlparser.py. Denna genererar för varje indatafil följande (vanligtvis i katalogen <code>annotations</code>):</p>
+<ul>
+<li>En .TEXT-fil innehållande källans text samt en stor mängd ankarpunkter.</li>
+<li>En fil per strukturellt attribut som fångats in, där varje rad består av dels en referens till två ankarpunkter vilka anger attributets spann, dels attributets värde.</li>
+</ul>
+<p>Utdatan från nästan samtliga script är i det sistnämnda formatet ovan, med referenser till ankarpunkter och data för angivet spann. Ordklasstaggarscriptet ger till exempel ifrån sig en fil bestående av ett ankarspann per ord, och ordklassen som värde.</p>
+<h3 id="annotationer">Annotationer</h3>
+<p>Nedan är en lista över de vanligaste annotationerna, och hur de blir till:</p>
+<ul>
+<li><em>word</em><br />
+Själva strängen som utgör ordet. Denna annotation skapas av <em>xmlparser.py</em>.</li>
+<li><em>msd</em><br />
+Morfosyntaktisk beskrivning. Skapas av <em>hunpos.py</em> med <em>word</em> som indata.</li>
+<li><em>pos</em><br />
+En förenklad MSD som endast behåller första ledet. Skapas av <em>annotate.py</em> med <em>msd</em> som indata.</li>
+<li><em>baseform</em>, <em>lemgram</em>, <em>sense</em><br />
+Grundform, lemgram och SALDO-id. Skapas av <em>saldo.py</em>, med <em>word</em>, <em>msd</em> och <em>ref</em> som indata. Använder en SALDO-modell som skapats av <em>saldo.py</em>.</li>
+<li><em>ref</em><br />
+En numrering av varje token inom varje mening. Skapas av <em>annotate.py</em>.</li>
+<li><em>dephead</em>, <em>deprel</em><br />
+Dependenshuvud och dependensrelation. Skapas av <em>malt.py</em>, med <em>word</em>, <em>msd</em> och <em>pos</em> som indata. Använder MALT-parsern med en modell för svenska.</li>
+</ul>
+<h3 id="att-skapa-ett-nytt-script">Att skapa ett nytt script</h3>
+<p>Denna del kommer att beskriva hur man går tillväga för att skapa ett nytt script och göra det till en del av importkedjan.</p>
+<p>Hur dataformatet för in- och utdata ser ut behöver man i regel inte bry sig om, eftersom det finns färdiga metoder för att läsa och skriva dessa.</p>
+<p>Nedan är ett minimalt exempel på ett script som skulle kunna vara en del av importkedjan:</p>
+<pre><code>    # -*- coding: utf-8 -*-
+    import sb.util as util
+
+    def changecase(word, out, case):
+        # Läs in annotationen &quot;word&quot;
+        words = util.read_annotation(word)
+
+        # Transformera varje ord till versaler eller gemener
+        for w in words:
+            if case == &quot;upper&quot;:
+                words[w] = words[w].upper()
+            elif case == &quot;lower&quot;:
+                words[w] = words[w].lower()
+
+        # Skriv resultatet till angiven annotation
+        util.write_annotation(out, words)
+
+    if __name__ == &#39;__main__&#39;:
+        util.run.main(changecase=changecase)</code></pre>
+<p>Varje script börjar i regel med att importera <code>util</code>, som innehåller funktioner för att läsa och skriva annotationer i det dataformat som kedjan använder.</p>
+<p>Därefter definieras en eller flera funktioner, som man sen ska kunna använda sig av i kedjan. I regel tar de som argument en eller flera sökvägar till befintliga annotationsfiler som indata, en sökväg till den annotationsfil som ska skapas som resultat av körningen, samt eventuellt ytterligare argument som påverkar det funktionen utför.</p>
+<p>För att läsa in befintlig annotation används funktionen <code>util.read_annotation()</code>, som ger ett dictionaryobjekt tillbaka, med ankarspann som nyckel och annotationens värden som värde. En funktion avslutas vanligtvis genom att anropa <code>util.write_annotation()</code>, som tar en sökväg och en dictionary som argument, och sparar ner datan från dictionaryn till angiven sökväg.</p>
+<p>Allra sist i scriptet lägger man ett stycke kod (det som i exemplet ovan inleds av <code>if __name__ == '__main__':</code>), som gör det möjligt att anropa alla funktioner i scriptet direkt från kommandoraden. Detta är nödvändigt för att importkedjan ska kunna använda sig av scripten. Som argument till funktionen <code>util.run.main</code> listar man alla funktioner i det aktuella scriptet som ska vara nåbara från kommandoraden. Funktionerna anges på formen <code>alias=funktionsnamn</code>, där alias är det som används som flagga i kommandoraden. Den första funktionen kan sättas som default genom att utelämna alias.</p>
+<h3 id="makefile">Makefile</h3>
+<p>Körningen av importkedjans alla script samordnas med hjälp av ett par makefiler. Dels två makefiler innehållande regler för alla olika annotationer (<code>Makefile.config</code>, <code>Makefile.rules</code>), dels en korpusspecifik makefil för varje korpus (<code>Makefile</code>), som innehåller information om just den korpusens indataformat och annotationer. De två generella makefilerna importeras av de korpusspecifika.</p>
+<p>För dokumentation av de korpusspecifika makefilerna hänvisas till <code>Makefile.template</code> som finns bland makefilerna i distributionen av importkedjan.</p>
+<p><code>Makefile.rules</code> är den fil som innehåller regler för de olika annotationerna, medan <code>Makefile.config</code> innehåller variabler som kan sättas, samt allmänna regler för körning av korpusimportkedjan.</p>
+<p>En regel i Makefile.rules kan se ut som följer:</p>
+<pre><code>    %.token.uppercase: %.token.word
+        $(python) -m sb.case --changecase --out $@ --word $(1) --case upper</code></pre>
+<p>Ovanstående är regeln för att skapa annotationen <em>uppercase</em> från Python-exemplet ovan. Som källa tar den den annotationen <em>word</em>, och den anropar funktionen <em>changecase</em> i scriptet <em>case.py</em>, med argumenten <em>out</em>, <em>word</em> och <em>case</em>.</p>
+<p>För att lägga till en ny typ av annotation, så räcker det i regel med att lägga till en regel likt den ovan i <code>Makefile.rules</code>, samt lägga till annotation i listan över annotationer i korpusens makefil.</p>

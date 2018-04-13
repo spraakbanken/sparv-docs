@@ -1,0 +1,249 @@
+<h2 id="developing-the-sparv-pipeline">Developing the Sparv Pipeline</h2>
+<p>This section describes the internal structure of the Sparv pipeline and its usage and can be used as a developer's guide. If you are working at Språkbanken you should use the latest version from Subversion. Check the internal wiki page for more information.</p>
+<h3 id="downloading-and-installing-the-sparv-pipeline">Downloading and installing the Sparv pipeline</h3>
+<p>The latest distribution of the pipeline can be downloaded from the <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">distribution page</a>.</p>
+<p>Annotating corpora with the Sparv pipeline can be done in the same manner as on Språkbanken's own servers which is described <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/korpusimport">here</a> (in Swedish only).</p>
+<p>The import format is described <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/importformat">here</a>.</p>
+<h3 id="the-pipelines-folder-structure">The pipeline's folder structure</h3>
+<pre><code>    annotate/
+        bin/       binary files
+        makefiles/ Makefiles
+        models/    linguistic models
+        python/    Python modules
+        tests/     tests</code></pre>
+<h3 id="the-pipeline-structure">The pipeline structure</h3>
+<p>The Sparv corpus pipeline consists of Python modules which are located in the <code>python</code> directory. Most of the modules contain code to solve a single task, e.g. part-of-speech tagging, tokenisation etc. Some of the modules call external tools, e.g. Hunpos or the MaltParser.</p>
+<p>The following is a short summary of most of the existing modules and their basic functionalities. More information on every script can be found in the doc strings of the functions.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Module</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>annotate.py</em></td>
+<td align="left">Different types of small annotations.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>compound.py</em></td>
+<td align="left">Compound analysis using SALDO.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>crf.py</em></td>
+<td align="left">Sentence segmentation with Conditional Random Fields.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>cwb.py</em></td>
+<td align="left">Creates the different output formats (VRT, XML, Corpus Workbench files).</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>dateformat.py</em></td>
+<td align="left">Date formatting.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>diapivot.py</em></td>
+<td align="left">Creates the diachronic pivot, linking older Swedish texts to SALDO.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>fileid.py</em></td>
+<td align="left">Creates IDs for every file in the corpus.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>freeling.py</em></td>
+<td align="left">For annotation of other languages. Calls the Freeling software and processes</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">its output. (Only available in the AGPL-version of Sparv)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>geo.py</em></td>
+<td align="left">Annotates geographical features.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>hist.py</em></td>
+<td align="left">Different functions used for annotation historical Swedish texts.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>hunpos_morphtable.py</em></td>
+<td align="left">Creates a morphtable file for Hunpos, based on SALDO.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>hunpos.py</em></td>
+<td align="left">Part-of-speech tagging with Hunpos.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>info.py</em></td>
+<td align="left">Creates an info file which is used by CWB.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>install.py</em></td>
+<td align="left">Installs corpora on other machines.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>lemgram_index.py</em></td>
+<td align="left">Creates a lemgramindex which is used by Korp.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>lexical_classes.py</em></td>
+<td align="left">Creates annotations for lexical classes with different resources (Blingbring,</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">SweFN).</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>lmflexicon.py</em></td>
+<td align="left">Parses LMF lexicons.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>malt.py</em></td>
+<td align="left">Syntactic parsing with the MaltParser.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>number.py</em></td>
+<td align="left">Different types of numbering used e.g. in structural attributes.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>parent.py</em></td>
+<td align="left">Adds annotations for parent links and/or children links (needed for pipeline</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">internal purposes).</td>
+</tr>
+<tr class="even">
+<td align="left"><em>readability.py</em></td>
+<td align="left">Creates annotations for readability measures.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>relations.py</em></td>
+<td align="left">Creates data used by the word picture.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>saldo.py</em></td>
+<td align="left">Different types of SALDO-annotations.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>segment.py</em></td>
+<td align="left">All kinds of segmentation/tokenisation (paragraph, sentence, word).</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sent_align.py</em></td>
+<td align="left">Sentence linking of parallel corpora.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sentiment.py</em></td>
+<td align="left">Creates sentiment annotations.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>suc2hunpos.py</em></td>
+<td align="left">Creates a test material based on SUC3 for Hunpos.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>swener.py</em></td>
+<td align="left">Creates named-entity annotations with hfst-SweNER.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>timespan.py</em></td>
+<td align="left">Handles time spans.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>train_nst_comp_model.py</em></td>
+<td align="left">Trains a compound part-of-speech model used by the compound analysis.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>train_stats_model.py</em></td>
+<td align="left">Trains a statistical model used by the compound analysis.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>treetagger.py</em></td>
+<td align="left">For annotation of other languages. Calls the TreeTagger software and processes</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">its output.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>vw.py</em></td>
+<td align="left">Topic modelling with vowpal wabbit.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>word_align.py</em></td>
+<td align="left">Word linking of parallel corpora with fast_align and cdec.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>wsd.py</em></td>
+<td align="left">Crates annotations for word sense disambiguation.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>xmlanalyser.py</em></td>
+<td align="left">An analyzer for pseudo-XML documents.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>xmlparser.py</em></td>
+<td align="left">Parses XML and generates files in the pipeline's working format.</td>
+</tr>
+</tbody>
+</table>
+<p>The first thing that happens when annotating a corpus with the Sparv pipeline is that the XML input data is parsed by the module xmlparser.py. This module generates the following files for every input file (usually in the <code>annotations</code> directory):</p>
+<ul>
+<li>a <code>.@TEXT</code> file containing the source text with anchors</li>
+<li>one file for each structural attribute captured, where each line consists of a reference to two anchors indicating the span of the attribute, and the value of the attribute</li>
+</ul>
+<p>The output of most modules are files in the above described format, with references to anchors and data for the indicated span. The part-of-speech tagger module for instance creates a file containing an anchor span per word and the part-of-speech as value.</p>
+<h3 id="annotations">Annotations</h3>
+<p>Below is a list with some of the most common annotations and which module they are built with:</p>
+<ul>
+<li><em>word</em><br />
+The string containing a token (word or punctuation). This annotation is created by <em>xmlparser.py</em>.</li>
+<li><em>msd</em><br />
+A morphosyntactic descriptor. Created by <em>hunpos.py</em> with <em>word</em> as input data.</li>
+<li><em>pos</em><br />
+A simplified MSD, preserving only its initial part. Created by <em>annotate.py</em> with <em>msd</em> as input data.</li>
+<li><em>baseform</em>, <em>lemgram</em>, <em>sense</em><br />
+Citation form, lemgram, and SALDO-ID. Created by <em>saldo.py</em>, with <em>word</em>, <em>msd</em> and <em>ref</em> as input files. Uses a SALDO model which is created with <em>saldo.py</em>.</li>
+<li><em>ref</em><br />
+En numrering av varje token inom varje mening. Skapas av <em>annotate.py</em>.</li>
+<li><em>dephead</em>, <em>deprel</em><br />
+Dependency head and dependency relation. Created by <em>malt.py</em>, with <em>word</em>, <em>msd</em> and <em>pos</em> as input data. Uses the MALT parser with a model for Swedish.</li>
+</ul>
+<h3 id="developing-a-new-module">Developing a new module</h3>
+<p>This part describes how to create a new Python module within the Sparv pipeline.</p>
+<p>Usually one does not have to define the format for the input and output data since there are methods defined for reading and writing these.</p>
+<p>Below is a minimal example script which could be integrated in the Sparv pipeline:</p>
+<pre><code>    # -*- coding: utf-8 -*-
+    import sb.util as util
+
+    def changecase(word, out, case):
+        # Read the annotation &quot;word&quot;
+        words = util.read_annotation(word)
+
+        # Transform every word to upper or lower case
+        for w in words:
+            if case == &quot;upper&quot;:
+                words[w] = words[w].upper()
+            elif case == &quot;lower&quot;:
+                words[w] = words[w].lower()
+
+        # Write the result (out) to the indicated annotation (words)
+        util.write_annotation(out, words)
+
+    if __name__ == &#39;__main__&#39;:
+        util.run.main(changecase=changecase)</code></pre>
+<p>Most modules start with importing <code>util</code> which contains functions for reading and writing annotations in the data format used within the pipeline.</p>
+<p>Then you can define functions that may be used by Sparv. These functions usually take paths to existing annotation files as arguments as well as a path to the annotation file that should be created by the function.</p>
+<p>The function <code>util.read_annotation()</code> is used to read existing annotations. It returns a dictionary object with anchors as keys and annotation values as values.</p>
+<p>A module function can be concluded with calling <code>util.write_annotation()</code> which takes a path to an annotation file and a dictionary as arguments and saves the dictionary contents to the specified file path.</p>
+<p>A module should also contain some code that makes its functions available from the command line. This is what the last two lines in the above example are there for. As arguments to the function <code>util.run.main</code> you can list all the names of the functions you want to be able to use from the command line in the following format: <code>alias=name_of_function</code>. The chosen alias can then be specified as a flag in the command line. The first function may be set as default by omitting the alias.</p>
+<h3 id="makefile">Makefile</h3>
+<p>When running the Sparv pipeline its different modules are coordinated with makefiles. There are two global makefiles containing configurations and rules for the creation of annotations (<code>Makefile.config</code>, <code>Makefile.rules</code>). Furthermore, each corpus has its own makefile (<code>Makefile</code>) that containt information about the data format and about which annotations should be used. The two global makefiles are imported by the corpus specific makefile.</p>
+<p>Documentation for the different corpus specific makefiles can be found in <code>Makefile.template</code>. This file is distributed together with the other makefiles in the Sparv pipeline.</p>
+<p><code>Makefile.rules</code> is the file containing all rules that create annotations. <code>Makefile.config</code> contains variables that can be configured.</p>
+<p>A rule in Makefile.rules can for example look like this:</p>
+<pre><code>    %.token.uppercase: %.token.word
+        $(python) -m sb.case --changecase --out $@ --word $(1) --case upper</code></pre>
+<p>The above rule creates the annotation <em>uppercase</em> from the Python example above. It takes the annotation <em>word</em> as input and calls the function <em>uppercase</em> in the script <em>case.py</em> with <em>out</em>, <em>word</em> and <em>case</em> as arguments.</p>
+<p>Adding a new annotation can in most cases be done by adding a rule like in the above example to <code>Makefile.rules</code>. The name of the annotation must also be added to the list of annotations i the corpus specific makefile.</p>

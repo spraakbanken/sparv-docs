@@ -1,0 +1,86 @@
+<h2 id="sparvs-import-format">Sparv's Import Format</h2>
+<p>This section describes the XML format you should use when importing text using the <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">Sparv corpus pipeline</a>.</p>
+<h3 id="format-requirements">Format requirements</h3>
+<p>The input text files must meet the following criteria:</p>
+<ul>
+<li>The files must be encoded in <strong>UTF-8</strong>.</li>
+<li>The format must be <strong>valid XML</strong>, <em>with the following two exceptions</em>:
+<ol style="list-style-type: decimal">
+<li>No root element is needed. It is however required that all text in the file must be contained within elements.<br />
+The simplest valid file possible consists of a single element, for example <code>&lt;text&gt;</code>, containing nothing but raw text.<br />
+</li>
+<li>Overlapping elements are allowed (<code>&lt;a&gt;&lt;b&gt;&lt;/a&gt;&lt;/b&gt;</code>).</li>
+</ol></li>
+<li>No file should be larger than <strong>~10-20 MB</strong>, or you might run into memory problems. Split too large files into smaller files.</li>
+</ul>
+<h3 id="metadata">Metadata</h3>
+<p>Any metadata about the text as a whole or parts of the text (e.g. chapters, sentences, words) must exist in the form of attributes to the elements containing the text. For example:</p>
+<pre><code>&lt;text title=&quot;Title metadata here&quot;&gt;
+  This is the corpus text.
+&lt;/text&gt;</code></pre>
+<p><em>All text</em>, except for element attributes, will be part of the corpus text, and will not be treated as metadata. The following example is <em>not</em> a valid way to set title metadata for a text, and the string &quot;Title metadata here&quot; will be treated as corpus text:</p>
+<pre><code>&lt;text&gt;
+  &lt;title&gt;Title metadata here&lt;/title&gt;
+  This is the corpus text.
+&lt;/text&gt;</code></pre>
+<h4 id="headers">Headers</h4>
+<p>One exception to the above is when there is a header in the file, such as:</p>
+<pre><code>&lt;text&gt;
+  &lt;header&gt;
+    &lt;title&gt;Title metadata here&lt;/title&gt;
+  &lt;/header&gt;
+  This is the corpus text.
+&lt;/text&gt;</code></pre>
+<p>In this case it is possible to treat the whole <code>header</code> element (not necessarily named <code>header</code>) as not belonging to the text, and instead extract metadata from it. The metadata will be tied to all text contained by the root element. In this case the root element is <code>text</code>, and the result will be the same as in the first example.</p>
+<p>The following is <em>not</em> a valid example where you can extract header metadata, due to the header being disconnected from the text:</p>
+<pre><code>&lt;header&gt;
+  &lt;title&gt;Title metadata here&lt;/title&gt;
+&lt;/header&gt;
+&lt;text&gt;
+  This is the corpus text.
+&lt;/text&gt;</code></pre>
+<p>However, had both <code>header</code> and <code>text</code> been contained within another element, header metadata extraction would have been possible.</p>
+<h3 id="configuring-the-makefile">Configuring the Makefile</h3>
+<p>When using the corpus pipeline you configure your Makefile to match your XML format, and tell it what elements and attributes to parse. The variables used for this are the following:</p>
+<pre><code>xml_elements
+xml_annotations</code></pre>
+<p>In <code>xml_elements</code> you list (in lowercase, separated by whitespace) the elements of interest, optionally with their attributes (on the form <code>element:attribute</code>). <code>xml_annotations</code> is a list of the same size, with every item corresponding to an item in <code>xml_elements</code>. This list contains the names of the annotation files that will be created during parsing. For example:</p>
+<pre><code>xml_elements =    text:title  text:author  s
+xml_annotations = text.title  text.author  sentence</code></pre>
+<p>The above will parse elements such as <code>&lt;text title=&quot;X&quot; author=&quot;Y&quot;&gt;</code> and save title and author as separate annotations. It will also parse the attribute <code>&lt;s&gt;</code>, not saving any attribute data but only the boundaries of the element, marking the beginning and end of every sentence (provided that our example text has sentence segmentation marked with <code>&lt;s&gt;</code> tags). In this way you can use existing annotations of a material during the import, rather than letting the pipeline create new annotations for you. By saving the <code>&lt;s&gt;</code> element as the annotation named <code>sentence</code>, the pipeline will not try to create that annotation itself. There are several hardcoded annotation names, all of which can be overridden like <code>sentence</code> above:</p>
+<pre><code>Positional: token.pos, token.msd, token.baseform, token.lemgram, token.saldo, token.prefix, token.suffix
+Structural: token, sentence, paragraph</code></pre>
+<p>For positional annotations (annotations for single tokens), use the prefix &quot;token.&quot; as shown above.</p>
+<p>You can combine several elements into one annotation, if for example sentence segmentation is marked up with <code>&lt;s&gt;</code> in some places and <code>&lt;x&gt;</code> in some. Combining them is done by simply joining both elements with a &quot;+&quot;:</p>
+<pre><code>xml_elements =    s+x
+xml_annotations = sentence</code></pre>
+<h4 id="headers-1">Headers</h4>
+<p>For files containing headers like in the previously shown example, three variables has to be set in the Makefile:</p>
+<pre><code>xml_header
+xml_headers
+xml_header_annotations</code></pre>
+<p>The first one should be set to the name of the header element, in lowercase. This tells the parser that this element is a header, and none of its text content will be part of the corpus text.</p>
+<pre><code>xml_header = header</code></pre>
+<p>Alternatively you can give the full path to the header, joining elements by &quot;.&quot;:</p>
+<pre><code>xml_header = text.header</code></pre>
+<p>The second and third variable is similar to the <code>xml_elements</code>/<code>xml_annotations</code> pair. The first one is a list of headers to parse, and the second a list of corresponding annotation files that will be created:</p>
+<pre><code>xml_headers
+xml_header_annotations</code></pre>
+<p><code>xml_headers</code> must contain the full path to the element in question, in lowercase. As with <code>xml_elements</code> you can specify attributes using a colon, but it is also possible to parse the text contained by the element, by using the keyword &quot;TEXT&quot; instead of an attribute:</p>
+<pre><code>xml_headers            = text.header.title:TEXT
+xml_header_annotations = text.title</code></pre>
+<p>Any periods in element names have to be escaped using backslash.</p>
+<h3 id="an-example">An example</h3>
+<p>The following is an example input file, with existing sentence segmentation and tokenization. Every token is annotated with its baseform.</p>
+<pre><code>&lt;text title=&quot;Test&quot;&gt;
+  &lt;s&gt;
+    &lt;w bf=&quot;it&quot;&gt;It&lt;/w&gt;
+    &lt;w bf=&quot;be&quot;&gt;was&lt;/w&gt;
+    &lt;w bf=&quot;an&quot;&gt;an&lt;/w&gt;
+    &lt;w bf=&quot;elephant&quot;&gt;elephant&lt;/w&gt;
+    &lt;w bf=&quot;.&quot;&gt;.&lt;/w&gt;
+  &lt;/s&gt;
+&lt;/text&gt;</code></pre>
+<p>The configuration of the Makefile will look like this:</p>
+<pre><code>xml_elements =    text:title  s         w      w:bf
+xml_annotations = text.title  sentence  token  token.baseform</code></pre>
