@@ -3,11 +3,6 @@
 # Script for creating technical report from markdown files
 # Requires markdown and latex
 
-# Get documentation for pipeline
-svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/dist_pipeline.md
-svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/guide_pipeline_eng.md
-svn export https://svn.spraakdata.gu.se/repos/lb/trunk/sbkhs/pub/import_format.md
-
 # Concatenate all markdownfiles and add headings
 
 # echo -e "Sparv 2: Technical Report\n" > technical_report.md
@@ -15,9 +10,9 @@ echo -e "\n# Acknowledgements\n" > technical_report.md
 echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg, Gerlof Bouma, Martha Dís Brandt, Peter Ljunglöf, Richard Johansson, Luis Nieto Piña and Roland Schäfer. We thank our colleagues and former colleagues who made great contributions to Sparv.\n" >> technical_report.md
 
 echo -e "\n# The Sparv Pipeline\n" >> technical_report.md
-cat dist_pipeline.md >> technical_report.md
-cat guide_pipeline_eng.md >> technical_report.md
-cat import_format.md >> technical_report.md
+cat ../dist_pipeline.md >> technical_report.md
+cat ../guide_pipeline_eng.md >> technical_report.md
+cat ../import_format.md >> technical_report.md
 cat ../annotations_eng.md >> technical_report.md
 echo -e "\n# The Sparv Frontend\n" >> technical_report.md
 cat ../dist_frontend_eng.md >> technical_report.md
@@ -63,6 +58,3 @@ rm settings_eng.tex
 rm användarmanual.md
 rm usermanual.md
 rm technical_report.md
-rm dist_pipeline.md
-rm guide_pipeline_eng.md
-rm import_format.md
