@@ -12,7 +12,7 @@ Generate html files (for documentation on Språkbanken's web page):
 
 Include html files in drupal:
 
-    {include https://github.com/spraakbanken/sparv-docs/blob/master/html/annotations_eng.html}
+    {include https://github.com/spraakbanken/sparv-docs/raw/master/html/annotations_eng.html}
 
 Build exercises PDF:
 
