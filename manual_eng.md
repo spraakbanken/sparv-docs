@@ -10,7 +10,7 @@ texts.
 
 This user manual describes most of the functions available in the Sparv web
 interface. There are also exercises in Swedish [available for
-download](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
+download](https://github.com/spraakbanken/sparv-docs/raw/master/exercises/sparvovningar_hw2017.pdf).
 
 To make a Sparv analysis you can just type or paste some text into the text
 field (or hit one of the example buttons) and then press the green

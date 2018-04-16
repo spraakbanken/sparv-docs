@@ -15,7 +15,7 @@ Proceedings of SLTC 2016. The Sixth Swedish Language Technology Conference.<br/>
 
 ## Praktiska länkar:
 * Om du vill lära dig mer om hur man använder Sparvs webbgränssnitt hittar du [en användarhandledning här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/anvandarhandledning) och
-[övningar här](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
+[övningar här](https://github.com/spraakbanken/sparv-docs/raw/master/exercises/sparvovningar_hw2017.pdf).
 * [Här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/nättjänst)
 hittar du en dokumentation till Sparvs nättjänst (API).
 * För att komma till nedladdningslänken och till installationsinstruktionerna av Sparv källkod klicka

@@ -14,7 +14,7 @@ Proceedings of SLTC 2016. The Sixth Swedish Language Technology Conference.<br/>
 <a href="/publication/20005/bibtex" class="bibtex"><img src="/sites/spraakbanken.gu.se/modules/custom/gup_publications/images/bibtex.png"></a>
 
 ## Useful links:
-* If you would like to learn more about how to use Sparv's web interface you can find [the Sparv user manual here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/usermanual) and some exercises in Swedish [here](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
+* If you would like to learn more about how to use Sparv's web interface you can find [the Sparv user manual here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/usermanual) and some exercises in Swedish [here](https://github.com/spraakbanken/sparv-docs/raw/master/exercises/sparvovningar_hw2017.pdf).
 * The documentation to the Sparv web service (API) can be found
 [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/webservice).
 * To get to the download link and the installation instructions for Sparv's source code click

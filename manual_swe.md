@@ -9,7 +9,7 @@ analysera korpusarna i Korp och texterna i Strix. [Sparvs webbgränssnitt](https
 Denna användarhandledningen beskriver de flesta funktionerna som finns
 tillgängliga i webbgränssnittet. Det finns även ett par övningsuppgifter för
 Sparv som du kan ladda hem
-[här](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/exercises/sparvovningar_hw2017.pdf).
+[här](https://github.com/spraakbanken/sparv-docs/raw/master/exercises/sparvovningar_hw2017.pdf).
 
 För att göra en analys räcker det att skriva eller klistra in en text i
 textfältet (alternativt trycka på en av exempelknapparna) och sedan trycka på
