@@ -24,7 +24,7 @@ Optional:
 
 * [Corpus Workbench](http://cwb.sourceforge.net/beta.php) (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)
 * [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz) (if you want to use named entity recognition; experimental feature)
-* [freeling](http://devel.cpl.upc.edu/freeling) 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
+* [freeling](http://nlp.lsi.upc.edu/freeling/node/30) 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
 * [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)
 * [fast_align](https://github.com/clab/fast_align) (if you want to run word-linking on parallel corpora)
 

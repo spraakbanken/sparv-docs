@@ -1,5 +1,5 @@
 # sparv-docs
-This repository includes documentation for Sparv pipeline, web tool and web service.
+This repository includes documentation for the Sparv pipeline, web tool and web service.
 
 Generate PDF files with user manual and technical report:
 
