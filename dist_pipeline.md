@@ -88,7 +88,8 @@ by the file ending `.cfg`, e.g. the English parameter file is called `en.cfg`.
 The following is a list over the languages currently supported by the corpus pipeline,
 their language codes and which tool Sparv uses to analyze them:
 
-Language      |Code    |Tool
+
+<a name="language_table"></a>Language      |Code    |Tool
 --------------|--------|------------
 Bulgarian     |bg      |TreeTagger
 Catalan       |ca      |Freeling

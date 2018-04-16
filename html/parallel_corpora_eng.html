@@ -1,0 +1,35 @@
+<h2 id="annotating-parallel-corpora">Annotating parallel corpora</h2>
+<p>A parallel corpus is a corpus that contains a collection of original texts and their translations into other languages. A parallel corpus can be bilingual or multilingual. In Sparv each text collection of one language is treated as a separate corpus which needs to be annotated separately but may be linked to one or more corpora in other languages. The following example demonstrates how to annotate a bilingual (English-Swedish) parallel corpus with automatic sentence-linking and word-linking.</p>
+<p>You can download an example mini corpus including a working Makefile <a href="https://github.com/spraakbanken/sparv-docs/raw/master/examples/parallel_corpus_example.zip">here</a>.</p>
+<h3 id="folder-structure">Folder structure</h3>
+<p>Each corpus has its own root directory. The names of the root directories ( <code>mycorpus-en</code> and <code>mycorpus-sv</code>) need to be identical apart from the language ID suffix. If the language in question should be annotated with Sparv its language ID suffix should be a two-letter ISO code (check <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline#language_table">this table</a> for reference). Files that are linked to each other must have the same name (in this example: <code>sparv-intro.xml</code>).</p>
+<pre><code>my_parallel_corpus/
+    mycorpus-en/
+        original/
+            xml/
+                sparv-intro.xml
+    mycorpus-sv/
+        original/
+            xml/
+                sparv-intro.xml
+    Makefile</code></pre>
+<h3 id="linking-corpora">Linking corpora</h3>
+<p>Sparv includes tools for automatic sentence-linking and word-linking. Sentence-linking is a prerequisite for word-linking, and sentence-linking requires pre-aligned text chunks (e.g. paragraphs or similar). In the example corpus the pre-aligned chunks are called &quot;link&quot;. Each link has an ID (attribute <code>n</code>) which corresponds to the link-element with the same ID its linked translation.</p>
+<p>If you are using automatic sentence-linking you need to set the variable <code>align_sentences</code> to <code>true</code> and you must specify <code>sent_align_chunk</code> to the element that has been pre-aligned.</p>
+<p>If you would like to use automatic word-linking you need to add the attribute <code>wordlink-$(other_lang)</code> to the variables <code>vrt_columns</code> and <code>vrt_columns_annotations</code> in your Makefile. <code>$(other_lang)</code> is the variable for the language ID suffix of the linked language.</p>
+<h3 id="the-makefile">The Makefile</h3>
+<p>For parallel corpora the following variables must be set in addition to the standard variables: * <code>parallel_base</code>: the root directory name without language ID suffix (<code>mycorpus</code>) * <code>root</code>: the root directory with language ID suffix (<code>mycorpus-$(lang)</code>)</p>
+<p>For automatic word-linking: * <code>align_sentences</code>: <code>true</code> if sentences should be linked, else <code>false</code> (In this case the sentences must be pre-aligned. Word-linking will not work without sentence-alignment.) * <code>sent_align_chunk</code>: the pre-aligned chunk which is parent to sentence</p>
+<p>You need to include <code>Makefile.langs</code> (after including <code>Makefile.config</code>). By doing this Sparv will know which analysis tool (TreeTagger or FreeLing) to use for which language.</p>
+<p>If the languages you are annotating make use of different analysis modes (e.g. FreeLing, TreeTagger or the standard Swedish mode) you need to define language-specific if-clauses in your Makefile in order for the variables to be set to the correct values. Check the example Makefile for more details.</p>
+<p>If you have certain attributes that are not used in all the languages in your parallel corpus you need to list these attributes in the <code>null_annotations</code> variable. In that case you also need to set <code>skip_cwb_compression</code> and<br />
+<code>skip_cwb_validation</code> to <code>true</code>, otherwise you will not be able to create the Corpus Workbench binaries.</p>
+<h3 id="annotating">Annotating</h3>
+<p>Run each corpus separately and define which language should be annotated (<code>lang</code>) and which language the corpus should be linked to (<code>other_lang</code>; Note: this parameter is set automatically in the example corpus!):</p>
+<pre><code>make vrt lang=en other_lang=sv
+make vrt lang=sv other_lang=en</code></pre>
+<p>When creating the corpus Workbench binaries you also need to run <code>make align</code> for both languages (after creating the vrt-files), e.g.:</p>
+<pre><code>make align lang=en other_lang=sv
+make align lang=sv other_lang=en</code></pre>
+<h3 id="annotation-result">Annotation result</h3>
+<p><strong>Work in Progress!</strong> Describe result (vrt, word-linking...)</p>
