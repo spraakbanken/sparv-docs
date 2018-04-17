@@ -24,7 +24,7 @@ Optional:
 
 * [Corpus Workbench](http://cwb.sourceforge.net/beta.php) (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)
 * [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz) (if you want to use named entity recognition; experimental feature)
-* [freeling](http://nlp.lsi.upc.edu/freeling/node/30) 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
+* [FreeLing](http://nlp.lsi.upc.edu/freeling/node/30) 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
 * [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)
 * [fast_align](https://github.com/clab/fast_align) (if you want to run word-linking on parallel corpora)
 
@@ -71,45 +71,44 @@ directory. The first line in every script will then look like this:
 
     #! /usr/bin/env python2
 
-#### TreeTagger and Freeling (optional)
+#### TreeTagger and FreeLing (optional)
 
-TreeTagger and Freeling is used for POS-tagging and lemmatization of other languages than Swedish.
+TreeTagger and FreeLing is used for POS-tagging and lemmatization of other languages than Swedish.
 Please install the software according to the instructions on the respective website or in the provided
 read-me file. If you are using TreeTagger, please copy the `tree-tagger` binary file into the `bin/treetagger`
 directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately
 and saved in the `models/treetagger` directory. The parameter files need to be re-named to a two-letter
 language code followed by the file ending `.par`, e.g. the Dutch parameter file is called `nl.par`.
 
-The Freeling model files (configuration files) must be copied from the Freeling source code
+The FreeLing model files (configuration files) must be copied from the FreeLing source code
 (the directory `data/config`) into the `models/freeling` directory of the pipeline.
 The configuration files need to be re-named to a two-letter language code followed
 by the file ending `.cfg`, e.g. the English parameter file is called `en.cfg`.
 
-The following is a list over the languages currently supported by the corpus pipeline,
+<a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline,
 their language codes and which tool Sparv uses to analyze them:
 
-
-<a name="language_table"></a>Language      |Code    |Tool
+Language      |Code    |Tool
 --------------|--------|------------
 Bulgarian     |bg      |TreeTagger
-Catalan       |ca      |Freeling
+Catalan       |ca      |FreeLing
 Dutch         |nl      |TreeTagger
 Estonian      |et      |TreeTagger
-English       |en      |Freeling
-French        |fr      |Freeling
+English       |en      |FreeLing
+French        |fr      |FreeLing
 Finnish       |fi      |TreeTagger
-Galician      |gl      |Freeling
-German        |de      |Freeling
-Italian       |it      |Freeling
+Galician      |gl      |FreeLing
+German        |de      |FreeLing
+Italian       |it      |FreeLing
 Latin         |la      |TreeTagger
-Norwegian     |no      |Freeling
+Norwegian     |no      |FreeLing
 Polish        |pl      |TreeTagger
-Portuguese    |pt      |Freeling
+Portuguese    |pt      |FreeLing
 Romanian      |ro      |TreeTagger
-Russian       |ru      |Freeling
+Russian       |ru      |FreeLing
 Slovak        |sk      |TreeTagger
-Slovenian     |sl      |Freeling
-Spanish       |es      |Freeling
+Slovenian     |sl      |FreeLing
+Spanish       |es      |FreeLing
 
 <!-- Asturian      as -->
 

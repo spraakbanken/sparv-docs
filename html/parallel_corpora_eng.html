@@ -18,8 +18,16 @@
 <p>If you are using automatic sentence-linking you need to set the variable <code>align_sentences</code> to <code>true</code> and you must specify <code>sent_align_chunk</code> to the element that has been pre-aligned.</p>
 <p>If you would like to use automatic word-linking you need to add the attribute <code>wordlink-$(other_lang)</code> to the variables <code>vrt_columns</code> and <code>vrt_columns_annotations</code> in your Makefile. <code>$(other_lang)</code> is the variable for the language ID suffix of the linked language.</p>
 <h3 id="the-makefile">The Makefile</h3>
-<p>For parallel corpora the following variables must be set in addition to the standard variables: * <code>parallel_base</code>: the root directory name without language ID suffix (<code>mycorpus</code>) * <code>root</code>: the root directory with language ID suffix (<code>mycorpus-$(lang)</code>)</p>
-<p>For automatic word-linking: * <code>align_sentences</code>: <code>true</code> if sentences should be linked, else <code>false</code> (In this case the sentences must be pre-aligned. Word-linking will not work without sentence-alignment.) * <code>sent_align_chunk</code>: the pre-aligned chunk which is parent to sentence</p>
+<p>For parallel corpora the following variables must be set in addition to the standard variables:</p>
+<ul>
+<li><code>parallel_base</code>: the root directory name without language ID suffix (<code>mycorpus</code>)</li>
+<li><code>root</code>: the root directory with language ID suffix (<code>mycorpus-$(lang)</code>)</li>
+</ul>
+<p>For automatic word-linking:</p>
+<ul>
+<li><code>align_sentences</code>: <code>true</code> if sentences should be linked, else <code>false</code> (In this case the sentences must be pre-aligned. Word-linking will not work without sentence-alignment.)</li>
+<li><code>sent_align_chunk</code>: the pre-aligned chunk which is parent to sentence</li>
+</ul>
 <p>You need to include <code>Makefile.langs</code> (after including <code>Makefile.config</code>). By doing this Sparv will know which analysis tool (TreeTagger or FreeLing) to use for which language.</p>
 <p>If the languages you are annotating make use of different analysis modes (e.g. FreeLing, TreeTagger or the standard Swedish mode) you need to define language-specific if-clauses in your Makefile in order for the variables to be set to the correct values. Check the example Makefile for more details.</p>
 <p>If you have certain attributes that are not used in all the languages in your parallel corpus you need to list these attributes in the <code>null_annotations</code> variable. In that case you also need to set <code>skip_cwb_compression</code> and<br />

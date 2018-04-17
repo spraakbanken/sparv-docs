@@ -50,10 +50,12 @@ the language ID suffix of the linked language.
 ### The Makefile
 For parallel corpora the following variables must be set in addition to the
 standard variables:
+
 * `parallel_base`: the root directory name without language ID suffix (`mycorpus`)
 * `root`: the root directory with language ID suffix (`mycorpus-$(lang)`)
 
 For automatic word-linking:
+
 * `align_sentences`: `true` if sentences should be linked, else `false` (In this
     case the sentences must be pre-aligned. Word-linking will not work without
     sentence-alignment.)

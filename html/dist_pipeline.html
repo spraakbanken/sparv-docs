@@ -18,7 +18,7 @@
 <ul>
 <li><a href="http://cwb.sourceforge.net/beta.php">Corpus Workbench</a> (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)</li>
 <li><a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> (if you want to use named entity recognition; experimental feature)</li>
-<li><a href="http://nlp.lsi.upc.edu/freeling/node/30">freeling</a> 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
+<li><a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
 <li><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)</li>
 <li><a href="https://github.com/clab/fast_align">fast_align</a> (if you want to run word-linking on parallel corpora)</li>
 </ul>
@@ -40,14 +40,14 @@ pip install -r requirements.txt</code></pre>
 <h4 id="hfst-swener-optional">hfst-SweNER (optional)</h4>
 <p>The current version of hfst-SweNER expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER's named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
 <pre><code>#! /usr/bin/env python2</code></pre>
-<h4 id="treetagger-and-freeling-optional">TreeTagger and Freeling (optional)</h4>
-<p>TreeTagger and Freeling is used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided read-me file. If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
-<p>The Freeling model files (configuration files) must be copied from the Freeling source code (the directory <code>data/config</code>) into the <code>models/freeling</code> directory of the pipeline. The configuration files need to be re-named to a two-letter language code followed by the file ending <code>.cfg</code>, e.g. the English parameter file is called <code>en.cfg</code>.</p>
-<p>The following is a list over the languages currently supported by the corpus pipeline, their language codes and which tool Sparv uses to analyze them:</p>
+<h4 id="treetagger-and-freeling-optional">TreeTagger and FreeLing (optional)</h4>
+<p>TreeTagger and FreeLing is used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided read-me file. If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
+<p>The FreeLing model files (configuration files) must be copied from the FreeLing source code (the directory <code>data/config</code>) into the <code>models/freeling</code> directory of the pipeline. The configuration files need to be re-named to a two-letter language code followed by the file ending <code>.cfg</code>, e.g. the English parameter file is called <code>en.cfg</code>.</p>
+<p><a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline, their language codes and which tool Sparv uses to analyze them:</p>
 <table>
 <thead>
 <tr class="header">
-<th><a name="language_table"></a>Language</th>
+<th>Language</th>
 <th>Code</th>
 <th>Tool</th>
 </tr>
@@ -61,7 +61,7 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Catalan</td>
 <td>ca</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Dutch</td>
@@ -76,12 +76,12 @@ pip install -r requirements.txt</code></pre>
 <tr class="odd">
 <td>English</td>
 <td>en</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="even">
 <td>French</td>
 <td>fr</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Finnish</td>
@@ -91,17 +91,17 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Galician</td>
 <td>gl</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>German</td>
 <td>de</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="even">
 <td>Italian</td>
 <td>it</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Latin</td>
@@ -111,7 +111,7 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Norwegian</td>
 <td>no</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Polish</td>
@@ -121,7 +121,7 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Portuguese</td>
 <td>pt</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Romanian</td>
@@ -131,7 +131,7 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Russian</td>
 <td>ru</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Slovak</td>
@@ -141,12 +141,12 @@ pip install -r requirements.txt</code></pre>
 <tr class="even">
 <td>Slovenian</td>
 <td>sl</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 <tr class="odd">
 <td>Spanish</td>
 <td>es</td>
-<td>Freeling</td>
+<td>FreeLing</td>
 </tr>
 </tbody>
 </table>
