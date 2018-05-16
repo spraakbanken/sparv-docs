@@ -16,7 +16,7 @@ Proceedings of SLTC 2016. The Sixth Swedish Language Technology Conference.<br/>
 ## Useful links:
 * If you would like to learn more about how to use Sparv's web interface you can find [the Sparv user manual here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/usermanual) and some exercises in Swedish [here](https://github.com/spraakbanken/sparv-docs/raw/master/exercises/sparvovningar_hw2017.pdf).
 * The documentation to the Sparv web service (API) can be found
-[here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/webservice).
+[here](https://ws.spraakbanken.gu.se/ws/sparv).
 * To get to the download link and the installation instructions for Sparv's source code click
 [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution).
 The source code is distributed in two different versions:

@@ -88,27 +88,27 @@ by the file ending `.cfg`, e.g. the English parameter file is called `en.cfg`.
 <a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline,
 their language codes and which tool Sparv uses to analyze them:
 
-Language      |Code    |Tool
---------------|--------|------------
-Bulgarian     |bg      |TreeTagger
-Catalan       |ca      |FreeLing
-Dutch         |nl      |TreeTagger
-Estonian      |et      |TreeTagger
-English       |en      |FreeLing
-French        |fr      |FreeLing
-Finnish       |fi      |TreeTagger
-Galician      |gl      |FreeLing
-German        |de      |FreeLing
-Italian       |it      |FreeLing
-Latin         |la      |TreeTagger
-Norwegian     |no      |FreeLing
-Polish        |pl      |TreeTagger
-Portuguese    |pt      |FreeLing
-Romanian      |ro      |TreeTagger
-Russian       |ru      |FreeLing
-Slovak        |sk      |TreeTagger
-Slovenian     |sl      |FreeLing
-Spanish       |es      |FreeLing
+Language      |Code      |Analysis Tool
+:-------------|:---------|:-------------
+Bulgarian     |bg        |TreeTagger
+Catalan       |ca        |FreeLing
+Dutch         |nl        |TreeTagger
+Estonian      |et        |TreeTagger
+English       |en        |FreeLing
+French        |fr        |FreeLing
+Finnish       |fi        |TreeTagger
+Galician      |gl        |FreeLing
+German        |de        |FreeLing
+Italian       |it        |FreeLing
+Latin         |la        |TreeTagger
+Norwegian     |no        |FreeLing
+Polish        |pl        |TreeTagger
+Portuguese    |pt        |FreeLing
+Romanian      |ro        |TreeTagger
+Russian       |ru        |FreeLing
+Slovak        |sk        |TreeTagger
+Slovenian     |sl        |FreeLing
+Spanish       |es        |FreeLing
 
 <!-- Asturian      as -->
 
