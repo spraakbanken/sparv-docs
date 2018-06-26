@@ -1,48 +1,66 @@
 <h2 id="setting-up-the-sparv-pipeline">Setting up the Sparv Pipeline</h2>
-<p>This section describes how to get the Sparv corpus pipeline up and running on your own machine. Begin by downloading the latest version of the corpus pipeline <a href="https://spraakbanken.gu.se/pub/sparv.dist/sparv_pipeline/?C=M;O=D">here</a>.</p>
-<p>Note that the source code is made available in two different versions:</p>
-<ul>
-<li>under the <a href="https://opensource.org/licenses/MIT">MIT license</a> without usage of FreeLing</li>
-<li>under the <a href="http://www.gnu.org/licenses/agpl.html">AGPL license</a> including calls to FreeLing</li>
-</ul>
+<p>This section describes how to get the Sparv corpus pipeline up and running on your own machine. The source code is available from <a href="https://github.com/spraakbanken/sparv-pipeline">GitHub</a> under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>Please note that different license terms may apply to any of the additional components that can be plugged into the Sparv Pipeline!</p>
 <h3 id="requirements">Requirements</h3>
-<p>To use the corpus pipeline you need the following:</p>
 <ul>
 <li>A Unix-like environment (e.g. Linux, OS X)</li>
 <li><a href="http://python.org/">Python 3.4</a> or newer</li>
-<li>GNU Make</li>
-<li><a href="http://code.google.com/p/hunpos/">Hunpos</a>, with its path included in your <code>PATH</code> environment variable</li>
-<li>Java</li>
+<li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java</a> (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)</li>
 </ul>
-<p>Optional:</p>
+<p>Additional components (optional):</p>
 <ul>
-<li><a href="http://cwb.sourceforge.net/beta.php">Corpus Workbench</a> (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)</li>
-<li><a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> (if you want to use named entity recognition; experimental feature)</li>
+<li><a href="http://code.google.com/p/hunpos/">Hunpos</a>, with its path included in your <code>PATH</code> environment variable (for part-of-speech tagging)</li>
+<li><a href="http://www.maltparser.org/download.html">MaltParser</a> v. 1.7.2 (for dependency parsing)</li>
+<li><a href="https://github.com/spraakbanken/sparv-wsd">Sparv-wsd</a> (for word-sense disambiguation)</li>
+<li><a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> (for named entity recognition)</li>
 <li><a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
 <li><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)</li>
 <li><a href="https://github.com/clab/fast_align">fast_align</a> (if you want to run word-linking on parallel corpora)</li>
+<li><a href="http://cwb.sourceforge.net/beta.php">Corpus Workbench</a> (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)</li>
 </ul>
 <h3 id="installing-the-required-software">Installing the required software</h3>
 <p>The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.</p>
+<ol style="list-style-type: decimal">
+<li>Install the Sparv Pipeline by cloning or downloading <a href="https://github.com/spraakbanken/sparv-pipeline">the git repository</a> into a directory of your choice.</li>
+<li>Setup a new environment variable <code>SPARV_MAKEFILES</code> and point it to <code>sparv-pipeline/makefiles</code>.</li>
+</ol>
 <h4 id="python-virtual-environment">Python virtual environment</h4>
-<p>Set up a Python virtual environment as a subdirectory to the <code>annotate</code> directory:</p>
-<pre><code>python3 -m venv venv</code></pre>
-<p>Activate the virtual environment and install the required Python packages:</p>
-<pre><code>source venv/bin/activate
-pip install -r requirements.txt</code></pre>
+<p>Set up a Python virtual environment as a subdirectory to the <code>sparv-pipeline</code> directory:</p>
+<p><code>python3 -m venv venv</code></p>
+<p>Activate the virtual environment and install the required Python packages (in some cases you are required to upgrade pip first):</p>
+<p><code>source venv/bin/activate    pip install --upgrade pip    pip install -r requirements.txt</code></p>
 <p>You can then deactivate the virtual environment:</p>
-<pre><code>deactivate</code></pre>
+<p><code>deactivate</code></p>
+<h4 id="configuring-some-variables">Configuring some variables</h4>
+<p>In <code>makefiles/Makefile.config</code> you will find a section called <em>Configuration</em>. Here you will need to specify the path to the pipeline directory by setting the variable <code>SPARV_PIPELINE_PATH</code>. If you are planning on using the pipeline to install corpora on a remote computer, you must (in addition to installing CWB) edit the <code>remote_host</code>, <code>remote_cwb_datadir</code> and <code>remote_cwb_registry</code> variables. If you are going to use anything database related (generating lemgram index or Word Picture data for Korp) you also have to edit the value of <code>rel_mysql_dbname</code>.</p>
+<h4 id="downloading-and-updating-the-models">Downloading and updating the models</h4>
+<p>Certain annotations need models to work. To download and generate the models follow these simple steps:</p>
+<ol style="list-style-type: decimal">
+<li>Navigate to the <code>sparv-pipeline/models</code> directory in a terminal.</li>
+<li>Run the command <code>make clean</code>, and then <code>make all</code>.</li>
+<li>If no errors were reported while running the above commands you may run <code>make space</code> for saving disk space.</li>
+</ol>
+<p>By default, the part-of-speech tagger also relies on the SALDO model. You can disable this dependency by commenting out the line beginning with <code>hunpos_morphtable</code> in Makefile.config, or changing its value to <code>$(SPARV_MODELS)/hunpos.suc.morphtable</code>.</p>
+<h3 id="installing-additional-components-optional">Installing additional components (optional)</h3>
+<p>The following components are not part of the core Sparv Pipeline package. Whether or not you will need to install these components depends on how you want to use the Sparv Pipeline. Please note that different licenses may apply for the individual components.</p>
 <h4 id="hunpos">Hunpos</h4>
-<p>Hunpos can be downloaded from <a href="http://code.google.com/p/hunpos/">here</a>. Installation is done by unpacking and then adding the path of the executables to your <code>PATH</code> environmental variable. If you are running a 64-bit OS, you might also have to install 32-bit compatibility libraries if Hunpos won't run:</p>
+<p><a href="http://code.google.com/p/hunpos/">Hunpos</a> is used for Swedish part-of-speech tagging and it is a prerequisite for all of the SALDO-annotations. Hunpos can be downloaded from <a href="http://code.google.com/p/hunpos/">here</a>. Installation is done by unpacking and then adding the path of the executables to your <code>PATH</code> environmental variable. If you are running a 64-bit OS, you might also have to install 32-bit compatibility libraries if Hunpos won't run:</p>
 <pre><code>sudo apt install ia32-libs</code></pre>
 <p>On Arch Linux, activate the <code>multilib</code> repository and install <code>lib32-gcc-libs</code>.</p>
 <p>If that doesn't work, you might have to compile Hunpos from its source code.</p>
-<h4 id="hfst-swener-optional">hfst-SweNER (optional)</h4>
-<p>The current version of hfst-SweNER expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER's named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
+<h4 id="maltparser">MaltParser</h4>
+<p><a href="http://www.maltparser.org/download.html">MaltParser</a> is used for Swedish dependency parsing. The version compatible with the Sparv pipeline is 1.7.2. Download and unpack the zip-file from the MaltParser home page and place its contents under <code>sparv-pipeline/bin/maltparser-1.7.2</code>.</p>
+<p>Download the <a href="http://maltparser.org/mco/swedish_parser/swemalt.html">dependency model</a> and place the file <code>swemalt-1.7.2.mco</code> under <code>sparv-pipeline/models</code>.</p>
+<h4 id="sparv-wsd">Sparv-wsd</h4>
+<p>The <a href="https://github.com/spraakbanken/sparv-wsd">Sparv-wsd</a> is used for Swedish word-sense disambiguation. It is developed at Språkbanken and runs under the same license as the Sparv Pipeline core package. In order to use it within the Sparv Pipeline it is enough to download the saldowsd.jar from GitHub and place it inside the <code>sparv-pipeline/bin/wsd</code> directory:</p>
+<pre><code>wget https://github.com/spraakbanken/sparv-wsd/raw/master/bin/saldowsd.jar -P sparv-pipeline/bin/wsd/</code></pre>
+<p>Its models are added automatically when building the Sparv Pipeline models (see above).</p>
+<h4 id="hfst-swener">hfst-SweNER</h4>
+<p>The current version of <a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER's named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
 <pre><code>#! /usr/bin/env python2</code></pre>
-<h4 id="treetagger-and-freeling-optional">TreeTagger and FreeLing (optional)</h4>
-<p>TreeTagger and FreeLing is used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided read-me file. If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
-<p>The FreeLing model files (configuration files) must be copied from the FreeLing source code (the directory <code>data/config</code>) into the <code>models/freeling</code> directory of the pipeline. The configuration files need to be re-named to a two-letter language code followed by the file ending <code>.cfg</code>, e.g. the English parameter file is called <code>en.cfg</code>.</p>
+<h4 id="treetagger-and-freeling">TreeTagger and FreeLing</h4>
+<p><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> and <a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> are used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided readme file.</p>
 <p><a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline, their language codes and which tool Sparv uses to analyze them:</p>
 <table>
 <thead>
@@ -150,25 +168,12 @@ pip install -r requirements.txt</code></pre>
 </tr>
 </tbody>
 </table>
-<!-- Asturian      as -->
-<h4 id="installing-other-optional-software">Installing other optional software</h4>
-<p>To install the software listed under optional, please follow the installation instructions on the respective websites or in the provided read-me files. Make sure to include their paths in the your <code>PATH</code> environment variable. If you are using fast_align, please copy the binary files <code>atools</code> and <code>fast_align</code> into the <code>bin/word_alignment</code> folder of the pipeline. Installation instructions for Corpus Workbench are given <a href="#cwb_install">below</a>.</p>
-<h3 id="installing-the-corpus-import-tools">Installing the Corpus Import tools</h3>
-<ol style="list-style-type: decimal">
-<li>Install the corpus import tools by unpacking the archive to a directory of your choice (referred to as <code>installation_dir</code> from here on).</li>
-<li>Set a new environment variable <code>SPARV_MAKEFILES</code> to <code>installation_dir/annotate/makefiles</code>.</li>
-</ol>
-<h3 id="editing-some-variables">Editing some variables</h3>
-<p>In Makefile.config you will find a section called <em>Configuration</em>. Here you will need to specify the path to the pipeline directory. If you are planning on using the pipeline to install corpora on a remote computer, you must (in addition to installing CWB) edit the <code>remote_host</code>, <code>remote_cwb_datadir</code> and <code>remote_cwb_registry</code> variables. If you are going to use anything database related (generating lemgram index or Word Picture data for Korp) you also have to edit the value of <code>rel_mysql_dbname</code>.</p>
-<h3 id="downloading-and-updating-the-models">Downloading and updating the models</h3>
-<p>Certain annotations need models to work. To download and generate the models follow these simple steps:</p>
-<ol style="list-style-type: decimal">
-<li>Navigate to the <code>installation_dir/annotate/models</code> directory in a terminal.</li>
-<li>Run the command <code>make clean</code>, and then <code>make all</code>.</li>
-</ol>
-<p>By default, the part-of-speech tagger also relies on the SALDO model. You can disable this dependency by commenting out the line beginning with <code>hunpos_morphtable</code> in Makefile.config, or changing its value to <code>$(SPARV_MODELS)/hunpos.suc.morphtable</code>.</p>
+<p>If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>sparv-pipeline/bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>sparv-pipeline/models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
+<p>When using Freeling you will need the sparv-freeling extension which is available via <a href="https://github.com/spraakbanken/sparv-freeling">GitHub</a> and runs under the <a href="http://www.gnu.org/licenses/agpl.html">AGPL license</a>. Follow the installation instructions for the sparv-freeling module on <a href="https://github.com/spraakbanken/sparv-freeling">GitHub</a> in order to set up the models correctly.</p>
+<h4 id="fast_align">fast_align</h4>
+<p><a href="https://github.com/clab/fast_align">fast_align</a> is used for word-linking on parallel corpora. Follow the installation instructions given in the fast_align repository and copy the binary files <code>atools</code> and <code>fast_align</code> into the <code>sparv-pipeline/bin/word_alignment</code> folder of the pipeline.</p>
 <h3 id="preparing-a-corpus">Preparing a corpus</h3>
-<p>Create a directory for your corpus (e.g. <code>mycorpus</code>) under the <code>installation_dir/corpora</code> directory. Under your new directory create another directory containing your input texts (e.g. <code>original</code>).</p>
+<p>Create a new directory for your corpus (e.g. <code>mycorpus</code>). Under your new directory create another directory containing your input texts (e.g. <code>original</code>).</p>
 <p>The input text must meet the following criteria:</p>
 <ul>
 <li>The files must be encoded in <strong>UTF-8</strong>.</li>
@@ -213,7 +218,7 @@ If you remove or add source files to your corpus after having already run one of
 <p>CWB needs two directories for storing the corpora. One for the data, and one for the corpus registry. You may create these directories wherever you want, but let's assume that you have created the following two:</p>
 <pre><code>/corpora/data
 /corpora/registry</code></pre>
-<p>You also need to edit the following variables in <code>installation_dir/annotate/makefiles/Makefile.config</code>, pointing to the directories created above:</p>
+<p>You also need to edit the following variables in <code>sparv-pipeline/makefiles/Makefile.config</code>, pointing to the directories created above:</p>
 <pre><code>export CWB_DATADIR ?= /corpora/data
 export CORPUS_REGISTRY ?= /corpora/registry</code></pre>
 <p>If you're not running Ubuntu or if you run into any problems, refer to the INSTALL text file in the cwb dir for further instructions.</p>
