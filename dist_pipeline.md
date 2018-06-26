@@ -6,7 +6,7 @@ own machine. The source code is available from [GitHub](https://github.com/spraa
 Please note that different license terms may apply to any of the additional components that can be plugged into the Sparv Pipeline!
 
 ### Requirements
-* A Unix-like environment (e.g. Linux, OS X)
+* A Unix-like environment (e.g. Linux, macOS)
 * [Python 3.4](http://python.org/) or newer
 * [GNU Make](https://www.gnu.org/software/make/)
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)
@@ -31,23 +31,23 @@ The following information assumes that you are running Ubuntu, but will most lik
 #### Python virtual environment
 Set up a Python virtual environment as a subdirectory to the `sparv-pipeline` directory:
 
-   ```
-   python3 -m venv venv
-   ```
+```
+python3 -m venv venv
+```
 
 Activate the virtual environment and install the required Python packages (in some cases you are required to upgrade pip first):
 
-   ```
-   source venv/bin/activate
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
+```
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 You can then deactivate the virtual environment:
 
-   ```
-   deactivate
-   ```
+```
+deactivate
+```
 
 #### Configuring some variables
 In `makefiles/Makefile.config` you will find a section called *Configuration*. Here you will need to specify the

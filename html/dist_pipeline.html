@@ -3,7 +3,7 @@
 <p>Please note that different license terms may apply to any of the additional components that can be plugged into the Sparv Pipeline!</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>A Unix-like environment (e.g. Linux, OS X)</li>
+<li>A Unix-like environment (e.g. Linux, macOS)</li>
 <li><a href="http://python.org/">Python 3.4</a> or newer</li>
 <li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
 <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java</a> (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)</li>
@@ -27,11 +27,13 @@
 </ol>
 <h4 id="python-virtual-environment">Python virtual environment</h4>
 <p>Set up a Python virtual environment as a subdirectory to the <code>sparv-pipeline</code> directory:</p>
-<p><code>python3 -m venv venv</code></p>
+<pre><code>python3 -m venv venv</code></pre>
 <p>Activate the virtual environment and install the required Python packages (in some cases you are required to upgrade pip first):</p>
-<p><code>source venv/bin/activate    pip install --upgrade pip    pip install -r requirements.txt</code></p>
+<pre><code>source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt</code></pre>
 <p>You can then deactivate the virtual environment:</p>
-<p><code>deactivate</code></p>
+<pre><code>deactivate</code></pre>
 <h4 id="configuring-some-variables">Configuring some variables</h4>
 <p>In <code>makefiles/Makefile.config</code> you will find a section called <em>Configuration</em>. Here you will need to specify the path to the pipeline directory by setting the variable <code>SPARV_PIPELINE_PATH</code>. If you are planning on using the pipeline to install corpora on a remote computer, you must (in addition to installing CWB) edit the <code>remote_host</code>, <code>remote_cwb_datadir</code> and <code>remote_cwb_registry</code> variables. If you are going to use anything database related (generating lemgram index or Word Picture data for Korp) you also have to edit the value of <code>rel_mysql_dbname</code>.</p>
 <h4 id="downloading-and-updating-the-models">Downloading and updating the models</h4>
