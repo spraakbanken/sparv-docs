@@ -92,4 +92,45 @@ make align lang=sv other_lang=en
 ```
 
 ### Annotation result
-**Work in Progress!** Describe result (vrt, word-linking...)
+
+This is what the vrt result could look like for a Swedish-English parallel corpus (taken from the example corpus which can be downloaded above):
+
+```
+<text>
+<link n="1">
+<sentence id="sv0248-sv02a2">
+Sparv	NN	NN.UTR.SIN.IND.NOM	|sparv|	|sparv..nn.1|	01	|01|
+är	VB	VB.PRS.AKT	|vara|	|vara..vb.1|	02	|02|
+Språkbankens	NN	NN.UTR.SIN.DEF.GEN	|språkbank|	|språkbank..nn.1|	03	|03|04|
+annoteringsverktyg	NN	NN.NEU.PLU.IND.NOM	|	|	04	|05|06|
+...
+</sentence>
+</link>
+</text>
+```
+
+```
+<text>
+<link n="1">
+<sentence id="en038c2-en0affc">
+Sparv	PROPN	NP	sparv	__UNDEF__	01	|01|
+is	VERB	VBZ	be	__UNDEF__	02	|02|
+an	DET	DT	a	__UNDEF__	03	|03|
+annotation	NOUN	NN	annotation	__UNDEF__	04	|03|
+tool	NOUN	NN	tool	__UNDEF__	05	|04|
+developed	VERB	VBN	develop	__UNDEF__	06	|04|
+...
+</sentence>
+</link>
+</text>
+```
+
+The columns contain the following information:
+
+`word pos msd baseform lemgram linkref wordlink`
+
+The texts are linked by the `<link>` elements. Links with the same ID (e.g. `n=1`) belong together.
+
+The last column (`wordlink`) contains a set of link reference numbers (`linkref`) referring to tokens from the linked text within the same `<link>` element. Note that this set may be empty in some cases, meaning that the token was not linked to any token in the other language.
+
+The column `lemgram` contains only `__UNDEF__` values for the English text because `lemgram` was listed in the `null_annotations` since this annotation is only available for Swedish. Columns containing only `__UNDEF__` values are not present in the XML export.

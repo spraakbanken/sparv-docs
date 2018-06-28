@@ -40,4 +40,33 @@ make vrt lang=sv other_lang=en</code></pre>
 <pre><code>make align lang=en other_lang=sv
 make align lang=sv other_lang=en</code></pre>
 <h3 id="annotation-result">Annotation result</h3>
-<p><strong>Work in Progress!</strong> Describe result (vrt, word-linking...)</p>
+<p>This is what the vrt result could look like for a Swedish-English parallel corpus (taken from the example corpus which can be downloaded above):</p>
+<pre><code>&lt;text&gt;
+&lt;link n=&quot;1&quot;&gt;
+&lt;sentence id=&quot;sv0248-sv02a2&quot;&gt;
+Sparv   NN  NN.UTR.SIN.IND.NOM  |sparv| |sparv..nn.1|   01  |01|
+är  VB  VB.PRS.AKT  |vara|  |vara..vb.1|    02  |02|
+Språkbankens    NN  NN.UTR.SIN.DEF.GEN  |språkbank| |språkbank..nn.1|   03  |03|04|
+annoteringsverktyg  NN  NN.NEU.PLU.IND.NOM  |   |   04  |05|06|
+...
+&lt;/sentence&gt;
+&lt;/link&gt;
+&lt;/text&gt;</code></pre>
+<pre><code>&lt;text&gt;
+&lt;link n=&quot;1&quot;&gt;
+&lt;sentence id=&quot;en038c2-en0affc&quot;&gt;
+Sparv   PROPN   NP  sparv   __UNDEF__   01  |01|
+is  VERB    VBZ be  __UNDEF__   02  |02|
+an  DET DT  a   __UNDEF__   03  |03|
+annotation  NOUN    NN  annotation  __UNDEF__   04  |03|
+tool    NOUN    NN  tool    __UNDEF__   05  |04|
+developed   VERB    VBN develop __UNDEF__   06  |04|
+...
+&lt;/sentence&gt;
+&lt;/link&gt;
+&lt;/text&gt;</code></pre>
+<p>The columns contain the following information:</p>
+<p><code>word pos msd baseform lemgram linkref wordlink</code></p>
+<p>The texts are linked by the <code>&lt;link&gt;</code> elements. Links with the same ID (e.g. <code>n=1</code>) belong together.</p>
+<p>The last column (<code>wordlink</code>) contains a set of link reference numbers (<code>linkref</code>) referring to tokens from the linked text within the same <code>&lt;link&gt;</code> element. Note that this set may be empty in some cases, meaning that the token was not linked to any token in the other language.</p>
+<p>The column <code>lemgram</code> contains only <code>__UNDEF__</code> values for the English text because <code>lemgram</code> was listed in the <code>null_annotations</code> since this annotation is only available for Swedish. Columns containing only <code>__UNDEF__</code> values are not present in the XML export.</p>
