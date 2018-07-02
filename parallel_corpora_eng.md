@@ -42,6 +42,11 @@ If you are using automatic sentence-linking you need to set the variable
 `align_sentences` to `true` and you must specify `sent_align_chunk` to the element
 that has been pre-aligned.
 
+If your text is already linked on sentence level you need to have `sentlink` elements
+sourrounding the sentences, in order to get automatic word-linking. They should have
+IDs indicating which sentences belong together (e.g. `<sentlink n="0001">`). The IDs
+should be unique for each indata file. Don't forget to set the variable `align_sentences = false` in your makefile.
+
 If you would like to use automatic word-linking you need to add the attribute
 `wordlink-$(other_lang)` to the variables `vrt_columns` and
 `vrt_columns_annotations` in your Makefile. `$(other_lang)` is the variable for
@@ -61,9 +66,9 @@ For automatic word-linking:
     sentence-alignment.)
 * `sent_align_chunk`: the pre-aligned chunk which is parent to sentence
 
-You need to include `Makefile.langs` (after including `Makefile.config`). By doing
-this Sparv will know which analysis tool (TreeTagger or FreeLing) to use for which
-language.
+You need to include `Makefile.langs` in your Makefile (after including
+`Makefile.config`). By doing this Sparv will know which analysis tool
+(TreeTagger or FreeLing) to use for which language.
 
 If the languages you are annotating make use of different analysis modes (e.g.
 FreeLing, TreeTagger or the standard Swedish mode) you need to define
@@ -98,6 +103,7 @@ This is what the vrt result could look like for a Swedish-English parallel corpu
 ```
 <text>
 <link n="1">
+<sentlink n="sparv-intro.01">
 <sentence id="sv0248-sv02a2">
 Sparv	NN	NN.UTR.SIN.IND.NOM	|sparv|	|sparv..nn.1|	01	|01|
 är	VB	VB.PRS.AKT	|vara|	|vara..vb.1|	02	|02|
@@ -105,6 +111,7 @@ Språkbankens	NN	NN.UTR.SIN.DEF.GEN	|språkbank|	|språkbank..nn.1|	03	|03|04|
 annoteringsverktyg	NN	NN.NEU.PLU.IND.NOM	|	|	04	|05|06|
 ...
 </sentence>
+</sentlink>
 </link>
 </text>
 ```
@@ -112,6 +119,7 @@ annoteringsverktyg	NN	NN.NEU.PLU.IND.NOM	|	|	04	|05|06|
 ```
 <text>
 <link n="1">
+<sentlink n="sparv-intro.01">
 <sentence id="en038c2-en0affc">
 Sparv	PROPN	NP	sparv	__UNDEF__	01	|01|
 is	VERB	VBZ	be	__UNDEF__	02	|02|
@@ -121,16 +129,31 @@ tool	NOUN	NN	tool	__UNDEF__	05	|04|
 developed	VERB	VBN	develop	__UNDEF__	06	|04|
 ...
 </sentence>
+</sentlink>
 </link>
 </text>
 ```
 
-The columns contain the following information:
+The tab-separated columns in the vrt output contain the following information:
 
 `word pos msd baseform lemgram linkref wordlink`
 
-The texts are linked by the `<link>` elements. Links with the same ID (e.g. `n=1`) belong together.
+In this example the texts were manually linked by the `<link>` elements. The
+`sentlink` element was added automatically by the sentence linking module. If the
+`link` element contains multiple sentences the `sentlink` attribute will break down
+the linked elements into smaller units. The ID in the `link` and `sentlink` elements
+(e.g. `n="1"`, `n="sparv-intro.01"`) indicates which elements belong together across
+linked texts in different languages. By default the `sentlink`-ID is prefixed with
+the name of the indata file (in this case "sparv-intro"). Note that the prefix is
+not required for automatic word-linking, so if you use manual sentences-linking you
+will not need to set a prefix. 
 
-The last column (`wordlink`) contains a set of link reference numbers (`linkref`) referring to tokens from the linked text within the same `<link>` element. Note that this set may be empty in some cases, meaning that the token was not linked to any token in the other language.
+The last column (`wordlink`) contains a set of link reference numbers (`linkref`)
+referring to tokens from the linked text within the same `<link>` element. Note that
+this set may be empty in some cases, meaning that the token was not linked to any
+token in the other language.
 
-The column `lemgram` contains only `__UNDEF__` values for the English text because `lemgram` was listed in the `null_annotations` since this annotation is only available for Swedish. Columns containing only `__UNDEF__` values are not present in the XML export.
+The column `lemgram` contains only `__UNDEF__` values for the English text because
+`lemgram` was listed in the `null_annotations` since this annotation is only
+available for Swedish. Columns containing only `__UNDEF__` values are not present in
+the XML export.

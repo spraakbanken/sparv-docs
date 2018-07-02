@@ -16,6 +16,7 @@
 <h3 id="linking-corpora">Linking corpora</h3>
 <p>Sparv includes tools for automatic sentence-linking and word-linking. Sentence-linking is a prerequisite for word-linking, and sentence-linking requires pre-aligned text chunks (e.g. paragraphs or similar). In the example corpus the pre-aligned chunks are called &quot;link&quot;. Each link has an ID (attribute <code>n</code>) which corresponds to the link-element with the same ID its linked translation.</p>
 <p>If you are using automatic sentence-linking you need to set the variable <code>align_sentences</code> to <code>true</code> and you must specify <code>sent_align_chunk</code> to the element that has been pre-aligned.</p>
+<p>If your text is already linked on sentence level you need to have <code>sentlink</code> elements sourrounding the sentences, in order to get automatic word-linking. They should have IDs indicating which sentences belong together (e.g. <code>&lt;sentlink n=&quot;0001&quot;&gt;</code>). The IDs should be unique for each indata file. Don't forget to set the variable <code>align_sentences = false</code> in your makefile.</p>
 <p>If you would like to use automatic word-linking you need to add the attribute <code>wordlink-$(other_lang)</code> to the variables <code>vrt_columns</code> and <code>vrt_columns_annotations</code> in your Makefile. <code>$(other_lang)</code> is the variable for the language ID suffix of the linked language.</p>
 <h3 id="the-makefile">The Makefile</h3>
 <p>For parallel corpora the following variables must be set in addition to the standard variables:</p>
@@ -28,7 +29,7 @@
 <li><code>align_sentences</code>: <code>true</code> if sentences should be linked, else <code>false</code> (In this case the sentences must be pre-aligned. Word-linking will not work without sentence-alignment.)</li>
 <li><code>sent_align_chunk</code>: the pre-aligned chunk which is parent to sentence</li>
 </ul>
-<p>You need to include <code>Makefile.langs</code> (after including <code>Makefile.config</code>). By doing this Sparv will know which analysis tool (TreeTagger or FreeLing) to use for which language.</p>
+<p>You need to include <code>Makefile.langs</code> in your Makefile (after including <code>Makefile.config</code>). By doing this Sparv will know which analysis tool (TreeTagger or FreeLing) to use for which language.</p>
 <p>If the languages you are annotating make use of different analysis modes (e.g. FreeLing, TreeTagger or the standard Swedish mode) you need to define language-specific if-clauses in your Makefile in order for the variables to be set to the correct values. Check the example Makefile for more details.</p>
 <p>If you have certain attributes that are not used in all the languages in your parallel corpus you need to list these attributes in the <code>null_annotations</code> variable. In that case you also need to set <code>skip_cwb_compression</code> and<br />
 <code>skip_cwb_validation</code> to <code>true</code>, otherwise you will not be able to create the Corpus Workbench binaries.</p>
@@ -43,6 +44,7 @@ make align lang=sv other_lang=en</code></pre>
 <p>This is what the vrt result could look like for a Swedish-English parallel corpus (taken from the example corpus which can be downloaded above):</p>
 <pre><code>&lt;text&gt;
 &lt;link n=&quot;1&quot;&gt;
+&lt;sentlink n=&quot;sparv-intro.01&quot;&gt;
 &lt;sentence id=&quot;sv0248-sv02a2&quot;&gt;
 Sparv   NN  NN.UTR.SIN.IND.NOM  |sparv| |sparv..nn.1|   01  |01|
 är  VB  VB.PRS.AKT  |vara|  |vara..vb.1|    02  |02|
@@ -50,10 +52,12 @@ Språkbankens    NN  NN.UTR.SIN.DEF.GEN  |språkbank| |språkbank..nn.1|   03  |
 annoteringsverktyg  NN  NN.NEU.PLU.IND.NOM  |   |   04  |05|06|
 ...
 &lt;/sentence&gt;
+&lt;/sentlink&gt;
 &lt;/link&gt;
 &lt;/text&gt;</code></pre>
 <pre><code>&lt;text&gt;
 &lt;link n=&quot;1&quot;&gt;
+&lt;sentlink n=&quot;sparv-intro.01&quot;&gt;
 &lt;sentence id=&quot;en038c2-en0affc&quot;&gt;
 Sparv   PROPN   NP  sparv   __UNDEF__   01  |01|
 is  VERB    VBZ be  __UNDEF__   02  |02|
@@ -63,10 +67,11 @@ tool    NOUN    NN  tool    __UNDEF__   05  |04|
 developed   VERB    VBN develop __UNDEF__   06  |04|
 ...
 &lt;/sentence&gt;
+&lt;/sentlink&gt;
 &lt;/link&gt;
 &lt;/text&gt;</code></pre>
-<p>The columns contain the following information:</p>
+<p>The tab-separated columns in the vrt output contain the following information:</p>
 <p><code>word pos msd baseform lemgram linkref wordlink</code></p>
-<p>The texts are linked by the <code>&lt;link&gt;</code> elements. Links with the same ID (e.g. <code>n=1</code>) belong together.</p>
+<p>In this example the texts were manually linked by the <code>&lt;link&gt;</code> elements. The <code>sentlink</code> element was added automatically by the sentence linking module. If the <code>link</code> element contains multiple sentences the <code>sentlink</code> attribute will break down the linked elements into smaller units. The ID in the <code>link</code> and <code>sentlink</code> elements (e.g. <code>n=&quot;1&quot;</code>, <code>n=&quot;sparv-intro.01&quot;</code>) indicates which elements belong together across linked texts in different languages. By default the <code>sentlink</code>-ID is prefixed with the name of the indata file (in this case &quot;sparv-intro&quot;). Note that the prefix is not required for automatic word-linking, so if you use manual sentences-linking you will not need to set a prefix.</p>
 <p>The last column (<code>wordlink</code>) contains a set of link reference numbers (<code>linkref</code>) referring to tokens from the linked text within the same <code>&lt;link&gt;</code> element. Note that this set may be empty in some cases, meaning that the token was not linked to any token in the other language.</p>
 <p>The column <code>lemgram</code> contains only <code>__UNDEF__</code> values for the English text because <code>lemgram</code> was listed in the <code>null_annotations</code> since this annotation is only available for Swedish. Columns containing only <code>__UNDEF__</code> values are not present in the XML export.</p>
