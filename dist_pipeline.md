@@ -7,6 +7,7 @@ Please note that different license terms may apply to any of the additional comp
 
 ### Requirements
 * A Unix-like environment (e.g. Linux, macOS)
+* [Git](https://git-scm.com/) and [Git Large File Storage](https://git-lfs.github.com/) (for downloading the source code)
 * [Python 3.4](http://python.org/) or newer
 * [GNU Make](https://www.gnu.org/software/make/)
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)
@@ -25,7 +26,7 @@ Additional components (optional):
 ### Installing the required software
 The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.
 
-1. Install the Sparv Pipeline by cloning or downloading [the git repository](https://github.com/spraakbanken/sparv-pipeline) into a directory of your choice.
+1. Install the Sparv Pipeline by cloning [the git repository](https://github.com/spraakbanken/sparv-pipeline) into a directory of your choice. Please note that you must have [Git Large File Storage](https://git-lfs.github.com/) installed on your machine before cloning the repository. Some files will not be downloaded correctly otherwise.
 2. Setup a new environment variable `SPARV_MAKEFILES` and point it to `sparv-pipeline/makefiles`.
 
 #### Python virtual environment

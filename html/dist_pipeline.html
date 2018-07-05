@@ -4,6 +4,7 @@
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li>A Unix-like environment (e.g. Linux, macOS)</li>
+<li><a href="https://git-scm.com/">Git</a> and <a href="https://git-lfs.github.com/">Git Large File Storage</a> (for downloading the source code)</li>
 <li><a href="http://python.org/">Python 3.4</a> or newer</li>
 <li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
 <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java</a> (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)</li>
@@ -22,7 +23,7 @@
 <h3 id="installing-the-required-software">Installing the required software</h3>
 <p>The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.</p>
 <ol style="list-style-type: decimal">
-<li>Install the Sparv Pipeline by cloning or downloading <a href="https://github.com/spraakbanken/sparv-pipeline">the git repository</a> into a directory of your choice.</li>
+<li>Install the Sparv Pipeline by cloning <a href="https://github.com/spraakbanken/sparv-pipeline">the git repository</a> into a directory of your choice. Please note that you must have <a href="https://git-lfs.github.com/">Git Large File Storage</a> installed on your machine before cloning the repository. Some files will not be downloaded correctly otherwise.</li>
 <li>Setup a new environment variable <code>SPARV_MAKEFILES</code> and point it to <code>sparv-pipeline/makefiles</code>.</li>
 </ol>
 <h4 id="python-virtual-environment">Python virtual environment</h4>
