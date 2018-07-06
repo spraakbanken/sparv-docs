@@ -7,13 +7,13 @@ Please note that different license terms may apply to any of the additional comp
 
 ### Requirements
 * A Unix-like environment (e.g. Linux, macOS)
-* [Git](https://git-scm.com/) and [Git Large File Storage](https://git-lfs.github.com/) (for downloading the source code)
 * [Python 3.4](http://python.org/) or newer
 * [GNU Make](https://www.gnu.org/software/make/)
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)
 
 Additional components (optional):
 
+* [Git](https://git-scm.com/) and [Git Large File Storage](https://git-lfs.github.com/) (for cloning the repository, strongly recommended!)
 * [Hunpos](http://code.google.com/p/hunpos/), with its path included in your `PATH` environment variable (for part-of-speech tagging)
 * [MaltParser](http://www.maltparser.org/download.html) v. 1.7.2 (for dependency parsing)
 * [Sparv-wsd](https://github.com/spraakbanken/sparv-wsd) (for word-sense disambiguation)
@@ -26,8 +26,8 @@ Additional components (optional):
 ### Installing the required software
 The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.
 
-1. Install the Sparv Pipeline by cloning [the git repository](https://github.com/spraakbanken/sparv-pipeline) into a directory of your choice. Please note that you must have [Git Large File Storage](https://git-lfs.github.com/) installed on your machine before cloning the repository. Some files will not be downloaded correctly otherwise.
-2. Setup a new environment variable `SPARV_MAKEFILES` and point it to `sparv-pipeline/makefiles`.
+1. Install the Sparv Pipeline by cloning [the Git repository](https://github.com/spraakbanken/sparv-pipeline) into a directory of your choice. Please note that you must have [Git Large File Storage](https://git-lfs.github.com/) installed on your machine before cloning the repository. Some files will not be downloaded correctly otherwise. If you do not want to use Git you can download the latest release package from the [release page](https://github.com/spraakbanken/sparv-pipeline/releases).
+2. Setup a new environment variable `SPARV_MAKEFILES` and point it to the directory `sparv-pipeline/makefiles`.
 
 #### Python virtual environment
 Set up a Python virtual environment as a subdirectory to the `sparv-pipeline` directory:
