@@ -44,3 +44,10 @@ For texts written in contemporary Swedish Sparv can generate the following types
 
 Older Swedish texts or texts written in other languages can often be annotated
 with a sub set of the above annotation types.
+
+The `msd` annotation for non-Swedish languages is based on different tag sets,
+depending on which language is annotated and what annotation tool is being used.
+The attribute contains information about the part of speech and in many cases
+morphosyntactic information.
+The `pos` annotation contains only part-of-speech information and uses the
+[universal POS tag set](http://universaldependencies.org/u/pos/).

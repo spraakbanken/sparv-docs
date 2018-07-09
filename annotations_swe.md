@@ -43,3 +43,9 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 
 Äldre svenska texter eller texter som är skrivna på andra språk kan i vissa fall
 märkas upp med en delmängd av ovanstående annotationstyper.
+
+Annotationen `msd` för icke-svenska språk är baserad på olika taggmängder,
+beroende på språket och på vilket verktyg som har använts för annotationen. Attributet
+innehåller information om ordklass och i många fall även morfosyntaktisk information.
+Annotationen `pos` innehåller enbart orklassinformation och använder sig av
+taggmängden ["universal POS tags"](http://universaldependencies.org/u/pos/).
