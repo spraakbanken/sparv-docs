@@ -16,7 +16,7 @@ textfältet (alternativt trycka på en av exempelknapparna) och sedan trycka på
 den gröna **Kör**-knappen. När analysen är klar visas den som tabell under
 inmatningsfältet.
 
-![Sparvs webbgränssnitt](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt.png){width=550px style="margin-left: 10px;"}
+![Sparvs webbgränssnitt](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_granssnitt.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
@@ -47,7 +47,7 @@ läsbarhetsvärden eller namntaggar) visas som XML-taggar i tabellen.
 Man kan även ladda ner hela analysen som XML genom att trycka på **XML**-knappen
 ovanför tabellen.
 
-![En färdig sparvanalys](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat.png){width=550px style="margin-left: 10px;"}
+![En färdig sparvanalys](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_resultat.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
@@ -62,7 +62,7 @@ Sparv har även ett analysläge för att annotera svenska texter från 1800-tale
 Här används information från två äldre ordböcker (Dalin och Swedberg) för att få
 fram bättre analyser av ord med gammal stavning.
 
-![Språkväljarmenyn](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare.png){width=200px style="float: right; margin-left: 10px;"}
+![Språkväljarmenyn](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_sprakvaljare.png){width=200px style="float: right; margin-left: 10px;"}
 
 ## Avancerade inställningar
 
@@ -85,7 +85,7 @@ t.ex. bara intresserad av läsbarhetsvärdet **lix** kan man klicka ur **ovix**
 och **nk** i de avancerade inställningarna. Man kan få en kort förklaring för en
 inställning genom att klicka på frågetecknet bredvid den. Med hjälp av återställningsknappen kan man få fram standardinställningarna.
 
-![Sparvs avancerade inställningar i XML-läget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar.png){width=550px}
+![Sparvs avancerade inställningar i XML-läget](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_installningar.png){width=550px}
 
 <#pagebreak>
 
@@ -110,4 +110,4 @@ bra att stänga webbläsarfönstret medan analysen körs.
 När man använder sig av filuppladdningen visas resultatet inte som tabell utan
 man kan ladda ner en zip-fil med den annoterade texten i XML-format.
 
-![Filuppladdningsläget](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning.png){width=400px style="margin-left: 10px;"}
+![Filuppladdningsläget](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_uppladdning.png){width=400px style="margin-left: 10px;"}

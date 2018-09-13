@@ -17,7 +17,7 @@ field (or hit one of the example buttons) and then press the green
 **Run** button. When the analysis is done the result is shown as a table
 below the text input field.
 
-![The Sparv web interface](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_granssnitt_en.png){width=550px style="margin-left: 10px;"}
+![The Sparv web interface](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_granssnitt_en.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
@@ -48,7 +48,7 @@ in the table.
 
 By pressing the **XML** button above the result table you can download the analysis in XML format.
 
-![A completed Sparv analysis](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_resultat_en.png){width=550px style="margin-left: 10px;"}
+![A completed Sparv analysis](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_resultat_en.png){width=550px style="margin-left: 10px;"}
 
 <#pagebreak>
 
@@ -63,7 +63,7 @@ Sparv has an analysis mode for annotating Swedish texts from the 1800's. In this
 mode information from two older dictionaries (Dalin and Swedberg) is used in
 order to obtain better analyses for words with older spelling.
 
-![The language picker](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_sprakvaljare_en.png){width=200px style="float: right; margin-left: 10px;"}
+![The language picker](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_sprakvaljare_en.png){width=200px style="float: right; margin-left: 10px;"}
 
 ## Advanced Settings
 
@@ -87,7 +87,7 @@ know more about a setting you can click on the question mark beside it and a
 short explanation will be displayed. The reset button allows you to return to
 the default settings.
 
-![The advanced settings in XML mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_installningar_en.png){width=550px}
+![The advanced settings in XML mode](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_installningar_en.png){width=550px}
 
 <#pagebreak>
 
@@ -113,4 +113,4 @@ processed.
 In file upload mode the result is not shown as a table but instead you will be
 able to download a zip file containing the annotated text in XML format.
 
-![File upload mode](https://svn.spraakdata.gu.se/sb-arkiv/pub/dokumentation/sparv/img/sparv_uppladdning_en.png){width=400px style="margin-left: 10px;"}
+![File upload mode](https://github.com/spraakbanken/sparv-docs/raw/master/img/sparv_uppladdning_en.png){width=400px style="margin-left: 10px;"}
