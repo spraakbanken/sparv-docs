@@ -142,6 +142,9 @@ Russian       |ru        |FreeLing
 Slovak        |sk        |TreeTagger
 Slovenian     |sl        |FreeLing
 Spanish       |es        |FreeLing
+Swedish       |sv        |Sparv
+Swedish 1800s |sv-1800   |Sparv
+Swedish development mode |sv-dev    |Sparv
 
 If you are using TreeTagger, please copy the `tree-tagger` binary file into the `sparv-pipeline/bin/treetagger`
 directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately
