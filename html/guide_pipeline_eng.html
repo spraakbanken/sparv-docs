@@ -1,10 +1,10 @@
 <h2 id="developing-the-sparv-pipeline">Developing the Sparv Pipeline</h2>
-<p>This section describes the internal structure of the Sparv pipeline and its usage and can be used as a developer's guide. If you are working at Språkbanken you should use the latest version from Subversion. Check the internal wiki page for more information.</p>
+<p>This section describes the internal structure of the Sparv pipeline and its usage and can be used as a developer’s guide. If you are working at Språkbanken you should use the latest version from Subversion. Check the internal wiki page for more information.</p>
 <h3 id="downloading-and-installing-the-sparv-pipeline">Downloading and installing the Sparv pipeline</h3>
 <p>The latest distribution of the pipeline can be downloaded from the <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline">distribution page</a>.</p>
-<p>Annotating corpora with the Sparv pipeline can be done in the same manner as on Språkbanken's own servers which is described <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/korpusimport">here</a> (in Swedish only).</p>
+<p>Annotating corpora with the Sparv pipeline can be done in the same manner as on Språkbanken’s own servers which is described <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/korpusimport">here</a> (in Swedish only).</p>
 <p>The import format is described <a href="https://spraakbanken.gu.se/eng/research/infrastructure/sparv/importformat">here</a>.</p>
-<h3 id="the-pipelines-folder-structure">The pipeline's folder structure</h3>
+<h3 id="the-pipelines-folder-structure">The pipeline’s folder structure</h3>
 <pre><code>    annotate/
         bin/       binary files
         makefiles/ Makefiles
@@ -12,12 +12,12 @@
         python/    Python modules
         tests/     tests</code></pre>
 <h3 id="the-pipeline-structure">The pipeline structure</h3>
-<p>The Sparv corpus pipeline consists of Python modules which are located in the <code>python</code> directory. Most of the modules contain code to solve a single task, e.g. part-of-speech tagging, tokenisation etc. Some of the modules call external tools, e.g. Hunpos or the MaltParser.</p>
+<p>The Sparv corpus pipeline consists of Python modules which are located in the <code>python</code> directory. Most of the modules contain code to solve a single task, e.g. part-of-speech tagging, tokenisation etc. Some of the modules call external tools, e.g. Hunpos or the MaltParser.</p>
 <p>The following is a short summary of most of the existing modules and their basic functionalities. More information on every script can be found in the doc strings of the functions.</p>
 <table>
 <colgroup>
-<col width="27%" />
-<col width="72%" />
+<col style="width: 26%" />
+<col style="width: 73%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -100,7 +100,7 @@
 </tr>
 <tr class="odd">
 <td><em>number.py</em></td>
-<td>Different types of numbering used e.g. in structural attributes.</td>
+<td>Different types of numbering used e.g. in structural attributes.</td>
 </tr>
 <tr class="even">
 <td><em>parent.py</em></td>
@@ -172,7 +172,7 @@
 </tr>
 <tr class="odd">
 <td><em>xmlparser.py</em></td>
-<td>Parses XML and generates files in the pipeline's working format.</td>
+<td>Parses XML and generates files in the pipeline’s working format.</td>
 </tr>
 </tbody>
 </table>

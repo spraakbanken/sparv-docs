@@ -8,18 +8,18 @@
 <li>Varje enskild fil får inte vara för stor. Är de över 20 MB bör de delas upp i mindre filer.</li>
 </ul>
 <p>Se även <a href="https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/indataformat">här</a> för mer information om indataformatet.</p>
-<h3 id="tillvägagångssätt">Tillvägagångssätt</h3>
+<p>###Tillvägagångssätt</p>
 <p>Logga in på koala, och börja med att sätta följande miljövariabel:</p>
 <pre><code>    export SPARV_MAKEFILES=/export/res/lb/korpus/tools/annotate/makefiles</code></pre>
 <p>Förslagsvis skapar du sen en katalog under din hemkatalog, i vilken alla arbetsfiler kommer ligga. Navigera till denna katalog, och hämta sedan hem följande exempel-Makefile ur Subversion:</p>
 <pre><code>    svn export https://svn.spraakdata.gu.se/sb-arkiv/tools/annotate/makefiles/Makefile.example Makefile</code></pre>
 <p>Därefter skapar du en underkatalog i vilken du lägger de XML-filer som utgör ditt textmaterial.</p>
-<p>Det sista du måste göra är att redigera filen Makefile för att anpassa den efter ditt material. I oredigerat tillstånd utgår den från att XML-filerna ligger i en katalog med namnet &quot;original&quot;, och att all text i dessa filer är omsluten av <code>&lt;text&gt; ... &lt;/text&gt;</code>. Detta ändras lätt genom att ändra värdena för &quot;original_dir&quot; respektive &quot;xml_elements&quot; i makefilen. För en beskrivning av alla inställningsmöjligheter som finns kan du hämta hem följande version av makefilen, innehållande kommentarer till varje rad:</p>
+<p>Det sista du måste göra är att redigera filen Makefile för att anpassa den efter ditt material. I oredigerat tillstånd utgår den från att XML-filerna ligger i en katalog med namnet “original”, och att all text i dessa filer är omsluten av <code>&lt;text&gt; ... &lt;/text&gt;</code>. Detta ändras lätt genom att ändra värdena för “original_dir” respektive “xml_elements” i makefilen. För en beskrivning av alla inställningsmöjligheter som finns kan du hämta hem följande version av makefilen, innehållande kommentarer till varje rad:</p>
 <pre><code>    svn export https://svn.spraakdata.gu.se/sb-arkiv/tools/annotate/makefiles/Makefile.template</code></pre>
 <p>När du redigerat din Makefile är det färdigt för att köras. För att exportera till XML-format kör du kommandot</p>
 <pre><code>    make export</code></pre>
-<p>vilket i slutändan leder till att du har det färdiga materialet i katalogen &quot;export&quot; (som skapas automatiskt). Vill du hellre använda det tabbseparerade formatet så kör du i stället</p>
+<p>vilket i slutändan leder till att du har det färdiga materialet i katalogen “export” (som skapas automatiskt). Vill du hellre använda det tabbseparerade formatet så kör du i stället</p>
 <pre><code>    make vrt</code></pre>
-<p>och dessa vrt-filer hamnar då i katalogen &quot;annotations&quot; tillsammans med alla andra arbetsfiler.</p>
+<p>och dessa vrt-filer hamnar då i katalogen “annotations” tillsammans med alla andra arbetsfiler.</p>
 <p>Om du lägger till eller tar bort källfiler efter en körning och vill köra om, så måste du uppdatera registret över filer genom att köra följande:</p>
 <pre><code>    make add</code></pre>

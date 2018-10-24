@@ -3,7 +3,7 @@
 <p>Please note that different license terms may apply to any of the additional components that can be plugged into the Sparv Pipeline!</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>A Unix-like environment (e.g. Linux, macOS)</li>
+<li>A Unix-like environment (e.g. Linux, macOS)</li>
 <li><a href="http://python.org/">Python 3.4</a> or newer</li>
 <li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
 <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java</a> (if you want to use the MaltParser, Sparv-wsd or hfst-SweNER)</li>
@@ -22,7 +22,7 @@
 </ul>
 <h3 id="installing-the-required-software">Installing the required software</h3>
 <p>The following information assumes that you are running Ubuntu, but will most likely work for any Linux-based OS.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Install the Sparv Pipeline by cloning <a href="https://github.com/spraakbanken/sparv-pipeline">the Git repository</a> into a directory of your choice. Please note that you must have <a href="https://git-lfs.github.com/">Git Large File Storage</a> installed on your machine before cloning the repository. Some files will not be downloaded correctly otherwise. If you do not want to use Git you can download the latest release package from the <a href="https://github.com/spraakbanken/sparv-pipeline/releases">release page</a>.</li>
 <li>Setup a new environment variable <code>SPARV_MAKEFILES</code> and point it to the directory <code>sparv-pipeline/makefiles</code>.</li>
 </ol>
@@ -39,7 +39,7 @@ pip install -r requirements.txt</code></pre>
 <p>In <code>makefiles/Makefile.config</code> you will find a section called <em>Configuration</em>. Here you will need to specify the path to the pipeline directory by setting the variable <code>SPARV_PIPELINE_PATH</code>. If you are planning on using the pipeline to install corpora on a remote computer, you must (in addition to installing CWB) edit the <code>remote_host</code>, <code>remote_cwb_datadir</code> and <code>remote_cwb_registry</code> variables. If you are going to use anything database related (generating lemgram index or Word Picture data for Korp) you also have to edit the value of <code>rel_mysql_dbname</code>.</p>
 <h4 id="downloading-and-updating-the-models">Downloading and updating the models</h4>
 <p>Certain annotations need models to work. To download and generate the models follow these simple steps:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Navigate to the <code>sparv-pipeline/models</code> directory in a terminal.</li>
 <li>Run the command <code>make clean</code>, and then <code>make all</code>.</li>
 <li>If no errors were reported while running the above commands you may run <code>make space</code> for saving disk space.</li>
@@ -48,10 +48,10 @@ pip install -r requirements.txt</code></pre>
 <h3 id="installing-additional-components-optional">Installing additional components (optional)</h3>
 <p>The following components are not part of the core Sparv Pipeline package. Whether or not you will need to install these components depends on how you want to use the Sparv Pipeline. Please note that different licenses may apply for the individual components.</p>
 <h4 id="hunpos">Hunpos</h4>
-<p><a href="http://code.google.com/p/hunpos/">Hunpos</a> is used for Swedish part-of-speech tagging and it is a prerequisite for all of the SALDO-annotations. Hunpos can be downloaded from <a href="http://code.google.com/p/hunpos/">here</a>. Installation is done by unpacking and then adding the path of the executables to your <code>PATH</code> environmental variable. If you are running a 64-bit OS, you might also have to install 32-bit compatibility libraries if Hunpos won't run:</p>
+<p><a href="http://code.google.com/p/hunpos/">Hunpos</a> is used for Swedish part-of-speech tagging and it is a prerequisite for all of the SALDO-annotations. Hunpos can be downloaded from <a href="http://code.google.com/p/hunpos/">here</a>. Installation is done by unpacking and then adding the path of the executables to your <code>PATH</code> environmental variable. If you are running a 64-bit OS, you might also have to install 32-bit compatibility libraries if Hunpos won’t run:</p>
 <pre><code>sudo apt install ia32-libs</code></pre>
 <p>On Arch Linux, activate the <code>multilib</code> repository and install <code>lib32-gcc-libs</code>.</p>
-<p>If that doesn't work, you might have to compile Hunpos from its source code.</p>
+<p>If that doesn’t work, you might have to compile Hunpos from its source code.</p>
 <h4 id="maltparser">MaltParser</h4>
 <p><a href="http://www.maltparser.org/download.html">MaltParser</a> is used for Swedish dependency parsing. The version compatible with the Sparv pipeline is 1.7.2. Download and unpack the zip-file from the MaltParser home page and place its contents under <code>sparv-pipeline/bin/maltparser-1.7.2</code>.</p>
 <p>Download the <a href="http://maltparser.org/mco/swedish_parser/swemalt.html">dependency model</a> and place the file <code>swemalt-1.7.2.mco</code> under <code>sparv-pipeline/models</code>.</p>
@@ -60,7 +60,7 @@ pip install -r requirements.txt</code></pre>
 <pre><code>wget https://github.com/spraakbanken/sparv-wsd/raw/master/bin/saldowsd.jar -P sparv-pipeline/bin/wsd/</code></pre>
 <p>Its models are added automatically when building the Sparv Pipeline models (see above).</p>
 <h4 id="hfst-swener">hfst-SweNER</h4>
-<p>The current version of <a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER's named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
+<p>The current version of <a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER’s named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
 <pre><code>#! /usr/bin/env python2</code></pre>
 <h4 id="treetagger-and-freeling">TreeTagger and FreeLing</h4>
 <p><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> and <a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> are used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided readme file.</p>
@@ -68,110 +68,110 @@ pip install -r requirements.txt</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Language</th>
-<th align="left">Code</th>
-<th align="left">Analysis Tool</th>
+<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Analysis Tool</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Bulgarian</td>
-<td align="left">bg</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Bulgarian</td>
+<td style="text-align: left;">bg</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Catalan</td>
-<td align="left">ca</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Catalan</td>
+<td style="text-align: left;">ca</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Dutch</td>
-<td align="left">nl</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Dutch</td>
+<td style="text-align: left;">nl</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Estonian</td>
-<td align="left">et</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Estonian</td>
+<td style="text-align: left;">et</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="odd">
-<td align="left">English</td>
-<td align="left">en</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">English</td>
+<td style="text-align: left;">en</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="even">
-<td align="left">French</td>
-<td align="left">fr</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">French</td>
+<td style="text-align: left;">fr</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Finnish</td>
-<td align="left">fi</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Finnish</td>
+<td style="text-align: left;">fi</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Galician</td>
-<td align="left">gl</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Galician</td>
+<td style="text-align: left;">gl</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">German</td>
-<td align="left">de</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">German</td>
+<td style="text-align: left;">de</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="even">
-<td align="left">Italian</td>
-<td align="left">it</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Italian</td>
+<td style="text-align: left;">it</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Latin</td>
-<td align="left">la</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Latin</td>
+<td style="text-align: left;">la</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Norwegian</td>
-<td align="left">no</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Norwegian</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Polish</td>
-<td align="left">pl</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Polish</td>
+<td style="text-align: left;">pl</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Portuguese</td>
-<td align="left">pt</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Portuguese</td>
+<td style="text-align: left;">pt</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Romanian</td>
-<td align="left">ro</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Romanian</td>
+<td style="text-align: left;">ro</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Russian</td>
-<td align="left">ru</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Russian</td>
+<td style="text-align: left;">ru</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Slovak</td>
-<td align="left">sk</td>
-<td align="left">TreeTagger</td>
+<td style="text-align: left;">Slovak</td>
+<td style="text-align: left;">sk</td>
+<td style="text-align: left;">TreeTagger</td>
 </tr>
 <tr class="even">
-<td align="left">Slovenian</td>
-<td align="left">sl</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Slovenian</td>
+<td style="text-align: left;">sl</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 <tr class="odd">
-<td align="left">Spanish</td>
-<td align="left">es</td>
-<td align="left">FreeLing</td>
+<td style="text-align: left;">Spanish</td>
+<td style="text-align: left;">es</td>
+<td style="text-align: left;">FreeLing</td>
 </tr>
 </tbody>
 </table>
-<p>If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>sparv-pipeline/bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>sparv-pipeline/models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
+<p>If you are using TreeTagger, please copy the <code>tree-tagger</code> binary file into the <code>sparv-pipeline/bin/treetagger</code> directory belonging to the pipeline. The TreeTagger models (parameter files) need to be downloaded separately and saved in the <code>sparv-pipeline/models/treetagger</code> directory. The parameter files need to be re-named to a two-letter language code followed by the file ending <code>.par</code>, e.g. the Dutch parameter file is called <code>nl.par</code>.</p>
 <p>When using Freeling you will need the sparv-freeling extension which is available via <a href="https://github.com/spraakbanken/sparv-freeling">GitHub</a> and runs under the <a href="http://www.gnu.org/licenses/agpl.html">AGPL license</a>. Follow the installation instructions for the sparv-freeling module on <a href="https://github.com/spraakbanken/sparv-freeling">GitHub</a> in order to set up the models correctly.</p>
 <h4 id="fast_align">fast_align</h4>
 <p><a href="https://github.com/clab/fast_align">fast_align</a> is used for word-linking on parallel corpora. Follow the installation instructions given in the fast_align repository and copy the binary files <code>atools</code> and <code>fast_align</code> into the <code>sparv-pipeline/bin/word_alignment</code> folder of the pipeline.</p>
@@ -181,7 +181,7 @@ pip install -r requirements.txt</code></pre>
 <ul>
 <li>The files must be encoded in <strong>UTF-8</strong>.</li>
 <li>The format must be <strong>valid XML</strong>, <em>with the following two exceptions</em>:
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>No root element is needed. It is however required that all text in the file must be contained within elements.<br />
 The simplest valid file possible consists of a single element, for example <code>&lt;text&gt;</code>, containing nothing but raw text.<br />
 </li>
@@ -218,10 +218,10 @@ If you remove or add source files to your corpus after having already run one of
 <pre><code>sudo ./install-scripts/cwb-install-ubuntu</code></pre>
 <p>CWB is now installed, and by default you will find it under <code>/usr/local/cwb-X.X.X/bin</code> (where <code>X.X.X</code> is the version number). Confirm that the installation was successful by typing:</p>
 <pre><code>/usr/local/cwb-X.X.X/bin/cqp -v</code></pre>
-<p>CWB needs two directories for storing the corpora. One for the data, and one for the corpus registry. You may create these directories wherever you want, but let's assume that you have created the following two:</p>
+<p>CWB needs two directories for storing the corpora. One for the data, and one for the corpus registry. You may create these directories wherever you want, but let’s assume that you have created the following two:</p>
 <pre><code>/corpora/data
 /corpora/registry</code></pre>
 <p>You also need to edit the following variables in <code>sparv-pipeline/makefiles/Makefile.config</code>, pointing to the directories created above:</p>
 <pre><code>export CWB_DATADIR ?= /corpora/data
 export CORPUS_REGISTRY ?= /corpora/registry</code></pre>
-<p>If you're not running Ubuntu or if you run into any problems, refer to the INSTALL text file in the cwb dir for further instructions.</p>
+<p>If you’re not running Ubuntu or if you run into any problems, refer to the INSTALL text file in the cwb dir for further instructions.</p>

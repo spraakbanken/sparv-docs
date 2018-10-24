@@ -1,5 +1,5 @@
 <h2 id="developing-the-sparv-backend">Developing the Sparv Backend</h2>
-<p>This section describes the internal structure of the Sparv backend and its usage of the catapult and can be used as a developer's guide.</p>
+<p>This section describes the internal structure of the Sparv backend and its usage of the catapult and can be used as a developer’s guide.</p>
 <h3 id="backend"><a name="backend"></a>Backend</h3>
 <p>The backend is run through the WSGI script <code>index.py</code>. It is available at <a href="https://spraakbanken.gu.se/ws/sparv" class="uri">https://spraakbanken.gu.se/ws/sparv</a>.</p>
 <h4 id="requirements"><a name="be-requirements"></a>Requirements</h4>
@@ -32,7 +32,7 @@ pip install -r requirements.txt</code></pre>
 <li><code>fileupload_ext</code>: extension used for builds that contain file uploads</li>
 <li><code>socket_file</code>: path to the socket file used to communicate with the catapult</li>
 <li><code>catalaunch_binary</code>: path to the catalaunch binary file</li>
-<li><code>python_interpreter</code>: &quot;Python&quot; interpreter, replaced with catalaunch</li>
+<li><code>python_interpreter</code>: “Python” interpreter, replaced with catalaunch</li>
 </ul>
 <p>When running the backend with gunicorn (recommended) you may also want to modify the configuration in <code>html/app/gunicorn_config.py</code>.</p>
 <p>The suggested location for the Sparv pipeline is the directory <code>data/pipeline</code>.</p>
