@@ -26,9 +26,9 @@ Logga in på koala, och börja med att sätta följande miljövariabel:
 
 Förslagsvis skapar du sen en katalog under din hemkatalog, i vilken alla
 arbetsfiler kommer ligga. Navigera till denna katalog, och hämta sedan hem följande
-exempel-Makefile ur Subversion:
+exempel-Makefile ur GitHub:
 
-        svn export https://svn.spraakdata.gu.se/sb-arkiv/tools/annotate/makefiles/Makefile.example Makefile
+        wget -O Makefile https://raw.githubusercontent.com/spraakbanken/sparv-pipeline/master/makefiles/Makefile.example
 
 Därefter skapar du en underkatalog i vilken du lägger de XML-filer som utgör
 ditt textmaterial.
@@ -41,7 +41,7 @@ respektive "xml\_elements" i makefilen.
 För en beskrivning av alla inställningsmöjligheter som finns kan du hämta hem
 följande version av makefilen, innehållande kommentarer till varje rad:
 
-        svn export https://svn.spraakdata.gu.se/sb-arkiv/tools/annotate/makefiles/Makefile.template
+        wget https://raw.githubusercontent.com/spraakbanken/sparv-pipeline/master/makefiles/Makefile.template
 
 När du redigerat din Makefile är det färdigt för att köras. För att exportera
 till XML-format kör du kommandot
@@ -60,4 +60,3 @@ Om du lägger till eller tar bort källfiler efter en körning och vill köra om
 så måste du uppdatera registret över filer genom att köra följande:
 
         make add
-
