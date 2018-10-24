@@ -121,29 +121,29 @@ readme file.
 <a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline,
 their language codes and which tool Sparv uses to analyze them:
 
-Language      |Code      |Analysis Tool
-:-------------|:---------|:-------------
-Bulgarian     |bg        |TreeTagger
-Catalan       |ca        |FreeLing
-Dutch         |nl        |TreeTagger
-Estonian      |et        |TreeTagger
-English       |en        |FreeLing
-French        |fr        |FreeLing
-Finnish       |fi        |TreeTagger
-Galician      |gl        |FreeLing
-German        |de        |FreeLing
-Italian       |it        |FreeLing
-Latin         |la        |TreeTagger
-Norwegian     |no        |FreeLing
-Polish        |pl        |TreeTagger
-Portuguese    |pt        |FreeLing
-Romanian      |ro        |TreeTagger
-Russian       |ru        |FreeLing
-Slovak        |sk        |TreeTagger
-Slovenian     |sl        |FreeLing
-Spanish       |es        |FreeLing
-Swedish       |sv        |Sparv
-Swedish 1800s |sv-1800   |Sparv
+Language       |Code      |Analysis Tool
+:--------------|:---------|:-------------
+Bulgarian      |bg        |TreeTagger
+Catalan        |ca        |FreeLing
+Dutch          |nl        |TreeTagger
+Estonian       |et        |TreeTagger
+English        |en        |FreeLing
+French         |fr        |FreeLing
+Finnish        |fi        |TreeTagger
+Galician       |gl        |FreeLing
+German         |de        |FreeLing
+Italian        |it        |FreeLing
+Latin          |la        |TreeTagger
+Norwegian      |no        |FreeLing
+Polish         |pl        |TreeTagger
+Portuguese     |pt        |FreeLing
+Romanian       |ro        |TreeTagger
+Russian        |ru        |FreeLing
+Slovak         |sk        |TreeTagger
+Slovenian      |sl        |FreeLing
+Spanish        |es        |FreeLing
+Swedish        |sv        |Sparv
+Swedish 1800's |sv-1800   |Sparv
 Swedish development mode |sv-dev    |Sparv
 
 If you are using TreeTagger, please copy the `tree-tagger` binary file into the `sparv-pipeline/bin/treetagger`
