@@ -3,9 +3,14 @@
 
 For texts written in contemporary Swedish Sparv can generate the following types of annotations:
 
+
 * Part of speech tagging:
     * `pos`: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html
     * `msd`: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html
+
+    Tool: [Hunpos](http://code.google.com/p/hunpos/),
+    Model: in-house model trained on [SUC 3.0](https://spraakbanken.gu.se/swe/resurs/suc3)
+
 
 * SALDO-based analysis:
     * `baseform`: citation form
@@ -14,26 +19,36 @@ For texts written in contemporary Swedish Sparv can generate the following types
     * (`saldo`: identifies a sense in SALDO - *will be removed soon*)
     * `sentiment`: sentiment score
 
+
 * Compound analysis (also based on SALDO):
     * `complemgram`: compound lemgram
     * `compwf`: compound word form
     * (`prefix`: initial part of a compound - *will be removed soon*)
     * (`suffix`: final part of a compound - *will be removed soon*)
 
+
 * Dependency analysis:
     * `ref`: the position of the word in the sentence
     * `dephead`: dependency head, the ref of the word which the current word modifies or is dependent of
     * `deprel`: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html
+
+    Tool: [MaltParser](http://www.maltparser.org/download.html),
+    Model: swemalt, trained on Swedish Treebank
+
 
 * Named entity recognition:
     * `ne.ex`: named entity (name expression, numerical expression or time expression)
     * `ne.type`: named entity type
     * `ne.subtype`: named entity sub type
 
+    Tool: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
+
+
 * Readability metrics:
     * `text.lix`: the Swedish readability metric LIX, läsbarhetsindex
     * `text.ovix`: the Swedish readability metric OVIX, ordvariationsindex
     * `text.nk`: the Swedish readability metric nominalkvot
+
 
 * Lexical classes:
     * `blingbring`: lexical class from the Blingbring resource (on word level)
