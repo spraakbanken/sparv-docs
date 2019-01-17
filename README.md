@@ -1,6 +1,12 @@
 # sparv-docs
 This repository includes documentation for the Sparv pipeline, web tool and web service.
 
+## Requirements
+* [GPP](https://logological.org/gpp)
+* [Pandoc](https://pandoc.org/)
+* [pdfTeX](https://www.tug.org/applications/pdftex/)
+
+## Usage
 Generate PDF files with user manual and technical report:
 
     cd report
