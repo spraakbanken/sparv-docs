@@ -15,7 +15,7 @@
 <li><a href="http://www.maltparser.org/download.html">MaltParser</a> v. 1.7.2 (for dependency parsing)</li>
 <li><a href="https://github.com/spraakbanken/sparv-wsd">Sparv-wsd</a> (for word-sense disambiguation)</li>
 <li><a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> (for named entity recognition)</li>
-<li><a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
+<li><a href="https://github.com/TALP-UPC/FreeLing/releases/tag/4.1">FreeLing</a> 4.1 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)</li>
 <li><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)</li>
 <li><a href="https://github.com/clab/fast_align">fast_align</a> (if you want to run word-linking on parallel corpora)</li>
 <li><a href="http://cwb.sourceforge.net/beta.php">Corpus Workbench</a> (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)</li>
@@ -63,7 +63,7 @@ pip install -r requirements.txt</code></pre>
 <p>The current version of <a href="http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz">hfst-SweNER</a> expects to be run in a Python 2 environment while the Sparv pipeline is written in Python 3. If you want to use hfst-SweNER’s named entity recognition from within Sparv you need to make sure that your <code>python</code> command in your environment refers to Python 2. Alternatively, before installing hfst-SweNER, you can make sure that it will be run with the correct version of Python by replacing <code>python</code> with <code>python2</code> in all the Python scripts in the <code>hfst-swener-0.9.3/scripts</code> directory. The first line in every script will then look like this:</p>
 <pre><code>#! /usr/bin/env python2</code></pre>
 <h4 id="treetagger-and-freeling">TreeTagger and FreeLing</h4>
-<p><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> and <a href="http://nlp.lsi.upc.edu/freeling/node/30">FreeLing</a> are used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided readme file.</p>
+<p><a href="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/">TreeTagger</a> and <a href="https://github.com/TALP-UPC/FreeLing/releases/tag/4.1">FreeLing</a> are used for POS-tagging and lemmatization of other languages than Swedish. Please install the software according to the instructions on the respective website or in the provided readme file.</p>
 <p><a name="language_table"></a>The following is a list over the languages currently supported by the corpus pipeline, their language codes and which tool Sparv uses to analyze them:</p>
 <table>
 <thead>

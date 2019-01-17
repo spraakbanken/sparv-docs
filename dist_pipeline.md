@@ -18,7 +18,7 @@ Additional components (optional):
 * [MaltParser](http://www.maltparser.org/download.html) v. 1.7.2 (for dependency parsing)
 * [Sparv-wsd](https://github.com/spraakbanken/sparv-wsd) (for word-sense disambiguation)
 * [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz) (for named entity recognition)
-* [FreeLing](http://nlp.lsi.upc.edu/freeling/node/30) 4.0 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
+* [FreeLing](https://github.com/TALP-UPC/FreeLing/releases/tag/4.1) 4.1 (if you want to annotate corpora in Catalan, English, French, Galician, German, Italian, Norwegian, Portuguese, Russian, Slovenian or Spanish)
 * [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) (if you want to annotate corpora in Bulgarian, Dutch, Estonian, Finnish, Latin, Polish, Romanian or Slovak)
 * [fast_align](https://github.com/clab/fast_align) (if you want to run word-linking on parallel corpora)
 * [Corpus Workbench](http://cwb.sourceforge.net/beta.php) (CWB) 3.2 or newer (if you are going to use the Korp backend for searching in your corpora)
@@ -113,7 +113,7 @@ directory. The first line in every script will then look like this:
     #! /usr/bin/env python2
 
 #### TreeTagger and FreeLing
-[TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) and [FreeLing](http://nlp.lsi.upc.edu/freeling/node/30)
+[TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) and [FreeLing](https://github.com/TALP-UPC/FreeLing/releases/tag/4.1)
 are used for POS-tagging and lemmatization of other languages than Swedish.
 Please install the software according to the instructions on the respective website or in the provided
 readme file.
