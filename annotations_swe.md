@@ -42,6 +42,8 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 
     Verktyg: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
 
+    Referenser: [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf), [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
+
 
 * Läsbarhetsindex:
     * `text.lix`: LIX, läsbarhetsindex
