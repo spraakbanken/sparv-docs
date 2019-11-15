@@ -1,6 +1,4 @@
 
-## Annotationer i Sparv
-
 För texter som är skrivna i nusvenska kan Sparv generera följande typer av annotationer:
 
 * Ordklasstaggning:

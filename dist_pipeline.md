@@ -1,5 +1,4 @@
 
-## Setting up the Sparv Pipeline
 This section describes how to get the Sparv corpus pipeline up and running on your
 own machine. The source code is available from [GitHub](https://github.com/spraakbanken/sparv-pipeline) under the [MIT license](https://opensource.org/licenses/MIT).
 

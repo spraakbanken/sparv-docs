@@ -1,6 +1,4 @@
 
-## Sparv's Import Format
-
 This section describes the XML format you should use when importing text using the [Sparv corpus pipeline](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline).
 
 ### Format requirements

@@ -1,6 +1,4 @@
 
-## Annotating parallel corpora
-
 A parallel corpus is a corpus that contains a collection of original texts and
 their translations into other languages. A parallel corpus can be bilingual or
 multilingual. In Sparv each text collection of one language is treated as a
@@ -146,7 +144,7 @@ the linked elements into smaller units. The ID in the `link` and `sentlink` elem
 linked texts in different languages. By default the `sentlink`-ID is prefixed with
 the name of the indata file (in this case "sparv-intro"). Note that the prefix is
 not required for automatic word-linking, so if you use manual sentences-linking you
-will not need to set a prefix. 
+will not need to set a prefix.
 
 The last column (`wordlink`) contains a set of link reference numbers (`linkref`)
 referring to tokens from the linked text within the same `<link>` element. Note that

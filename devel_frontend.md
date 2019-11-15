@@ -1,6 +1,4 @@
 
-## Developing the Sparv Frontend
-
 This section describes the internal structure of the Sparv frontend
 and can be used as a developer's guide.
 

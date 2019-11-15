@@ -1,6 +1,4 @@
 
-## Developing the Sparv Pipeline
-
 This section describes the internal structure of the Sparv pipeline
 and its usage and can be used as a developer's guide.
 

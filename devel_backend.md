@@ -1,6 +1,4 @@
 
-## Developing the Sparv Backend
-
 This section describes the internal structure of the Sparv backend
 and its usage of the catapult and can be used as a developer's guide.
 

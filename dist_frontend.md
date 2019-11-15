@@ -1,6 +1,4 @@
 
-## Setting up the Sparv Frontend
-
 This section describes how to get the Sparv frontend up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/pub/sparv.dist/sparv_frontend). The source code is made available under the [MIT license](https://opensource.org/licenses/MIT).
 
 ### Requirements

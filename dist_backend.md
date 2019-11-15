@@ -1,6 +1,4 @@
 
-## Setting up the Sparv Backend
-
 This section describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/lb/pub/sparv.dist/sparv_backend/?C=M;O=D).
 
 Note that the source code is made available in two different versions:

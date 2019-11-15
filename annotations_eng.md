@@ -1,6 +1,4 @@
 
-## Available Sparv Annotations
-
 For texts written in contemporary Swedish Sparv can generate the following types of annotations:
 
 * Part of speech tagging:

@@ -15,14 +15,14 @@ omsluter texten. Det räcker med något så simpelt som `<text> ... </text>`.
 * Varje enskild fil får inte vara för stor. Är de över 20 MB bör de delas upp
 i mindre filer.
 
-Se även [här](https://spraakbanken.gu.se/swe/forskning/infrastruktur/sparv/indataformat)
+Se även [här](/en/tools/sparv/pipeline/import-format)
 för mer information om indataformatet.
 
 ###Tillvägagångssätt
 
 Logga in på koala, och börja med att sätta följande miljövariabel:
 
-        export SPARV_MAKEFILES=/export/res/lb/korpus/tools/annotate/makefiles
+        export SPARV_MAKEFILES=/export/res/lb/korpus/sparv-pipeline/makefiles
 
 Förslagsvis skapar du sen en katalog under din hemkatalog, i vilken alla
 arbetsfiler kommer ligga. Navigera till denna katalog, och hämta sedan hem följande
