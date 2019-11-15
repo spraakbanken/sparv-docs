@@ -11,7 +11,7 @@ echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg,
 
 echo -e "\n# The Sparv Pipeline\n" >> technical_report.md
 cat ../dist_pipeline.md >> technical_report.md
-cat ../guide_pipeline_eng.md >> technical_report.md
+cat ../devel_pipeline_eng.md >> technical_report.md
 cat ../import_format.md >> technical_report.md
 cat ../annotations_eng.md >> technical_report.md
 echo -e "\n# The Sparv Frontend\n" >> technical_report.md

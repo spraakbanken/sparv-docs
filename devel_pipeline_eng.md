@@ -2,8 +2,7 @@
 ## Developing the Sparv Pipeline
 
 This section describes the internal structure of the Sparv pipeline
-and its usage and can be used as a developer's guide. If you are working at Språkbanken
-you should use the latest version from Subversion. Check the internal wiki page for more information.
+and its usage and can be used as a developer's guide.
 
 ### Downloading and installing the Sparv pipeline
 
