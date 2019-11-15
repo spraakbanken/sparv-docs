@@ -3,21 +3,21 @@
 
 For texts written in contemporary Swedish Sparv can generate the following types of annotations:
 
-
 * Part of speech tagging:
-    * `pos`: part of speech, see http://spraakbanken.gu.se/korp/markup/msdtags.html
-    * `msd`: morphosyntactic tag, see http://spraakbanken.gu.se/korp/markup/msdtags.html
+    * `pos`: part of speech
+    * `msd`: morphosyntactic tag
 
     Tool: [Hunpos](http://code.google.com/p/hunpos/),
-    Model: in-house model trained on [SUC 3.0](https://spraakbanken.gu.se/swe/resurs/suc3)
+    Model: in-house model trained on [SUC 3.0](/en/resources/suc3)
+    Tag set: [MSD tags](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
-* SALDO-based analysis:
+* [SALDO](/en/resources/saldo)-based analysis:
     * `baseform`: citation form
-    * `lemgram`: lemgram, identifies the inflectional table
+    * `lemgram`: lemgram, identifies the inflectional table (using [SALDO tags](https://spraakbanken.gu.se/eng/research/saldo/tagset))
     * `sense`: identifies a sense in SALDO and its probability
     * (`saldo`: identifies a sense in SALDO - *will be removed soon*)
-    * `sentiment`: sentiment score
+    * `sentiment`: sentiment score using [SenSALDO](/resurser/sensaldo)
 
 
 * Compound analysis (also based on SALDO):

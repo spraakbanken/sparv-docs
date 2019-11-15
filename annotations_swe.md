@@ -4,16 +4,17 @@
 För texter som är skrivna i nusvenska kan Sparv generera följande typer av annotationer:
 
 * Ordklasstaggning:
-    * `pos`: ordklasstagg (av engelskans 'part of speech'), se http://spraakbanken.gu.se/korp/markup/msdtags.html
-    * `msd`: morfosyntaktisk tagg, se http://spraakbanken.gu.se/korp/markup/msdtags.html
+    * `pos`: ordklasstagg (av engelskans 'part of speech')
+    * `msd`: morfosyntaktisk tagg
 
     Verktyg: [Hunpos](http://code.google.com/p/hunpos/),
-    Modell: egen modell tränad på [SUC 3.0](https://spraakbanken.gu.se/swe/resurs/suc3)
+    Modell: egen modell tränad på [SUC 3.0](/resurser/suc3)
+    Taggmängd: [MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
-* SALDO-baserade analyser:
+* [SALDO](/resurser/saldo)-baserade analyser:
     * `baseform`: grundform
-    * `lemgram`: lemgram, en formenhet som identifierar böjningstabellen
+    * `lemgram`: lemgram, en formenhet som identifierar böjningstabellen (använder [SALDO taggar](https://spraakbanken.gu.se/swe/forskning/saldo/taggm%C3%A4ngd))
     * `sense`: identifierar en betydelse i SALDO samt dess sannolikhet
     * (`saldo`: identifierar en betydelse i SALDO - *kommer att tas bort snart*)
     * `sentiment`: attitydvärde
