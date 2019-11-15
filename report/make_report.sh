@@ -11,15 +11,15 @@ echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg,
 
 echo -e "\n# The Sparv Pipeline\n" >> technical_report.md
 cat ../dist_pipeline.md >> technical_report.md
-cat ../devel_pipeline_eng.md >> technical_report.md
+cat ../devel_pipeline.md >> technical_report.md
 cat ../import_format.md >> technical_report.md
 cat ../annotations_eng.md >> technical_report.md
 echo -e "\n# The Sparv Frontend\n" >> technical_report.md
-cat ../dist_frontend_eng.md >> technical_report.md
-cat ../devel_frontend_eng.md >> technical_report.md
+cat ../dist_frontend.md >> technical_report.md
+cat ../devel_frontend.md >> technical_report.md
 echo -e "\n# The Sparv Backend\n" >> technical_report.md
-cat ../dist_backend_eng.md >> technical_report.md
-cat ../devel_backend_eng.md >> technical_report.md
+cat ../dist_backend.md >> technical_report.md
+cat ../devel_backend.md >> technical_report.md
 # API documentation has moved! It now lives in the sparv-backend repo on GitHub
 # echo -e "\n# The Sparv Web API\n" >> technical_report.md
 # cat ../ws_eng.md >> technical_report.md
