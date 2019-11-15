@@ -20,8 +20,9 @@ cat ../devel_frontend_eng.md >> technical_report.md
 echo -e "\n# The Sparv Backend\n" >> technical_report.md
 cat ../dist_backend_eng.md >> technical_report.md
 cat ../devel_backend_eng.md >> technical_report.md
-echo -e "\n# The Sparv Web API\n" >> technical_report.md
-cat ../ws_eng.md >> technical_report.md
+# API documentation has moved! It now lives in the sparv-backend repo on GitHub
+# echo -e "\n# The Sparv Web API\n" >> technical_report.md
+# cat ../ws_eng.md >> technical_report.md
 echo -e "\n# Interaction between the Sparv Components\n" >> technical_report.md
 cat ../interaction.md >> technical_report.md
 
