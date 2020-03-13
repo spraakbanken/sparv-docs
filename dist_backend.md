@@ -1,22 +1,19 @@
 
-This section describes how to get the Sparv backend up and running on your own machine. Begin by downloading the latest source zip from [here](https://spraakbanken.gu.se/lb/pub/sparv.dist/sparv_backend/?C=M;O=D).
-
-Note that the source code is made available in two different versions:
-
-* under the [MIT license](https://opensource.org/licenses/MIT) without usage of FreeLing
-* under the [AGPL license](http://www.gnu.org/licenses/agpl.html) including calls to FreeLing
+This section describes how to get the Sparv backend up and running on your own machine.
+Begin by downloading the latest version from the [GitHub repository](https://github.com/spraakbanken/sparv-backend).
 
 
 ### Info
 
-Here follow instructions for installation on a UNIX-like environment.
-For more information on the different configuration variables check the [developer's guide](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/developersguides).
+These instructions are for installation on a UNIX-like environment.
+For more information on the different configuration variables check the [developer's guide](/en/tools/sparv/pipeline/technical-documentation).
 
-The Sparv backend is configured to be run in combination with the catapult. The catapult source files are distributed together with the Sparv pipeline (see below).
+The Sparv backend is configured to be run in combination with the catapult which is also available on GitHub (see below).
 
 ### Requirements
 
-* The Sparv corpus pipeline (see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions)
+* The Sparv corpus pipeline (see [here](/en/tools/sparv/pipeline/installation) for installation instructions)
+* The [Sparv catapult](https://github.com/spraakbanken/sparv-catapult)
 * [Python 3.4](http://python.org/) or newer
 * A WSGI server (optional but recommended)
 * [GCC](http://gcc.gnu.org/install) for compiling the `catapult` C extension

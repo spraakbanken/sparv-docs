@@ -1,7 +1,6 @@
 <!--##Körning av eget material på koala-->
 Syftet med det här dokumentet är att förklara hur man kör eget material genom
-importkedjan om man har tillgång till Språkbankens Subversion-repositorium och
-ett användarkonto på servern koala.
+importkedjan om man har ett användarkonto på servern koala.
 
 Det är möjligt att köra eget material genom Språkbankens korpusimportkedja, och
 att få det annoterat med alla de annoteringar som används för korpusarna i Korp.

@@ -9,7 +9,7 @@ It is available at [https://spraakbanken.gu.se/ws/sparv](https://spraakbanken.gu
 
 #### <a name="be-requirements"></a>Requirements
 
-* the Sparv corpus pipeline, see [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline) for installation instructions
+* the Sparv corpus pipeline, see [here](/en/tools/sparv/pipeline/installation) for installation instructions
 * [Python 3.4](https://www.python.org/) or newer
 
 

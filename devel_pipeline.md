@@ -4,13 +4,13 @@ and its usage and can be used as a developer's guide.
 
 ### Downloading and installing the Sparv pipeline
 
-The latest distribution of the pipeline can be downloaded from the [distribution page](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline).
+The latest distribution of the pipeline can be downloaded from the [installation page](/en/tools/sparv/pipeline/installation).
 
 Annotating corpora with the Sparv pipeline can be done in the same manner as on
 Språkbanken's own servers which is described
-[here](https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/korpusimport) (in Swedish only).
+[here](/verktyg/sparv/importkedja/korning-av-material) (in Swedish only).
 
-The import format is described [here](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/importformat).
+The import format is described [here](/en/tools/sparv/pipeline/import-format).
 
 ### The pipeline's folder structure
 
