@@ -5,8 +5,8 @@ For texts written in contemporary Swedish Sparv can generate the following types
     * `pos`: part of speech
     * `msd`: morphosyntactic tag
 
-    Tool: [Hunpos](http://code.google.com/p/hunpos/),
-    Model: in-house model trained on [SUC 3.0](/en/resources/suc3)
+    Tool: [Hunpos](http://code.google.com/p/hunpos/)<br>
+    Model: in-house model trained on [SUC 3.0](/en/resources/suc3)<br>
     Tag set: [MSD tags](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
@@ -28,10 +28,11 @@ For texts written in contemporary Swedish Sparv can generate the following types
 * Dependency analysis:
     * `ref`: the position of the word in the sentence
     * `dephead`: dependency head, the ref of the word which the current word modifies or is dependent of
-    * `deprel`: dependency relation, the relation of the current word to its dependency head, see http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html
+    * `deprel`: dependency relation, the relation of the current word to its dependency head
 
-    Tool: [MaltParser](http://www.maltparser.org/download.html),
-    Model: swemalt, trained on Swedish Treebank
+    Tool: [MaltParser](http://www.maltparser.org/download.html)<br>
+    Model: swemalt, trained on Swedish Treebank<br>
+    Tag set: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
 
 
 * Named entity recognition:
@@ -39,8 +40,7 @@ For texts written in contemporary Swedish Sparv can generate the following types
     * `ne.type`: named entity type
     * `ne.subtype`: named entity sub type
 
-    Tool: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
-
+    Tool: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)<br>
     References: [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf), [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
 
 * Readability metrics:

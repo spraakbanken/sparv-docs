@@ -5,8 +5,8 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
     * `pos`: ordklasstagg (av engelskans 'part of speech')
     * `msd`: morfosyntaktisk tagg
 
-    Verktyg: [Hunpos](http://code.google.com/p/hunpos/),
-    Modell: egen modell tränad på [SUC 3.0](/resurser/suc3)
+    Verktyg: [Hunpos](http://code.google.com/p/hunpos/)<br>
+    Modell: egen modell tränad på [SUC 3.0](/resurser/suc3)<br>
     Taggmängd: [MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
@@ -28,10 +28,11 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
 * Dependensanalys:
     * `ref`: ordets position i meningen
     * `dephead`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
-    * `deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud, se http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html
+    * `deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
 
-    Verktyg: [MaltParser](http://www.maltparser.org/download.html),
-    Modell: swemalt, tränad på Svensk trädbank
+    Verktyg: [MaltParser](http://www.maltparser.org/download.html)<br>
+    Modell: swemalt, tränad på Svensk trädbank<br>
+    Taggmängd: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
 
 
 * Namnigenkänning:
@@ -39,8 +40,7 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
     * `ne.type`: namnentitetstyp
     * `ne.subtype`: namnentitetsundertyp
 
-    Verktyg: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
-
+    Verktyg: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)<br>
     Referenser: [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf), [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
 
 
