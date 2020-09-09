@@ -14,7 +14,7 @@ omsluter texten. Det räcker med något så simpelt som `<text> ... </text>`.
 * Varje enskild fil får inte vara för stor. Är de över 20 MB bör de delas upp
 i mindre filer.
 
-Se även [här](/en/tools/sparv/pipeline/import-format)
+Se även [här](https://spraakbanken.gu.se/en/tools/sparv/pipeline/import-format)
 för mer information om indataformatet.
 
 ###Tillvägagångssätt

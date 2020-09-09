@@ -13,7 +13,7 @@ You can download an example mini corpus including a working Makefile [here](http
 Each corpus has its own root directory. The names of the root directories (
 `mycorpus-en` and `mycorpus-sv`) need to be identical apart from the language ID
 suffix. If the language in question should be annotated with Sparv its language ID
-suffix should be a two-letter ISO code (check [this table](https://spraakbanken.gu.se/eng/research/infrastructure/sparv/distribution/pipeline#language_table) for reference). Files that are linked to each other must
+suffix should be a two-letter ISO code (check the language table in the install section for reference). Files that are linked to each other must
 have the same name (in this example: `sparv-intro.xml`).
 
 ```

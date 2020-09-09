@@ -6,13 +6,13 @@ För texter som är skrivna i nusvenska kan Sparv generera följande typer av an
     * `msd`: morfosyntaktisk tagg
 
     Verktyg: [Hunpos](http://code.google.com/p/hunpos/)<br>
-    Modell: egen modell tränad på [SUC 3.0](/resurser/suc3)<br>
+    Modell: egen modell tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3)<br>
     Taggmängd: [MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
-* [SALDO](/resurser/saldo)-baserade analyser:
+* [SALDO](https://spraakbanken.gu.se/resurser/saldo)-baserade analyser:
     * `baseform`: grundform
-    * `lemgram`: lemgram, en formenhet som identifierar böjningstabellen (använder [SALDO taggar](https://spraakbanken.gu.se/swe/forskning/saldo/taggm%C3%A4ngd))
+    * `lemgram`: lemgram, en formenhet som identifierar böjningstabellen (använder [SALDO taggar](https://spraakbanken.gu.se/resurser/saldo/taggmangd))
     * `sense`: identifierar en betydelse i SALDO samt dess sannolikhet
     * (`saldo`: identifierar en betydelse i SALDO - *kommer att tas bort snart*)
     * `sentiment`: attitydvärde

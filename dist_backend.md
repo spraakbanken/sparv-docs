@@ -6,13 +6,13 @@ Begin by downloading the latest version from the [GitHub repository](https://git
 ### Info
 
 These instructions are for installation on a UNIX-like environment.
-For more information on the different configuration variables check the [developer's guide](/en/tools/sparv/pipeline/technical-documentation).
+For more information on the different configuration variables check the [developer's guide](https://spraakbanken.gu.se/en/tools/sparv/pipeline/technical-documentation).
 
 The Sparv backend is configured to be run in combination with the catapult which is also available on GitHub (see below).
 
 ### Requirements
 
-* The Sparv corpus pipeline (see [here](/en/tools/sparv/pipeline/installation) for installation instructions)
+* The Sparv corpus pipeline (see [here](https://spraakbanken.gu.se/en/tools/sparv/pipeline/installation) for installation instructions)
 * The [Sparv catapult](https://github.com/spraakbanken/sparv-catapult)
 * [Python 3.4](http://python.org/) or newer
 * A WSGI server (optional but recommended)

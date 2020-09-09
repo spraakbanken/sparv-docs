@@ -6,16 +6,16 @@ For texts written in contemporary Swedish Sparv can generate the following types
     * `msd`: morphosyntactic tag
 
     Tool: [Hunpos](http://code.google.com/p/hunpos/)<br>
-    Model: in-house model trained on [SUC 3.0](/en/resources/suc3)<br>
+    Model: in-house model trained on [SUC 3.0](https://spraakbanken.gu.se/en/resources/suc3)<br>
     Tag set: [MSD tags](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
-* [SALDO](/en/resources/saldo)-based analysis:
+* [SALDO](https://spraakbanken.gu.se/en/resources/saldo)-based analysis:
     * `baseform`: citation form
-    * `lemgram`: lemgram, identifies the inflectional table (using [SALDO tags](https://spraakbanken.gu.se/eng/research/saldo/tagset))
+    * `lemgram`: lemgram, identifies the inflectional table (using [SALDO tags](https://spraakbanken.gu.se/en/resources/saldo/tagset))
     * `sense`: identifies a sense in SALDO and its probability
     * (`saldo`: identifies a sense in SALDO - *will be removed soon*)
-    * `sentiment`: sentiment score using [SenSALDO](/resurser/sensaldo)
+    * `sentiment`: sentiment score using [SenSALDO](https://spraakbanken.gu.se/en/resources/sensaldo)
 
 
 * Compound analysis (also based on SALDO):

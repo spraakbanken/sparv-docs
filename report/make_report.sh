@@ -3,12 +3,20 @@
 # Script for creating technical report from markdown files
 # Requires markdown and latex
 
-# Concatenate all markdownfiles and add headings
+# Make title page
+echo -e "
+---
+title: 'Sparv 3 - Technical Report'
+author: |
+  | Språkbanken
+  | Institutionen för svenska språket
+  | Göteborgs universitet
+---" > technical_report.md
 
-# echo -e "Sparv 2: Technical Report\n" > technical_report.md
-echo -e "\n# Acknowledgements\n" > technical_report.md
+echo -e "\n# Acknowledgements\n" >> technical_report.md
 echo -e "\nThis work and research was supported by Yvonne Adesam, Malin Ahlberg, Gerlof Bouma, Martha Dís Brandt, Peter Ljunglöf, Richard Johansson, Luis Nieto Piña and Roland Schäfer. We thank our colleagues and former colleagues who made great contributions to Sparv.\n" >> technical_report.md
 
+# Concatenate all markdownfiles and add headings
 echo -e "\n# The Sparv Pipeline\n" >> technical_report.md
 echo -e "\n## Setting up the Sparv Pipeline\n" >> technical_report.md
 cat ../dist_pipeline.md >> technical_report.md
@@ -16,6 +24,8 @@ echo -e "\n## Developing the Sparv Pipeline\n" >> technical_report.md
 cat ../devel_pipeline.md >> technical_report.md
 echo -e "\n## Sparv's Import Format\n" >> technical_report.md
 cat ../import_format.md >> technical_report.md
+echo -e "\n## Parallel Corpora\n" >> technical_report.md
+cat ../parallel_corpora.md >> technical_report.md
 echo -e "\n## Available Sparv Annotations\n" >> technical_report.md
 cat ../annotations_eng.md >> technical_report.md
 echo -e "\n# The Sparv Frontend\n" >> technical_report.md
