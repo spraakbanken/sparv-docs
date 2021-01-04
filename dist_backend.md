@@ -12,7 +12,9 @@ The Sparv backend is configured to be run in combination with the catapult which
 
 ### Requirements
 
-* The Sparv corpus pipeline (see [here](https://spraakbanken.gu.se/en/tools/sparv/pipeline/installation) for installation instructions)
+* Version 3 of the Sparv corpus pipeline (see [the technical
+  report](https://github.com/spraakbanken/sparv-pipeline/releases/download/v3.0/Sparv3_technical_report.pdf) for
+  installation instructions)
 * The [Sparv catapult](https://github.com/spraakbanken/sparv-catapult)
 * [Python 3.4](http://python.org/) or newer
 * A WSGI server (optional but recommended)
