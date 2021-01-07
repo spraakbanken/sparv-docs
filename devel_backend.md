@@ -9,7 +9,9 @@ It is available at [https://spraakbanken.gu.se/ws/sparv](https://spraakbanken.gu
 
 #### <a name="be-requirements"></a>Requirements
 
-* the Sparv corpus pipeline, see [here](/en/tools/sparv/pipeline/installation) for installation instructions
+* Version 3 of the Sparv corpus pipeline (see [the technical
+  report](https://github.com/spraakbanken/sparv-pipeline/releases/download/v3.0/Sparv3_technical_report.pdf) for
+  installation instructions)
 * [Python 3.4](https://www.python.org/) or newer
 
 
@@ -31,6 +33,7 @@ Activate the virtual environment and install the required Python packages:
 You can then deactivate the virtual environment:
 
     deactivate
+
 
 #### Backend Configuration
 
