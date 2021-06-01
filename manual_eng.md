@@ -3,9 +3,9 @@
 
 ## Introduction
 
-Sparv is an annotation tool developed by Språkbanken that is used for analysing
+Sparv is a text analysis tool developed by Språkbanken Text that is used for analysing
 the corpora in Korp and the texts in Strix. The [Sparv web
-interface](https://spraakbanken.gu.se/sparv) can be used for annotating your own
+interface](https://spraakbanken.gu.se/sparv/gui) can be used for annotating your own
 texts.
 
 This user manual describes most of the functions available in the Sparv web
