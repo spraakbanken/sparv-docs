@@ -6,13 +6,17 @@ alla analyser för korpusarna i Korp.
 
 - Meningssegmentering
     - **beskrivning**: Texter delas upp i meningar.
-    - **modell**: byggt med [NLTK's
+    - **modell**: [punkt-nltk-svenska.pickle](https://github.com/spraakbanken/sparv-models/blob/master/segment/punkt-nltk-svenska.pickle?raw=true)
+    - **metod**: Modellen är byggd med [NLTK's
       PunktTrainer](https://www.nltk.org/api/nltk.tokenize.html?highlight=punkttrainer#nltk.tokenize.punkt.PunktTrainer)
-      tränad på [StorSUC](https://spraakbanken.gu.se/resurser/storsuc)
+      och tränad på [StorSUC](https://spraakbanken.gu.se/resurser/storsuc).
 
 - Tokenisering
     - **beskrivning**: Meningar delas upp i tokens.
-    - **verktyg och modell**: Specialbyggd tokeniserare som bygger på reguljära uttryck och listor med ord innehållande
+    - **modell**:
+        - [konfigurationsfil bettertokenizer.sv](https://raw.githubusercontent.com/spraakbanken/sparv-models/master/segment/bettertokenizer.sv)
+        - ordlista `bettertokenizer.sv.saldo-tokens` byggd på [SALDOs morfologi](https://spraakbanken.gu.se/resurser/saldo) (byggs automatiskt av Sparv)
+    - **metod**: Specialbyggd tokeniserare som bygger på reguljära uttryck och listor med ord innehållande
       specialtecken och vanliga förkortningar. Sparvs version är anpassad för svenska, men den går även att konfigurera
       för andra språk.
 
@@ -31,6 +35,7 @@ alla analyser för korpusarna i Korp.
 - Universella ordklasser
     - **beskrivning**: SUC-ordklasser översätts till universella ordklasser.
       Används ej som standard eftersom översättningen inte är helt pålitlig.
+    - **modell**: Metod saknar modell. En översättningstabell används.
     - **taggmängd**: [Universal POS tags](https://universaldependencies.org/u/pos/index.html)
     - **annotationer på token-nivå**:
         - `upos`: universella ordklasstaggar
@@ -39,7 +44,8 @@ alla analyser för korpusarna i Korp.
     - **beskrivning**: Meningar analyseras för att berika varje token med ordklasser och morfosyntaktisk information.
       Används ej längre som standard eftersom Stanzas ordklasstaggning ger bättre resultat.
     - **verktyg**: [Hunpos](http://code.google.com/p/hunpos/)
-    - **modell**: egen modell tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3)
+    - **modell**: [suc3_suc-tags_default-setting_utf8.model](https://github.com/spraakbanken/sparv-models/blob/master/hunpos/suc3_suc-tags_default-setting_utf8.model?raw=true)
+    - **metod**: Modellen är tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3).
     - **taggmängd**: [SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer på tokennivå**:
         - `pos`: ordklasstagg (av engelskans 'part of speech')
@@ -59,7 +65,8 @@ alla analyser för korpusarna i Korp.
     - **beskrivning**:
       Används ej längre som standard eftersom Stanzas dependensanalys ger bättre resultat.
     - **verktyg**: [MaltParser](http://www.maltparser.org/download.html)
-    - **modell**: [swemalt](http://www.maltparser.org/mco/swedish_parser/swemalt.html), tränad på Svensk trädbank
+    - **modell**: [swemalt](http://www.maltparser.org/mco/swedish_parser/swemalt.html)
+    - **metod**: Modellen är tränad på [Svensk trädbank](https://spraakbanken.gu.se/resurser/sv-treebank).
     - **taggmängd**: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
     - **annotationer på token-nivå**:
         - `ref`: ordets position i meningen
@@ -69,6 +76,7 @@ alla analyser för korpusarna i Korp.
 - Frasstrukturparsning
     - **beskrivning**: Mamba-Dep dependenser framtagna av dependensanalysen konverteras till frasstrukturer.
       Används ej i Korp på grund av inkompatibilitet med Corpus Workbench.
+    - **modell**: Metod saknar modell
     - **annotationer**:
         - `phrase`: frassegment
         - `phrase.name`: frasnamn
@@ -94,16 +102,22 @@ alla analyser för korpusarna i Korp.
 - Betydelsedesambiguering
     - **beskrivning**: SALDO-ID:n från `sense`-attributet utökas med sannolikheter
     - **verktyg**: [Sparv wsd](https://github.com/spraakbanken/sparv-wsd)
+    - **dokumentation**: [Running the Koala word sense disambiguators](https://github.com/spraakbanken/sparv-wsd/blob/master/README.pdf)
+    - **modell**:
+        - [ALL_512_128_w10_A2_140403_ctx1.bin](https://github.com/spraakbanken/sparv-wsd/blob/master/models/scouse/ALL_512_128_w10_A2_140403_ctx1.bin)
+        - [lem_cbow0_s512_w10_NEW2_ctx.bin](https://github.com/spraakbanken/sparv-wsd/blob/master/models/scouse/lem_cbow0_s512_w10_NEW2_ctx.bin)
     - **annotationer på token-nivå**:
         - `sense`: identifierar en betydelse i SALDO samt dess sannolikhet
 
 - Sammansättningsanalys
     - **beskrivning**: Tokens och deras ordklasser slås upp i SALDO-lexikonet för att få fram information om
-      sammansättningar.  
+      sammansättningar. Se även [FAQ](https://spraakbanken.gu.se/faq#q24).
       Grundformer utökas i det här analyssteget.
-    - **modeller**: [SALDOs morfologi](https://spraakbanken.gu.se/resurser/saldo), [NST uttalslexikon för
-      svenska](https://www.nb.no/sprakbanken/en/resource-catalogue/oai-nb-no-sbr-22/) samt statistik från Korp
-    - se även [FAQ](https://spraakbanken.gu.se/faq#q24)
+    - **modell**:
+        - [SALDOs morfologi](https://spraakbanken.gu.se/resurser/saldo)
+        - [NST uttalslexikon för
+      svenska](https://www.nb.no/sprakbanken/en/resource-catalogue/oai-nb-no-sbr-22/)
+      - [frekvensstatistik från Korp](https://svn.spraakdata.gu.se/sb-arkiv/pub/frekvens/stats_all.txt)
     - **annotationer på token-nivå**:
         - `complemgram`: sammansatta lemgram samt deras jämförelsetal 
         - `compwf`: sammansatta ordformer
@@ -119,6 +133,7 @@ alla analyser för korpusarna i Korp.
 - Namnigenkänning
     - **beskrivning**: Meningar analyseras och berikas med namnentiteter.
     - **verktyg**: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
+    - **modell**: Modellen är inbyggd i verktyget.
     - **referenser**:
         - [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf)
         - [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
@@ -131,6 +146,7 @@ alla analyser för korpusarna i Korp.
 
 - Läsbarhetsindex
     - **beskrivning**: Dokument analyseras för att berika dessa med läsbarhetsvärden.
+    - **modell**: Metod saknar modell
     - **annotationer på dokumentnivå**:
         - `lix`: LIX, läsbarhetsindex
         - `ovix`: OVIX, ordvariationsindex
@@ -140,7 +156,7 @@ alla analyser för korpusarna i Korp.
     - **beskrivning**: Tokens slås upp i Blingbring och SweFN för att berika dessa med information om deras lexikala
       klasser. Sedan berikas hela dokumentet med information om lexikala klasser baserad på vilka klasser dess tokens
       tillhör.
-    - **modeller**:
+    - **modell**:
         - [Blingbring](https://spraakbanken.gu.se/resurser/blingbring)
         - [Svenskt frasnät (SweFN)](https://spraakbanken.gu.se/resurser/swefn)
     - **annotationer på token-nivå**:
@@ -167,10 +183,11 @@ Alla analyser för modern svenska är tillgängliga för 1800-talssvenska. Utöv
     - **beskrivning**: Meningar analyseras för att berika varje token med ordklasser och morfosyntaktisk information.
     - **verktyg**: [Hunpos](http://code.google.com/p/hunpos/)
     - **modell**:
-        - egen modell tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3)
+        - [suc3_suc-tags_default-setting_utf8.model](https://github.com/spraakbanken/sparv-models/blob/master/hunpos/suc3_suc-tags_default-setting_utf8.model?raw=true)
         - ordlista och tillhörande MSD-information genererad från [Dalins
           morfologi](https://spraakbanken.gu.se/resurser/dalinm) och [Swedbergs
           morfologi](https://spraakbanken.gu.se/resurser/swedbergm)
+    - **metod**: Modellen är tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3).
     - **taggmängd**: [SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer på tokennivå**:
         - `pos`: ordklasstagg (av engelskans 'part of speech')
@@ -178,12 +195,12 @@ Alla analyser för modern svenska är tillgängliga för 1800-talssvenska. Utöv
 
 - Lexikon-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i olika lexikon för att få fram ytterligare egenskaper.
-    - **modeller**:
+    - **modell**:
         - [SALDOs morfologi](https://spraakbanken.gu.se/resurser/saldo)
         - [Dalins morfologi](https://spraakbanken.gu.se/resurser/dalinm)
         - [Swedbergs morfologi](https://spraakbanken.gu.se/resurser/swedbergm)
         - [Diakronisk pivot](https://spraakbanken.gu.se/resurser/diapivot)
-    - **taggmängd**: [SALDO taggar](https://spraakbanken.gu.se/resurser/saldo/taggmangd) för lemgram
+    - **taggmängd**: [SALDO taggar](https://spraakbanken.gu.se/resurser/saldo/taggmangd) (för lemgram)
     - **annotationer på token-nivå**:
         - `baseform`: grundform
         - `lemgram`: lemgram, en formenhet som identifierar böjningstabellen
@@ -199,14 +216,14 @@ fornsvenska texter:
 
 - Stavningsvarianter
     - **beskrivning**: Tokens slås upp i en modell för att få fram stavningsvarianter.
-    - **modell**: [Modell för fornsvenska
+    - **modell**: [modell för fornsvenska
       stavningsvarianter](https://media.githubusercontent.com/media/spraakbanken/sparv-models/master/hist/fsv-spelling-variants.txt)
     - **annotationer på tokennivå**:
         - `spelling_variants`: möjliga stavningsvarianter av tokenet
 
 - Lexikon-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i olika lexikon för att få fram ytterligare egenskaper.
-    - **modeller**:
+    - **modell**:
         - [Fornsvensk morfologi ur Söderwall och Schlyter](https://spraakbanken.gu.se/resurser/fsvm)
         - [SALDOs morfologi](https://spraakbanken.gu.se/resurser/saldo)
         - [Diakronisk pivot](https://spraakbanken.gu.se/resurser/diapivot)
@@ -217,6 +234,7 @@ fornsvenska texter:
 
 - Homografmängd
     - **beskrivning**: En mängd av möjliga ordklasstaggar extraheras från lemgram-annotationen
+    - **modell**: Metod saknar modell
     - **taggmängd**: [Ordklasserna ur SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
 
 
@@ -228,6 +246,8 @@ tillgängliga finns
 - Analyser från TreeTagger
     - **beskrivning**: Tokeniserade meningar analyseras för att berika varje token med ytterligare information.
     - **verktyg**: [TreeTagger](https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/)
+    - **modell**: Olika parameter-filer beroende på språk. Se [TreeTaggers
+          webbsida](https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) för mer info.
     - **taggmängd**:
         - Olika ordklasstaggmängder beroende på språk. Se [TreeTaggers
           webbsida](https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) för mer info.
@@ -242,6 +262,7 @@ tillgängliga finns
       annan information. FreeLing använder inte samma licens som övriga Sparv och kräver ett
       [Sparv-plugin](https://github.com/spraakbanken/sparv-freeling).
     - **verktyg**: [FreeLing](https://github.com/TALP-UPC/FreeLing)
+    - **modell**: Modeller för olika språk är inbyggda i verktyget.
     - **taggmängd**:
         - Olika ordklasstaggmängder beroende på språk (ofta
           [EAGLES](http://www.ilc.cnr.it/EAGLES96/annotate/node9.html)). Se [FreeLings
@@ -257,6 +278,7 @@ tillgängliga finns
     - **beskrivning**: Hela dokument analyseras med Stanford Parser för att meningssegmenteras, tokeniseras och berikas
       med annan information.
     - **verktyg**: [Stanford Parser](https://nlp.stanford.edu/software/lex-parser.shtml)
+    - **modell**: inbyggd i verktyget
     - **taggmängd**:
         - [Penn Treebank tagset](https://www.sketchengine.eu/penn-treebank-tagset/)
         - [Universal POS tags](https://universaldependencies.org/u/pos/index.html)
@@ -273,6 +295,7 @@ tillgängliga finns
     - **beskrivning**: Hela dokument analyseras med Stanford Parser för att meningssegmenteras, tokeniseras och berikas
       med annan information.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
+    - **modell**: inbyggd i verktyget
     - **taggmängd**:
         - [Universal POS tags](https://universaldependencies.org/u/pos/index.html)
         - [Universal features](https://universaldependencies.org/u/feat/index.html)
