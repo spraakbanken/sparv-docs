@@ -1,3 +1,14 @@
+Den här sidan ger en översikt över analyser som är tillgängliga i Sparvs korpuspipeline samt i Sparv-plugins som
+utvecklas på Språkbanken.
+
+**annotationer** är de fullständiga namnen på annotationerna som listas i korpus-configfilen i
+  `export.annotations`-sektionen (läs mer om detta i [Sparvs
+  användarhandledning](https://spraakbanken.gu.se/sparv/#/user-manual/corpus-configuration?id=corpus-configuration)).
+
+**annoterare** är namnen på annoteringsfunktionerna (inklusive modulnamnen) som används för att producera
+  annotationerna. Dessa kan köras för sig med kommandot `sparv run-rule [annoterare]` men oftast behöver detta inte
+  göras, då annoteringsfunktionerna körs automatisk vid `sparv run` kommandot för alla annotationer som är listade i
+  korpus-configfilen.
 
 
 # Analyser för modern svenska (nusvenska)
@@ -13,6 +24,7 @@ alla analyser för korpusarna i Korp.
       [PunktSentenceTokenizer](https://www.nltk.org/api/nltk.tokenize.html?highlight=punktsentencetokenizer#nltk.tokenize.punkt.PunktSentenceTokenizer).
     - **annotationer**:
         - `segment.sentence`: meningssegment
+    - **annoterare**: `segment.sentence`
 
 - Tokenisering
     - **beskrivning**: Meningar delas upp i tokens.
@@ -24,6 +36,7 @@ alla analyser för korpusarna i Korp.
       för andra språk.
     - **annotationer**:
         - `segment.sentence`: tokensegment
+    - **annoterare**: `segment.tokenize`
 
 - Ordklasstaggning med Stanza
     - **beskrivning**: Meningar analyseras för att berika varje token med ordklasser och morfosyntaktisk information.
@@ -36,6 +49,7 @@ alla analyser för korpusarna i Korp.
         - `<token>:stanza.pos`: ordklasstagg
         - `<token>:stanza.msd`: morfosyntaktisk tagg
         - `<token>:stanza.ufeats`: universella morfologiska särdrag (features)
+    - **annoterare**: `stanza.msdtag`
 
 - Universella ordklasser
     - **beskrivning**: SUC-ordklasser översätts till universella ordklasser.
@@ -44,6 +58,7 @@ alla analyser för korpusarna i Korp.
     - **taggmängd**: [Universal POS tags](https://universaldependencies.org/u/pos/index.html)
     - **annotationer**:
         - `<token>:misc.upos`: universella ordklasstaggar
+    - **annoterare**: `misc.upostag`
 
 - Ordklasstaggning med Hunpos
     - **beskrivning**: Meningar analyseras för att berika varje token med ordklasser och morfosyntaktisk information.
@@ -53,8 +68,11 @@ alla analyser för korpusarna i Korp.
     - **metod**: Modellen är tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3).
     - **taggmängd**: [SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer**:
-        - `<token>:hunpos.pos`: ordklasstagg
         - `<token>:hunpos.msd`: morfosyntaktisk tagg
+        - `<token>:hunpos.pos`: ordklasstagg
+    - **annoterare**:
+        - `hunpos.msdtag`
+        - `hunpos.postag`
 
 - Dependensparsning med Stanza
     - **beskrivning**: Meningar analyseras för att berika tokens med dependensinformation.
@@ -65,6 +83,9 @@ alla analyser för korpusarna i Korp.
         - `<token>:stanza.ref`: ordets position i meningen
         - `<token>:stanza.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
         - `<token>:stanza.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
+    - **annoterare**:
+        - `stanza.dep_parse`
+        - `stanza.make_ref`
 
 - Dependensparsning med MaltParser
     - **beskrivning**:
@@ -77,6 +98,9 @@ alla analyser för korpusarna i Korp.
         - `<token>:malt.ref`: ordets position i meningen
         - `<token>:malt.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
         - `<token>:malt.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
+    - **annoterare**:
+        - `malt.annotate`
+        - `malt.make_ref`
 
 - Frasstrukturparsning
     - **beskrivning**: Mamba-Dep dependenser framtagna av dependensanalysen konverteras till frasstrukturer.
@@ -86,6 +110,7 @@ alla analyser för korpusarna i Korp.
         - `phrase_structure.phrase`: frassegment
         - `phrase_structure.phrase:phrase_structure.name`: namnet av frassegmentet
         - `phrase_structure.phrase:phrase_structure.func`: funktionen av frassegmentet
+    - **annoterare**: `phrase_structure.annotate`
 
 - SALDO-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i SALDO-lexikonet för att få fram ytterligare egenskaper.
@@ -95,6 +120,7 @@ alla analyser för korpusarna i Korp.
         - `<token>:saldo.baseform`: grundform
         - `<token>:saldo.lemgram`: lemgram, en formenhet som identifierar böjningstabellen
         - `<token>:saldo.sense`: identifierar en betydelse i SALDO
+    - **annoterare**: `saldo.annotate`
 
 - Grundformanalys från Stanza
     - **beskrivning**: Meningar analyseras för att berika tokens med dependensinformation.
@@ -103,6 +129,7 @@ alla analyser för korpusarna i Korp.
     - **modell**: https://spraakbanken.gu.se/resurser/stanza_synt
     - **annotationer**:
         - `<token>:stanza.baseform`: grundform
+    - **annoterare**: `stanza.annotate_swe`
 
 - Betydelsedesambiguering
     - **beskrivning**: SALDO-ID:n från `sense`-attributet utökas med sannolikheter
@@ -113,6 +140,7 @@ alla analyser för korpusarna i Korp.
         - [lem_cbow0_s512_w10_NEW2_ctx.bin](https://github.com/spraakbanken/sparv-wsd/blob/master/models/scouse/lem_cbow0_s512_w10_NEW2_ctx.bin)
     - **annotationer**:
         - `<token>:wsd.sense`: identifierar en betydelse i SALDO samt dess sannolikhet
+    - **annoterare**: `wsd.annotate`
 
 - Sammansättningsanalys
     - **beskrivning**: Tokens och deras ordklasser slås upp i SALDO-lexikonet för att få fram information om
@@ -127,6 +155,7 @@ alla analyser för korpusarna i Korp.
         - `<token>:saldo.complemgram`: sammansatta lemgram samt deras jämförelsetal 
         - `<token>:saldo.compwf`: sammansatta ordformer
         - `<token>:saldo.baseform2`: grundform
+    - **annoterare**: `saldo.compound`
 
 - Sentimentanalys
     - **beskrivning**: Tokens och deras SALDO-ID:n slås upp i SenSALDO för att berika dessa med attitydvärden. 
@@ -134,6 +163,7 @@ alla analyser för korpusarna i Korp.
     - **annotationer**:
         - `<token>:sensaldo.sentiment_label`: attityd
         - `<token>:sensaldo.sentiment_score`: attitydvärde
+    - **annoterare**: `sensaldo.annotate`
 
 - Namnigenkänning
     - **beskrivning**: Meningar analyseras och berikas med namnentiteter.
@@ -148,6 +178,7 @@ alla analyser för korpusarna i Korp.
         - `swener.ne:swener.ex`: namnentitet (namnuttryck, numerisk uttryck eller tidsuttryck)
         - `swener.ne:swener.type`: namnentitetstyp
         - `swener.ne:swener.subtype`: namnentitetsundertyp
+    - **annoterare**: `swener.annotate`
 
 - Läsbarhetsindex
     - **beskrivning**: Dokument analyseras för att berika dessa med läsbarhetsvärden.
@@ -156,6 +187,10 @@ alla analyser för korpusarna i Korp.
         - `<text>:readability.lix`: LIX, läsbarhetsindex
         - `<text>:readability.ovix`: OVIX, ordvariationsindex
         - `<text>:readability.nk`: Nominalkvot
+    - **annoterare**:
+        - `readability.lix`
+        - `readability.ovix`
+        - `readability.nominal_ratio`
 
 - Lexikala klasser
     - **beskrivning**: Tokens slås upp i Blingbring och SweFN för att berika dessa med information om deras lexikala
@@ -169,6 +204,11 @@ alla analyser för korpusarna i Korp.
         - `<token>:lexical_classes.swefn`: ramar från Svenskt frasnät (SweFN) per token
         - `<text>:lexical_classes.blingbring`: lexikala klasser från Blingbring-resursen per dokument
         - `<text>:lexical_classes.swefn`: ramar från Svenskt frasnät (SweFN) per dokument
+    - **annoterare**:
+        `lexical_classes.blingbring_words`
+        `lexical_classes.swefn_words`
+        `lexical_classes.blingbring_text`
+        `lexical_classes.swefn_text`
 
 - Geouppmärkning
     - **beskrivning**: Meningar (och stycken om sådana finns) berikas med orter (och geokoordinater) som förekommer inom
@@ -177,6 +217,7 @@ alla analyser för korpusarna i Korp.
     - **annotationer**:
         - `<sentence>:geo.geo_context`: orter och deras koordinator som förekommer i meningen
         - `<paragraph>:geo.geo_context`: orter och deras koordinator som förekommer i stycket
+    - **annoterare**: `geo.contextual`
 
 
 # Analyser för 1800-talssvenska
@@ -193,8 +234,11 @@ Alla analyser för modern svenska är tillgängliga för 1800-talssvenska. Utöv
     - **metod**: Modellen är tränad på [SUC 3.0](https://spraakbanken.gu.se/resurser/suc3).
     - **taggmängd**: [SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer**:
-        - `<token>:hunpos.pos`: ordklasstagg
         - `<token>:hunpos.msd`: morfosyntaktisk tagg
+        - `<token>:hunpos.pos`: ordklasstagg
+    - **annoterare**:
+        `hunpos.msdtag_hist`
+        `hunpos.postag`
 
 - Lexikon-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i olika lexikon för att få fram ytterligare egenskaper.
@@ -206,8 +250,14 @@ Alla analyser för modern svenska är tillgängliga för 1800-talssvenska. Utöv
     - **taggmängd**: [SALDO taggar](https://spraakbanken.gu.se/resurser/saldo/taggmangd) (för lemgram)
     - **annotationer**:
         - `<token>:hist.baseform`: grundform
-        - `<token>:hist.combined_lemgrams`: lemgram, en formenhet som identifierar böjningstabellen
         - `<token>:hist.sense`: identifierar en betydelse i SALDO
+        - `<token>:hist.lemgram`: lemgram, en formenhet som identifierar böjningstabellen
+        - `<token>:hist.diapivot`: SALDO lemgram, härledda från the diapivot-modellen 
+        - `<token>:hist.combined_lemgrams`: SALDO lemgram, kombinerade fråm SALDO, Dalin, Swedberg och diapivot-modellen
+    - **annoterare**:
+        - `hist.annotate_saldo`
+        - `hist.diapivot_annotate`
+        - `hist.combine_lemgrams`
 
  
 # Standardanalyser för fornsvenska
@@ -223,6 +273,7 @@ fornsvenska texter:
       stavningsvarianter](https://media.githubusercontent.com/media/spraakbanken/sparv-models/master/hist/fsv-spelling-variants.txt)
     - **annotationer**:
         - `<token>:hist.spelling_variants`: möjliga stavningsvarianter av tokenet
+    - **annoterare**: `hist.spelling_variants`
 
 - Lexikon-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i olika lexikon för att få fram ytterligare egenskaper.
@@ -233,7 +284,13 @@ fornsvenska texter:
     - **taggmängd**: [SALDO taggar](https://spraakbanken.gu.se/resurser/saldo/taggmangd) för lemgram
     - **annotationer**:
         - `<token>:hist.baseform`: grundform
-        - `<token>:hist.combined_lemgrams`: lemgram, en formenhet som identifierar böjningstabellen
+        - `<token>:hist.lemgram`: lemgram, en formenhet som identifierar böjningstabellen
+        - `<token>:hist.diapivot`: SALDO lemgram, härledda från the diapivot-modellen 
+        - `<token>:hist.combined_lemgrams`: SALDO lemgram, kombinerade fråm SALDO, Dalin, Swedberg och diapivot-modellen
+    - **annoterare**:
+        - `hist.annotate_saldo_fsv`
+        - `hist.diapivot_annotate`
+        - `hist.combine_lemgrams`
 
 - Homografmängd
     - **beskrivning**: En mängd av möjliga ordklasstaggar extraheras från lemgram-annotationen
@@ -241,6 +298,7 @@ fornsvenska texter:
     - **taggmängd**: [Ordklasserna ur SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer**:
         - `<token>:hist.homograph_set`: möjliga ordklasstaggar för tokenet
+    - **annoterare**: `hist.extract_pos`
 
 
 # Analyser för andra språk än svenska
@@ -261,6 +319,7 @@ tillgängliga finns
         - `<token>:treetagger.baseform`: grundform
         - `<token>:treetagger.pos`: ordklasstagg, kan innehålla morfosyntaktisk information
         - `<token>:treetagger.upos`: universella ordklasstaggar, översätta från `pos`
+    - **annoterare**: `treetagger.annotate`
 
 - Analyser från FreeLing
     - **beskrivning**: Hela dokument analyseras med FreeLing för att meningssegmenteras, tokeniseras och berikas med
@@ -280,6 +339,7 @@ tillgängliga finns
         - `freeling.token:freeling.pos`: ordklasstagg, innehåller ofta även morfosyntaktisk information
         - `freeling.token:freeling.upos`: universella ordklasstaggar
         - `freeling.token:freeling.ne_type`: namnentitetstyp (inte tillgänglig för alla språk)
+    - **annoterare**: `freeling.annotate` eller `freeling.annotate_full` (beroende på analysspråket)
 
 - Analyser från Stanford Parser (för engelska)
     - **beskrivning**: Hela dokument analyseras med Stanford Parser för att meningssegmenteras, tokeniseras och berikas
@@ -299,6 +359,9 @@ tillgängliga finns
         - `stanford.token:stanford.ref`: ordets position i meningen
         - `stanford.token:stanford.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
         - `stanford.token:stanford.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
+    - **annoterare**:
+        - `stanford.annotate`
+        - `stanford.make_ref`
 
 - Analyser från Stanza (för engelska)
     - **beskrivning**: Hela dokument analyseras med Stanford Parser för att meningssegmenteras, tokeniseras och berikas
@@ -320,3 +383,6 @@ tillgängliga finns
         - `<token>:stanza.ref`: ordets position i meningen
         - `<token>:stanza.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
         - `<token>:stanza.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
+    - **annoterare**:
+        - `stanford.annotate`
+        - `stanford.make_ref`
