@@ -1,9 +1,10 @@
-Den här sidan ger en översikt över analyser som är tillgängliga i Sparvs korpuspipeline samt i Sparv-plugins som
+Den här sidan ger en översikt över analyser som är tillgängliga i Sparvs korpuspipeline och i Sparv-plugins som
 utvecklas på Språkbanken.
 
 **annotationer** är de fullständiga namnen på annotationerna som listas i korpus-configfilen i
   `export.annotations`-sektionen (läs mer om detta i [Sparvs
   användarhandledning](https://spraakbanken.gu.se/sparv/#/user-manual/corpus-configuration?id=corpus-configuration)).
+  Observera att annotationerna har kortare namn i korpusexporten.
 
 **annoterare** är namnen på annoteringsfunktionerna (inklusive modulnamnen) som används för att producera
   annotationerna. Dessa kan köras för sig med kommandot `sparv run-rule [annoterare]` men oftast behöver detta inte
@@ -15,7 +16,7 @@ utvecklas på Språkbanken.
 Dessa analyser är tillgängliga i Sparv och kan användas för korpusar i modern svenska. Av olika anledningar används inte
 alla analyser för korpusarna i Korp. 
 
-- Meningssegmentering
+- Meningssegmentering med PunktSentenceTokenizer
     - **beskrivning**: Texter delas upp i meningar.
     - **modell**: [punkt-nltk-svenska.pickle](https://github.com/spraakbanken/sparv-models/blob/master/segment/punkt-nltk-svenska.pickle?raw=true)
     - **metod**: Modellen är byggd med [NLTK's
@@ -35,7 +36,7 @@ alla analyser för korpusarna i Korp.
       specialtecken och vanliga förkortningar. Sparvs version är anpassad för svenska, men den går även att konfigurera
       för andra språk.
     - **annotationer**:
-        - `segment.sentence`: tokensegment
+        - `segment.token`: tokensegment
     - **annoterare**: `segment.tokenize`
 
 - Ordklasstaggning med Stanza
@@ -105,7 +106,7 @@ alla analyser för korpusarna i Korp.
 - Frasstrukturparsning
     - **beskrivning**: Mamba-Dep dependenser framtagna av dependensanalysen konverteras till frasstrukturer.
       Används ej i Korp på grund av inkompatibilitet med Corpus Workbench.
-    - **modell**: Metod saknar modell
+    - **modell**: Metod saknar modell.
     - **annotationer**:
         - `phrase_structure.phrase`: frassegment
         - `phrase_structure.phrase:phrase_structure.name`: namnet av frassegmentet
@@ -182,7 +183,7 @@ alla analyser för korpusarna i Korp.
 
 - Läsbarhetsindex
     - **beskrivning**: Dokument analyseras för att berika dessa med läsbarhetsvärden.
-    - **modell**: Metod saknar modell
+    - **modell**: Metod saknar modell.
     - **annotationer**:
         - `<text>:readability.lix`: LIX, läsbarhetsindex
         - `<text>:readability.ovix`: OVIX, ordvariationsindex
@@ -237,8 +238,8 @@ Alla analyser för modern svenska är tillgängliga för 1800-talssvenska. Utöv
         - `<token>:hunpos.msd`: morfosyntaktisk tagg
         - `<token>:hunpos.pos`: ordklasstagg
     - **annoterare**:
-        `hunpos.msdtag_hist`
-        `hunpos.postag`
+        - `hunpos.msdtag_hist`
+        - `hunpos.postag`
 
 - Lexikon-baserade analyser
     - **beskrivning**: Tokens och deras ordklasser slås upp i olika lexikon för att få fram ytterligare egenskaper.
@@ -294,7 +295,7 @@ fornsvenska texter:
 
 - Homografmängd
     - **beskrivning**: En mängd av möjliga ordklasstaggar extraheras från lemgram-annotationen
-    - **modell**: Metod saknar modell
+    - **modell**: Metod saknar modell.
     - **taggmängd**: [Ordklasserna ur SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
     - **annotationer**:
         - `<token>:hist.homograph_set`: möjliga ordklasstaggar för tokenet
@@ -364,8 +365,8 @@ tillgängliga finns
         - `stanford.make_ref`
 
 - Analyser från Stanza (för engelska)
-    - **beskrivning**: Hela dokument analyseras med Stanford Parser för att meningssegmenteras, tokeniseras och berikas
-      med annan information.
+    - **beskrivning**: Hela dokument analyseras med Stanza för att meningssegmenteras, tokeniseras och berikas med annan
+      information.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
     - **modell**: inbyggd i verktyget
     - **taggmängd**:
@@ -384,5 +385,5 @@ tillgängliga finns
         - `<token>:stanza.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
         - `<token>:stanza.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
     - **annoterare**:
-        - `stanford.annotate`
-        - `stanford.make_ref`
+        - `stanza.annotate`
+        - `stanza.make_ref`
