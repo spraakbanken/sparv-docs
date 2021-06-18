@@ -364,7 +364,7 @@ tillgängliga finns
         - `stanford.annotate`
         - `stanford.make_ref`
 
-- Analyser från Stanza (för engelska)
+<!-- - Analyser från Stanza (för engelska)
     - **beskrivning**: Hela dokument analyseras med Stanza för att meningssegmenteras, tokeniseras och berikas med annan
       information.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
@@ -386,4 +386,4 @@ tillgängliga finns
         - `<token>:stanza.deprel`: dependensrelation, den relation detta ord har till sitt dependenshuvud
     - **annoterare**:
         - `stanza.annotate`
-        - `stanza.make_ref`
+        - `stanza.make_ref` -->

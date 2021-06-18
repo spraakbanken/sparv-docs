@@ -369,7 +369,7 @@ tools are available can be found
         - `stanford.annotate`
         - `stanford.make_ref`
 
-- Analyses from Stanza (for English)
+<!-- - Analyses from Stanza (for English)
     - **description**: Entire documents are analysed with Stanza for sentence segmentation, tokenization and
       enrichment with other information.
     - **tool**: [Stanza](https://stanfordnlp.github.io/stanza/)
@@ -392,4 +392,4 @@ tools are available can be found
         - `<token>:stanza.deprel`: dependency relation, the relation of the current word to its dependency head
     - **annotators**:
         - `stanza.annotate`
-        - `stanza.make_ref`
+        - `stanza.make_ref` -->
