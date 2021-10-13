@@ -1,5 +1,6 @@
 # sparv-docs
-This repository includes documentation for the Sparv pipeline, web tool and web service.
+This repository includes documentation for the Sparv pipeline, web tool and web service up until version 3.
+The documentation for Sparv version 4 (or newer) is included in [the sparv-pipeline repository](https://github.com/spraakbanken/sparv-pipeline).
 
 ## Requirements
 * [GPP](https://logological.org/gpp)
