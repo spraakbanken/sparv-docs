@@ -79,7 +79,7 @@ alla analyser för korpusarna i Korp.
     - **beskrivning**: Meningar analyseras för att berika tokens med dependensinformation.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
     - **modell**: https://spraakbanken.gu.se/resurser/stanza_synt
-    - **taggmängd**: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
+    - **taggmängd**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotationer**:
         - `<token>:stanza.ref`: ordets position i meningen
         - `<token>:stanza.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av
@@ -94,7 +94,7 @@ alla analyser för korpusarna i Korp.
     - **verktyg**: [MaltParser](http://www.maltparser.org/download.html)
     - **modell**: [swemalt](http://www.maltparser.org/mco/swedish_parser/swemalt.html)
     - **metod**: Modellen är tränad på [Svensk trädbank](https://spraakbanken.gu.se/resurser/sv-treebank).
-    - **taggmängd**: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
+    - **taggmängd**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotationer**:
         - `<token>:malt.ref`: ordets position i meningen
         - `<token>:malt.dephead_ref`: dependenshuvud, ref för det ord som detta ord modifierar eller är beroende av

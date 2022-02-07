@@ -80,7 +80,7 @@ us at Språkbanken for analysing the corpora in Korp.
     - **description**: Sentence segments are analysed to enrich tokens with dependency information.
     - **tool**: [Stanza](https://stanfordnlp.github.io/stanza/)
     - **model**: https://spraakbanken.gu.se/resurser/stanza_synt
-    - **tagset**: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
+    - **tagset**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotations**:
         - `<token>:stanza.ref`: the token position within the sentence
         - `<token>:stanza.dephead_ref`: dependency head, the ref of the word which the current word modifies or is dependent of
@@ -95,7 +95,7 @@ us at Språkbanken for analysing the corpora in Korp.
     - **tool**: [MaltParser](http://www.maltparser.org/download.html)
     - **model**: [swemalt](http://www.maltparser.org/mco/swedish_parser/swemalt.html)
     - **method**: The model is trained on [Svensk trädbank](https://spraakbanken.gu.se/resurser/sv-treebank).
-    - **tagset**: [Mamba-Dep](http://stp.ling.uu.se/~nivre/swedish_treebank/dep.html)
+    - **tagset**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotations**:
         - `<token>:malt.ref`: the token position within the sentence
         - `<token>:malt.dephead_ref`: dependency head, the ref of the word which the current word modifies or is dependent of
