@@ -42,7 +42,7 @@ alla analyser för korpusarna i Korp.
 - Ordklasstaggning med Stanza
     - **beskrivning**: Meningar analyseras för att berika varje token med ordklasser och morfosyntaktisk information.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **modell**: https://spraakbanken.gu.se/resurser/stanza_morph
+    - **modell**: https://spraakbanken.gu.se/resurser/stanzamorph
     - **taggmängd**:
         - [SUCs MSD-taggar](https://spraakbanken.gu.se/korp/markup/msdtags.html)
         - [Universal features](https://universaldependencies.org/u/feat/index.html)
@@ -78,7 +78,7 @@ alla analyser för korpusarna i Korp.
 - Dependensparsning med Stanza
     - **beskrivning**: Meningar analyseras för att berika tokens med dependensinformation.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **modell**: https://spraakbanken.gu.se/resurser/stanza_synt
+    - **modell**: https://spraakbanken.gu.se/resurser/stanzasynt
     - **taggmängd**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotationer**:
         - `<token>:stanza.ref`: ordets position i meningen
@@ -127,7 +127,7 @@ alla analyser för korpusarna i Korp.
     - **beskrivning**: Meningar analyseras för att berika tokens med grundformer.
       Används ej i Korp. Grundformer annoteras istället med SALDO.
     - **verktyg**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **modell**: https://spraakbanken.gu.se/resurser/stanza_synt
+    - **modell**: https://spraakbanken.gu.se/resurser/stanzasynt
     - **annotationer**:
         - `<token>:stanza.baseform`: grundform
     - **annoterare**: `stanza.annotate_swe`

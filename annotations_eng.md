@@ -43,7 +43,7 @@ us at Språkbanken for analysing the corpora in Korp.
     - **description**: Sentence segments are analysed to enrich tokens with part-of-speech tags and morphosyntactic
       information.
     - **tool**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **model**: https://spraakbanken.gu.se/resurser/stanza_morph
+    - **model**: https://spraakbanken.gu.se/resurser/stanzamorph
     - **tagset**:
         - [SUC MSD tags](https://spraakbanken.gu.se/korp/markup/msdtags.html)
         - [Universal features](https://universaldependencies.org/u/feat/index.html)
@@ -79,7 +79,7 @@ us at Språkbanken for analysing the corpora in Korp.
 - Dependency parsning with Stanza
     - **description**: Sentence segments are analysed to enrich tokens with dependency information.
     - **tool**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **model**: https://spraakbanken.gu.se/resurser/stanza_synt
+    - **model**: https://spraakbanken.gu.se/resurser/stanzasynt
     - **tagset**: [Mamba-Dep](https://svn.spraakdata.gu.se/sb-arkiv/pub/mamba.html)
     - **annotations**:
         - `<token>:stanza.ref`: the token position within the sentence
@@ -129,7 +129,7 @@ us at Språkbanken for analysing the corpora in Korp.
     - **description**: Sentence segments are analysed to enrich tokens with citation forms.
       Not used in Korp. Citations forms are produced by SALDO instead.
     - **tool**: [Stanza](https://stanfordnlp.github.io/stanza/)
-    - **model**: https://spraakbanken.gu.se/resurser/stanza_synt
+    - **model**: https://spraakbanken.gu.se/resurser/stanzasynt
     - **annotations**:
         - `<token>:stanza.baseform`: citation form
     - **annotators**: `stanza.annotate_swe`
