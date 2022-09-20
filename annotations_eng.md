@@ -169,11 +169,12 @@ us at Språkbanken for analysing the corpora in Korp.
 
 - Named entity recognition with HFST-SweNER
     - **description**: Sentence segments are analysed and enriched with named entities.
-    - **tool**: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
+    - **tool**: [hfst-SweNER](http://urn.fi/urn%3Anbn%3Afi%3Alb-2021101202)
     - **model**: included in the tool
     - **referenser**:
         - [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf)
         - [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
+    - **tagset**: [HFST-SweNER tags](https://svn.spraakdata.gu.se/sb-arkiv/pub/swener-tags.html)
     - **annotations**:
         - `swener.ne`: named entity segment
         - `swener.ne:swener.name`: text in the entire named entity segment

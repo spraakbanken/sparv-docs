@@ -167,11 +167,12 @@ alla analyser för korpusarna i Korp.
 
 - Namnigenkänning med HFST-SweNER
     - **beskrivning**: Meningar analyseras och berikas med namnentiteter.
-    - **verktyg**: [hfst-SweNER](http://www.ling.helsinki.fi/users/janiemi/finclarin/ner/hfst-swener-0.9.3.tgz)
+    - **verktyg**: [hfst-SweNER](http://urn.fi/urn%3Anbn%3Afi%3Alb-2021101202)
     - **modell**: följer med verktyget
     - **referenser**:
         - [HFST-SweNER – A New NER Resource for Swedish](http://www.lrec-conf.org/proceedings/lrec2014/pdf/391_Paper.pdf)
         - [Reducing the effect of name explosion](http://demo.spraakdata.gu.se/svedk/pbl/kokkinakisBNER.pdf)
+    - **taggmängd**: [HFST-SweNER tagggar](https://svn.spraakdata.gu.se/sb-arkiv/pub/swener-tags.html)
     - **annotationer**:
         - `swener.ne`: namnsegment
         - `swener.ne:swener.name`: texten i hela namnsegmentet
